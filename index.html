@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -43,56 +42,56 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at center,transparent 50%,rgba(0,0,0,0.55) 100%);pointer-events:none;z-index:9997}
 
 /* HOME */
-.home{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;z-index:50;padding:1.5em;padding-top:calc(1.5em + var(–safe-top));padding-bottom:calc(1.5em + var(–safe-bottom));transition:opacity .7s cubic-bezier(.6,.05,.3,1),transform .7s cubic-bezier(.6,.05,.3,1)}
+.home{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;z-index:50;padding:1.5em;padding-top:calc(1.5em + var(--safe-top));padding-bottom:calc(1.5em + var(--safe-bottom));transition:opacity .7s cubic-bezier(.6,.05,.3,1),transform .7s cubic-bezier(.6,.05,.3,1)}
 .home.hidden{opacity:0;pointer-events:none;transform:scale(.96)}
-.home-frame{width:min(560px,100%);border:1px solid var(–neon-dim);padding:3em 1.5em;position:relative;background:linear-gradient(180deg,hsla(var(–hue-ui),60%,8%,.4),transparent 40%,hsla(var(–hue-ui),60%,8%,.4)),rgba(0,0,0,.4);box-shadow:0 0 0 1px var(–neon-vdim) inset,0 0 60px hsla(var(–hue-ui),80%,50%,.08)}
-.home-frame::before,.home-frame::after{content:’’;position:absolute;width:16px;height:16px;border:1px solid var(–neon)}
+.home-frame{width:min(560px,100%);border:1px solid var(--neon-dim);padding:3em 1.5em;position:relative;background:linear-gradient(180deg,hsla(var(--hue-ui),60%,8%,.4),transparent 40%,hsla(var(--hue-ui),60%,8%,.4)),rgba(0,0,0,.4);box-shadow:0 0 0 1px var(--neon-vdim) inset,0 0 60px hsla(var(--hue-ui),80%,50%,.08)}
+.home-frame::before,.home-frame::after{content:'';position:absolute;width:16px;height:16px;border:1px solid var(--neon)}
 .home-frame::before{top:-1px;left:-1px;border-right:none;border-bottom:none}
 .home-frame::after{bottom:-1px;right:-1px;border-left:none;border-top:none}
-.home-prelude{font-family:‘VT323’,monospace;font-size:clamp(.85rem,2.6vw,1.05rem);letter-spacing:.4em;color:var(–text-dim);margin-bottom:1.4em;text-transform:uppercase}
-.home-title{font-family:‘Orbitron’,sans-serif;font-weight:900;font-size:clamp(2rem,9vw,3.8rem);letter-spacing:.04em;color:var(–neon);text-shadow:0 0 6px var(–neon-glow),0 0 20px var(–neon-glow),0 0 44px var(–neon-bg);line-height:1;margin-bottom:.4em;animation:flick 4.5s infinite}
+.home-prelude{font-family:'VT323',monospace;font-size:clamp(.85rem,2.6vw,1.05rem);letter-spacing:.4em;color:var(--text-dim);margin-bottom:1.4em;text-transform:uppercase}
+.home-title{font-family:'Orbitron',sans-serif;font-weight:900;font-size:clamp(2rem,9vw,3.8rem);letter-spacing:.04em;color:var(--neon);text-shadow:0 0 6px var(--neon-glow),0 0 20px var(--neon-glow),0 0 44px var(--neon-bg);line-height:1;margin-bottom:.4em;animation:flick 4.5s infinite}
 @keyframes flick{0%,22%,24%,26%,100%{opacity:1}23%,25%{opacity:.85}72%{opacity:1}73%{opacity:.92}}
-.home-tagline{font-size:clamp(.65rem,2.3vw,.85rem);color:var(–text-dim);letter-spacing:.32em;text-transform:uppercase;margin-bottom:2.6em}
-.home-divider{width:60%;max-width:200px;height:1px;background:linear-gradient(90deg,transparent,var(–neon-dim),transparent);margin:0 auto 2.6em}
-.launch-btn{font-family:‘Orbitron’,sans-serif;background:transparent;border:1px solid var(–neon);color:var(–neon);padding:1.1em 3em;font-size:clamp(.85rem,3vw,1.1rem);letter-spacing:.3em;text-transform:uppercase;cursor:pointer;font-weight:700;transition:all .3s ease;box-shadow:0 0 18px var(–neon-glow),inset 0 0 18px hsla(var(–hue-ui),80%,50%,.07)}
-.launch-btn:hover,.launch-btn:active{background:var(–neon-bg);box-shadow:0 0 36px var(–neon-glow),inset 0 0 36px hsla(var(–hue-ui),80%,50%,.15);letter-spacing:.36em}
-.home-credit{position:absolute;bottom:calc(1em + var(–safe-bottom));left:0;right:0;text-align:center;font-size:clamp(.6rem,2vw,.7rem);color:var(–text-dim);font-style:italic;letter-spacing:.15em;padding:0 1em}
+.home-tagline{font-size:clamp(.65rem,2.3vw,.85rem);color:var(--text-dim);letter-spacing:.32em;text-transform:uppercase;margin-bottom:2.6em}
+.home-divider{width:60%;max-width:200px;height:1px;background:linear-gradient(90deg,transparent,var(--neon-dim),transparent);margin:0 auto 2.6em}
+.launch-btn{font-family:'Orbitron',sans-serif;background:transparent;border:1px solid var(--neon);color:var(--neon);padding:1.1em 3em;font-size:clamp(.85rem,3vw,1.1rem);letter-spacing:.3em;text-transform:uppercase;cursor:pointer;font-weight:700;transition:all .3s ease;box-shadow:0 0 18px var(--neon-glow),inset 0 0 18px hsla(var(--hue-ui),80%,50%,.07)}
+.launch-btn:hover,.launch-btn:active{background:var(--neon-bg);box-shadow:0 0 36px var(--neon-glow),inset 0 0 36px hsla(var(--hue-ui),80%,50%,.15);letter-spacing:.36em}
+.home-credit{position:absolute;bottom:calc(1em + var(--safe-bottom));left:0;right:0;text-align:center;font-size:clamp(.6rem,2vw,.7rem);color:var(--text-dim);font-style:italic;letter-spacing:.15em;padding:0 1em}
 
 /* APP */
-.app{position:fixed;inset:0;display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .6s ease .1s;padding-top:var(–safe-top);padding-bottom:var(–safe-bottom);padding-left:var(–safe-left);padding-right:var(–safe-right)}
+.app{position:fixed;inset:0;display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .6s ease .1s;padding-top:var(--safe-top);padding-bottom:var(--safe-bottom);padding-left:var(--safe-left);padding-right:var(--safe-right)}
 .app.active{opacity:1;pointer-events:auto}
-.topbar{display:flex;align-items:center;justify-content:space-between;padding:.5em .75em;border-bottom:1px solid var(–neon-vdim);background:rgba(0,0,0,.7);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);flex-wrap:wrap;gap:.4em;flex-shrink:0}
-.brand{font-family:‘Orbitron’,sans-serif;font-weight:700;color:var(–neon);font-size:.85rem;letter-spacing:.18em;text-shadow:0 0 8px var(–neon-glow);white-space:nowrap}
-.brand::before{content:‘◆’;margin-right:.5em;font-size:.7em;color:var(–neon-bright)}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:.5em .75em;border-bottom:1px solid var(--neon-vdim);background:rgba(0,0,0,.7);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);flex-wrap:wrap;gap:.4em;flex-shrink:0}
+.brand{font-family:'Orbitron',sans-serif;font-weight:700;color:var(--neon);font-size:.85rem;letter-spacing:.18em;text-shadow:0 0 8px var(--neon-glow);white-space:nowrap}
+.brand::before{content:'◆';margin-right:.5em;font-size:.7em;color:var(--neon-bright)}
 .topbar-actions{display:flex;gap:.3em;flex-wrap:wrap}
-.icon-btn{background:rgba(0,0,0,.4);border:1px solid var(–neon-dim);color:var(–neon);padding:.45em .7em;font-family:‘Space Mono’,monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all .18s ease;white-space:nowrap;font-weight:700;line-height:1}
-.icon-btn:hover{border-color:var(–neon);box-shadow:0 0 8px var(–neon-glow)}
-.icon-btn:active{background:var(–neon-bg);transform:scale(.97)}
-.icon-btn.toggle-on{background:var(–neon-bg);border-color:var(–neon);box-shadow:0 0 10px var(–neon-glow);color:var(–neon-bright)}
-.icon-btn.primary{color:var(–neon-bright);border-color:var(–neon);box-shadow:0 0 8px var(–neon-glow)}
+.icon-btn{background:rgba(0,0,0,.4);border:1px solid var(--neon-dim);color:var(--neon);padding:.45em .7em;font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all .18s ease;white-space:nowrap;font-weight:700;line-height:1}
+.icon-btn:hover{border-color:var(--neon);box-shadow:0 0 8px var(--neon-glow)}
+.icon-btn:active{background:var(--neon-bg);transform:scale(.97)}
+.icon-btn.toggle-on{background:var(--neon-bg);border-color:var(--neon);box-shadow:0 0 10px var(--neon-glow);color:var(--neon-bright)}
+.icon-btn.primary{color:var(--neon-bright);border-color:var(--neon);box-shadow:0 0 8px var(--neon-glow)}
 .icon-btn.kbd-btn{padding:.45em .55em;font-size:.95rem}
 
 .piano-area{flex:1;display:flex;flex-direction:column;justify-content:center;padding:.4em .5em;min-height:0;gap:.3em;overflow:hidden}
-.piano-display{font-family:‘Orbitron’,monospace;font-size:clamp(.75rem,2.5vw,1rem);text-align:center;color:var(–neon);letter-spacing:.12em;text-shadow:0 0 8px var(–neon-glow);min-height:1.4em;padding:0 .5em}
-.piano-display .display-sub{font-size:.65em;color:var(–text-dim);letter-spacing:.2em;margin-left:.6em}
-.piano-display .display-empty{color:var(–text-dim);text-shadow:none;font-style:italic;letter-spacing:.18em;font-size:.85em}
+.piano-display{font-family:'Orbitron',monospace;font-size:clamp(.75rem,2.5vw,1rem);text-align:center;color:var(--neon);letter-spacing:.12em;text-shadow:0 0 8px var(--neon-glow);min-height:1.4em;padding:0 .5em}
+.piano-display .display-sub{font-size:.65em;color:var(--text-dim);letter-spacing:.2em;margin-left:.6em}
+.piano-display .display-empty{color:var(--text-dim);text-shadow:none;font-style:italic;letter-spacing:.18em;font-size:.85em}
 
-.piano{width:100%;height:clamp(110px,26vh,240px);display:flex;background:var(–bg-2);border:1px solid var(–neon);border-radius:3px;overflow:hidden;user-select:none;-webkit-user-select:none;position:relative;box-shadow:0 0 20px var(–neon-glow-soft),inset 0 0 24px rgba(0,0,0,.6);flex-shrink:0}
+.piano{width:100%;height:clamp(110px,26vh,240px);display:flex;background:var(--bg-2);border:1px solid var(--neon);border-radius:3px;overflow:hidden;user-select:none;-webkit-user-select:none;position:relative;box-shadow:0 0 20px var(--neon-glow-soft),inset 0 0 24px rgba(0,0,0,.6);flex-shrink:0}
 @media (orientation:landscape){.piano{height:clamp(140px,48vh,320px)}}
 @media (orientation:portrait) and (min-height:700px){.piano{height:clamp(140px,30vh,280px)}}
 .octave{flex:1;display:flex;position:relative;min-width:0}
-.white-key{flex:1;background:linear-gradient(180deg,var(–white-key) 0%,var(–white-key-shade) 100%);border-right:1px solid var(–neon);position:relative;cursor:pointer;transition:filter .12s ease,box-shadow .12s ease;display:flex;align-items:flex-end;justify-content:center;padding-bottom:.4em;font-family:‘Space Mono’,monospace;font-size:.55rem;color:var(–neon-dim);letter-spacing:.05em}
+.white-key{flex:1;background:linear-gradient(180deg,var(--white-key) 0%,var(--white-key-shade) 100%);border-right:1px solid var(--neon);position:relative;cursor:pointer;transition:filter .12s ease,box-shadow .12s ease;display:flex;align-items:flex-end;justify-content:center;padding-bottom:.4em;font-family:'Space Mono',monospace;font-size:.55rem;color:var(--neon-dim);letter-spacing:.05em}
 .octave:last-child .white-key:last-child{border-right:none}
-.white-key.active{background:linear-gradient(180deg,var(–neon) 0%,var(–neon-dim) 100%);box-shadow:inset 0 0 24px hsla(var(–hue-ui),80%,90%,.4),inset 0 0 48px hsla(var(–hue-ui),80%,50%,.6),0 0 18px var(–neon-glow);color:#000}
+.white-key.active{background:linear-gradient(180deg,var(--neon) 0%,var(--neon-dim) 100%);box-shadow:inset 0 0 24px hsla(var(--hue-ui),80%,90%,.4),inset 0 0 48px hsla(var(--hue-ui),80%,50%,.6),0 0 18px var(--neon-glow);color:#000}
 .white-key.active .key-label{color:#000;font-weight:700}
-.black-key{position:absolute;top:0;width:8.571%;height:60%;background:linear-gradient(180deg,var(–black-key-shade) 0%,var(–black-key) 60%,var(–black-key-shade) 100%);border:1px solid var(–neon);cursor:pointer;transition:filter .12s ease,box-shadow .12s ease;z-index:2;border-radius:0 0 2px 2px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:.3em;font-family:‘Space Mono’,monospace;font-size:.5rem;color:var(–neon-bright);letter-spacing:.05em;box-shadow:inset 0 -3px 0 rgba(0,0,0,.4)}
-.black-key.active{background:linear-gradient(180deg,var(–neon-bright) 0%,var(–neon) 70%,var(–neon-dim) 100%);box-shadow:inset 0 0 12px hsla(var(–hue-ui),80%,90%,.5),0 0 18px var(–neon-glow),inset 0 -3px 0 rgba(0,0,0,.3);color:#000}
+.black-key{position:absolute;top:0;width:8.571%;height:60%;background:linear-gradient(180deg,var(--black-key-shade) 0%,var(--black-key) 60%,var(--black-key-shade) 100%);border:1px solid var(--neon);cursor:pointer;transition:filter .12s ease,box-shadow .12s ease;z-index:2;border-radius:0 0 2px 2px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:.3em;font-family:'Space Mono',monospace;font-size:.5rem;color:var(--neon-bright);letter-spacing:.05em;box-shadow:inset 0 -3px 0 rgba(0,0,0,.4)}
+.black-key.active{background:linear-gradient(180deg,var(--neon-bright) 0%,var(--neon) 70%,var(--neon-dim) 100%);box-shadow:inset 0 0 12px hsla(var(--hue-ui),80%,90%,.5),0 0 18px var(--neon-glow),inset 0 -3px 0 rgba(0,0,0,.3);color:#000}
 .black-key.active .key-label{color:#000;font-weight:700}
-.black-key[data-pc=“1”]{left:10%}
-.black-key[data-pc=“3”]{left:24.286%}
-.black-key[data-pc=“6”]{left:52.857%}
-.black-key[data-pc=“8”]{left:67.143%}
-.black-key[data-pc=“10”]{left:81.429%}
+.black-key[data-pc="1"]{left:10%}
+.black-key[data-pc="3"]{left:24.286%}
+.black-key[data-pc="6"]{left:52.857%}
+.black-key[data-pc="8"]{left:67.143%}
+.black-key[data-pc="10"]{left:81.429%}
 .key-label{pointer-events:none;font-size:inherit;transition:opacity .15s ease}
 .piano:not(.show-labels) .key-label{opacity:0}
 .piano.show-labels .key-label{opacity:1}
@@ -100,195 +99,193 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
 .piano.show-active-labels:not(.show-labels) .black-key.active .key-label{opacity:1}
 
 /* Controls */
-.controls{display:grid;grid-template-columns:1fr;gap:.4em;padding:.5em .75em;border-top:1px solid var(–neon-vdim);background:rgba(0,0,0,.5);flex-shrink:0}
+.controls{display:grid;grid-template-columns:1fr;gap:.4em;padding:.5em .75em;border-top:1px solid var(--neon-vdim);background:rgba(0,0,0,.5);flex-shrink:0}
 @media (min-width:560px){.controls{grid-template-columns:2.2fr 1fr 1fr 1fr}}
 @media (orientation:landscape) and (max-height:520px){.controls{grid-template-columns:2.2fr 1fr 1fr 1fr;gap:.3em;padding:.35em .5em}}
 .control-group{display:flex;flex-direction:column;gap:.2em;align-items:center}
-.control-label{font-family:‘VT323’,monospace;letter-spacing:.25em;font-size:.7rem;color:var(–text-dim);text-transform:uppercase}
+.control-label{font-family:'VT323',monospace;letter-spacing:.25em;font-size:.7rem;color:var(--text-dim);text-transform:uppercase}
 .control-row{display:flex;gap:.3em;align-items:center}
 .control-row .icon-btn{width:2em;height:2em;padding:0;font-size:1rem;display:flex;align-items:center;justify-content:center}
-.indicator{display:inline-flex;align-items:center;justify-content:center;background:rgba(0,0,0,.6);border:1px solid var(–neon-dim);color:var(–neon);padding:.3em .5em;font-family:‘Orbitron’,monospace;font-size:.8rem;border-radius:2px;min-width:2.5em;text-align:center;font-weight:700;text-shadow:0 0 4px var(–neon-glow);cursor:pointer}
-.indicator:hover{border-color:var(–neon);box-shadow:0 0 6px var(–neon-glow)}
+.indicator{display:inline-flex;align-items:center;justify-content:center;background:rgba(0,0,0,.6);border:1px solid var(--neon-dim);color:var(--neon);padding:.3em .5em;font-family:'Orbitron',monospace;font-size:.8rem;border-radius:2px;min-width:2.5em;text-align:center;font-weight:700;text-shadow:0 0 4px var(--neon-glow);cursor:pointer}
+.indicator:hover{border-color:var(--neon);box-shadow:0 0 6px var(--neon-glow)}
 
 .chord-input-group{display:flex;flex-direction:column;grid-column:1/-1;gap:.3em}
 @media (min-width:560px){.chord-input-group{grid-column:1/2}}
 .chord-input-row{display:flex;gap:.3em}
-.chord-input{flex:1;background:rgba(0,0,0,.6);border:1px solid var(–neon-dim);color:var(–neon);padding:.6em .8em;font-family:‘Orbitron’,monospace;font-size:.95rem;letter-spacing:.04em;border-radius:2px;outline:none;transition:all .2s ease;min-width:0}
-.chord-input:focus{border-color:var(–neon);box-shadow:0 0 12px var(–neon-glow),inset 0 0 8px var(–neon-glow-soft)}
-.chord-input::placeholder{color:var(–text-dim);font-family:‘Space Mono’,monospace;font-size:.85em;letter-spacing:.02em}
+.chord-input{flex:1;background:rgba(0,0,0,.6);border:1px solid var(--neon-dim);color:var(--neon);padding:.6em .8em;font-family:'Orbitron',monospace;font-size:.95rem;letter-spacing:.04em;border-radius:2px;outline:none;transition:all .2s ease;min-width:0}
+.chord-input:focus{border-color:var(--neon);box-shadow:0 0 12px var(--neon-glow),inset 0 0 8px var(--neon-glow-soft)}
+.chord-input::placeholder{color:var(--text-dim);font-family:'Space Mono',monospace;font-size:.85em;letter-spacing:.02em}
 .chord-input.error{border-color:hsl(0,70%,55%);color:hsl(0,70%,70%);box-shadow:0 0 12px hsla(0,70%,55%,.4);animation:shake .3s}
 @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-3px)}75%{transform:translateX(3px)}}
 
 /* Play row */
 .play-row{display:flex;gap:.3em;align-items:center;justify-content:center;flex-wrap:wrap}
-.play-btn{background:var(–neon-bg);border:1px solid var(–neon);color:var(–neon-bright);padding:.45em .9em;font-family:‘Orbitron’,monospace;font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all .18s ease;font-weight:700;box-shadow:0 0 12px var(–neon-glow);display:flex;align-items:center;gap:.4em}
-.play-btn:hover{box-shadow:0 0 18px var(–neon-glow);background:hsla(var(–hue-ui),60%,30%,.15)}
+.play-btn{background:var(--neon-bg);border:1px solid var(--neon);color:var(--neon-bright);padding:.45em .9em;font-family:'Orbitron',monospace;font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all .18s ease;font-weight:700;box-shadow:0 0 12px var(--neon-glow);display:flex;align-items:center;gap:.4em}
+.play-btn:hover{box-shadow:0 0 18px var(--neon-glow);background:hsla(var(--hue-ui),60%,30%,.15)}
 .play-btn:active{transform:scale(.96)}
 .play-btn.playing{animation:playPulse 1s infinite}
-@keyframes playPulse{0%,100%{box-shadow:0 0 12px var(–neon-glow)}50%{box-shadow:0 0 22px var(–neon-glow),0 0 40px var(–neon-glow-soft)}}
+@keyframes playPulse{0%,100%{box-shadow:0 0 12px var(--neon-glow)}50%{box-shadow:0 0 22px var(--neon-glow),0 0 40px var(--neon-glow-soft)}}
 .play-btn .triangle{width:0;height:0;border-left:7px solid currentColor;border-top:5px solid transparent;border-bottom:5px solid transparent}
-.sound-toggle{display:flex;border:1px solid var(–neon-dim);border-radius:2px;overflow:hidden}
+.sound-toggle{display:flex;border:1px solid var(--neon-dim);border-radius:2px;overflow:hidden}
 .sound-toggle .icon-btn{border:none;border-radius:0;padding:.45em .6em;font-size:.65rem}
-.sound-toggle .icon-btn:not(:last-child){border-right:1px solid var(–neon-vdim)}
+.sound-toggle .icon-btn:not(:last-child){border-right:1px solid var(--neon-vdim)}
 
 /* Credit */
-.credit{font-size:.62rem;text-align:center;padding:.4em .5em;color:var(–text-dim);letter-spacing:.13em;font-style:italic;border-top:1px solid var(–neon-vdim);flex-shrink:0;background:rgba(0,0,0,.5)}
+.credit{font-size:.62rem;text-align:center;padding:.4em .5em;color:var(--text-dim);letter-spacing:.13em;font-style:italic;border-top:1px solid var(--neon-vdim);flex-shrink:0;background:rgba(0,0,0,.5)}
 
 /* MODALS */
-.modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:200;opacity:0;pointer-events:none;transition:opacity .3s ease;display:flex;align-items:center;justify-content:center;padding:calc(1em + var(–safe-top)) calc(1em + var(–safe-right)) calc(1em + var(–safe-bottom)) calc(1em + var(–safe-left))}
+.modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:200;opacity:0;pointer-events:none;transition:opacity .3s ease;display:flex;align-items:center;justify-content:center;padding:calc(1em + var(--safe-top)) calc(1em + var(--safe-right)) calc(1em + var(--safe-bottom)) calc(1em + var(--safe-left))}
 .modal-backdrop.active{opacity:1;pointer-events:auto}
-.modal{background:var(–bg);border:1px solid var(–neon);border-radius:3px;max-width:780px;width:100%;max-height:100%;display:flex;flex-direction:column;box-shadow:0 0 60px var(–neon-glow),inset 0 0 0 1px var(–neon-vdim);overflow:hidden;transform:scale(.96) translateY(8px);transition:transform .3s cubic-bezier(.5,.05,.3,1)}
+.modal{background:var(--bg);border:1px solid var(--neon);border-radius:3px;max-width:780px;width:100%;max-height:100%;display:flex;flex-direction:column;box-shadow:0 0 60px var(--neon-glow),inset 0 0 0 1px var(--neon-vdim);overflow:hidden;transform:scale(.96) translateY(8px);transition:transform .3s cubic-bezier(.5,.05,.3,1)}
 .modal-backdrop.active .modal{transform:scale(1) translateY(0)}
-.modal-header{display:flex;align-items:center;justify-content:space-between;padding:.7em 1em;border-bottom:1px solid var(–neon-dim);background:linear-gradient(180deg,var(–neon-bg),transparent);flex-shrink:0;gap:.5em}
-.modal-title{font-family:‘Orbitron’,sans-serif;font-weight:700;letter-spacing:.18em;color:var(–neon);font-size:.85rem;text-transform:uppercase;text-shadow:0 0 6px var(–neon-glow)}
-.modal-title::before{content:’▸ ’;color:var(–neon-bright)}
-.modal-close{background:transparent;border:1px solid var(–neon-dim);color:var(–neon);width:1.8em;height:1.8em;font-size:.95rem;cursor:pointer;border-radius:50%;transition:all .2s ease;display:flex;align-items:center;justify-content:center;font-family:inherit;flex-shrink:0}
-.modal-close:hover{border-color:var(–neon);box-shadow:0 0 8px var(–neon-glow);transform:rotate(90deg)}
+.modal-header{display:flex;align-items:center;justify-content:space-between;padding:.7em 1em;border-bottom:1px solid var(--neon-dim);background:linear-gradient(180deg,var(--neon-bg),transparent);flex-shrink:0;gap:.5em}
+.modal-title{font-family:'Orbitron',sans-serif;font-weight:700;letter-spacing:.18em;color:var(--neon);font-size:.85rem;text-transform:uppercase;text-shadow:0 0 6px var(--neon-glow)}
+.modal-title::before{content:'▸ ';color:var(--neon-bright)}
+.modal-close{background:transparent;border:1px solid var(--neon-dim);color:var(--neon);width:1.8em;height:1.8em;font-size:.95rem;cursor:pointer;border-radius:50%;transition:all .2s ease;display:flex;align-items:center;justify-content:center;font-family:inherit;flex-shrink:0}
+.modal-close:hover{border-color:var(--neon);box-shadow:0 0 8px var(--neon-glow);transform:rotate(90deg)}
 .modal-body{flex:1;overflow-y:auto;padding:.8em 1em;-webkit-overflow-scrolling:touch}
 .modal-body::-webkit-scrollbar{width:6px}
 .modal-body::-webkit-scrollbar-track{background:rgba(0,0,0,.3)}
-.modal-body::-webkit-scrollbar-thumb{background:var(–neon-dim);border-radius:3px}
-.modal-body::-webkit-scrollbar-thumb:hover{background:var(–neon)}
+.modal-body::-webkit-scrollbar-thumb{background:var(--neon-dim);border-radius:3px}
+.modal-body::-webkit-scrollbar-thumb:hover{background:var(--neon)}
 
 /* Sliders */
-.slider-section{border:1px solid var(–neon-dim);border-radius:3px;padding:.8em;margin-bottom:.8em;background:rgba(0,0,0,.3)}
-.slider-section h4{font-family:‘Orbitron’,sans-serif;color:var(–neon);font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.6em;display:flex;align-items:center;gap:.5em}
-.color-preview{display:inline-block;width:1em;height:1em;border-radius:50%;border:1px solid var(–neon-dim);box-shadow:0 0 8px currentColor}
+.slider-section{border:1px solid var(--neon-dim);border-radius:3px;padding:.8em;margin-bottom:.8em;background:rgba(0,0,0,.3)}
+.slider-section h4{font-family:'Orbitron',sans-serif;color:var(--neon);font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.6em;display:flex;align-items:center;gap:.5em}
+.color-preview{display:inline-block;width:1em;height:1em;border-radius:50%;border:1px solid var(--neon-dim);box-shadow:0 0 8px currentColor}
 .slider-row{display:flex;align-items:center;gap:.6em;margin-bottom:.4em}
-.slider-row label{width:3em;color:var(–text-dim);font-family:‘VT323’,monospace;font-size:.95rem;letter-spacing:.1em;flex-shrink:0;text-transform:uppercase}
-.slider-row input[type=“range”]{flex:1;-webkit-appearance:none;appearance:none;background:transparent;cursor:pointer;height:22px;min-width:0}
-.slider-row input[type=“range”].hue::-webkit-slider-runnable-track{background:linear-gradient(90deg,hsl(0,90%,55%),hsl(60,90%,55%),hsl(120,90%,55%),hsl(180,90%,55%),hsl(240,90%,55%),hsl(300,90%,55%),hsl(360,90%,55%));height:6px;border-radius:3px;border:1px solid var(–neon-vdim)}
-.slider-row input[type=“range”].hue::-moz-range-track{background:linear-gradient(90deg,hsl(0,90%,55%),hsl(60,90%,55%),hsl(120,90%,55%),hsl(180,90%,55%),hsl(240,90%,55%),hsl(300,90%,55%),hsl(360,90%,55%));height:6px;border-radius:3px;border:1px solid var(–neon-vdim)}
-.slider-row input[type=“range”].sat::-webkit-slider-runnable-track,.slider-row input[type=“range”].light::-webkit-slider-runnable-track{background:linear-gradient(90deg,#222,var(–neon));height:6px;border-radius:3px;border:1px solid var(–neon-vdim)}
-.slider-row input[type=“range”].sat::-moz-range-track,.slider-row input[type=“range”].light::-moz-range-track{background:linear-gradient(90deg,#222,var(–neon));height:6px;border-radius:3px;border:1px solid var(–neon-vdim)}
-.slider-row input[type=“range”]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;background:var(–neon);border:2px solid #fff;border-radius:50%;margin-top:-7px;box-shadow:0 0 8px var(–neon-glow);cursor:pointer}
-.slider-row input[type=“range”]::-moz-range-thumb{width:18px;height:18px;background:var(–neon);border:2px solid #fff;border-radius:50%;box-shadow:0 0 8px var(–neon-glow);cursor:pointer}
-.slider-row .value{width:2.6em;font-family:‘Orbitron’,monospace;font-size:.7rem;text-align:right;color:var(–neon);flex-shrink:0}
+.slider-row label{width:3em;color:var(--text-dim);font-family:'VT323',monospace;font-size:.95rem;letter-spacing:.1em;flex-shrink:0;text-transform:uppercase}
+.slider-row input[type="range"]{flex:1;-webkit-appearance:none;appearance:none;background:transparent;cursor:pointer;height:22px;min-width:0}
+.slider-row input[type="range"].hue::-webkit-slider-runnable-track{background:linear-gradient(90deg,hsl(0,90%,55%),hsl(60,90%,55%),hsl(120,90%,55%),hsl(180,90%,55%),hsl(240,90%,55%),hsl(300,90%,55%),hsl(360,90%,55%));height:6px;border-radius:3px;border:1px solid var(--neon-vdim)}
+.slider-row input[type="range"].hue::-moz-range-track{background:linear-gradient(90deg,hsl(0,90%,55%),hsl(60,90%,55%),hsl(120,90%,55%),hsl(180,90%,55%),hsl(240,90%,55%),hsl(300,90%,55%),hsl(360,90%,55%));height:6px;border-radius:3px;border:1px solid var(--neon-vdim)}
+.slider-row input[type="range"].sat::-webkit-slider-runnable-track,.slider-row input[type="range"].light::-webkit-slider-runnable-track{background:linear-gradient(90deg,#222,var(--neon));height:6px;border-radius:3px;border:1px solid var(--neon-vdim)}
+.slider-row input[type="range"].sat::-moz-range-track,.slider-row input[type="range"].light::-moz-range-track{background:linear-gradient(90deg,#222,var(--neon));height:6px;border-radius:3px;border:1px solid var(--neon-vdim)}
+.slider-row input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;background:var(--neon);border:2px solid #fff;border-radius:50%;margin-top:-7px;box-shadow:0 0 8px var(--neon-glow);cursor:pointer}
+.slider-row input[type="range"]::-moz-range-thumb{width:18px;height:18px;background:var(--neon);border:2px solid #fff;border-radius:50%;box-shadow:0 0 8px var(--neon-glow);cursor:pointer}
+.slider-row .value{width:2.6em;font-family:'Orbitron',monospace;font-size:.7rem;text-align:right;color:var(--neon);flex-shrink:0}
 
 .preset-row{display:flex;gap:.4em;flex-wrap:wrap;margin-top:.6em}
-.preset-btn{background:transparent;border:1px solid var(–neon-dim);color:var(–neon);padding:.45em .8em;font-size:.7rem;letter-spacing:.1em;cursor:pointer;border-radius:2px;font-family:‘Space Mono’,monospace;text-transform:uppercase;font-weight:700}
-.preset-btn:hover{border-color:var(–neon);box-shadow:0 0 8px var(–neon-glow)}
+.preset-btn{background:transparent;border:1px solid var(--neon-dim);color:var(--neon);padding:.45em .8em;font-size:.7rem;letter-spacing:.1em;cursor:pointer;border-radius:2px;font-family:'Space Mono',monospace;text-transform:uppercase;font-weight:700}
+.preset-btn:hover{border-color:var(--neon);box-shadow:0 0 8px var(--neon-glow)}
 .preset-btn .swatch{display:inline-block;width:.6em;height:.6em;border-radius:50%;margin-right:.4em;vertical-align:middle;border:1px solid rgba(255,255,255,.3)}
 
 /* Collapsible */
-.collapse{border:1px solid var(–neon-dim);border-radius:3px;margin-bottom:.5em;overflow:hidden}
-.collapse-header{background:var(–neon-bg);padding:.6em .8em;cursor:pointer;display:flex;align-items:center;justify-content:space-between;font-family:‘Orbitron’,sans-serif;font-size:.72rem;letter-spacing:.12em;color:var(–neon);text-transform:uppercase;user-select:none}
-.collapse-header:hover{background:hsla(var(–hue-ui),60%,30%,.15)}
-.collapse-arrow{transition:transform .2s ease;display:inline-block;font-size:.8em;color:var(–neon-bright)}
+.collapse{border:1px solid var(--neon-dim);border-radius:3px;margin-bottom:.5em;overflow:hidden}
+.collapse-header{background:var(--neon-bg);padding:.6em .8em;cursor:pointer;display:flex;align-items:center;justify-content:space-between;font-family:'Orbitron',sans-serif;font-size:.72rem;letter-spacing:.12em;color:var(--neon);text-transform:uppercase;user-select:none}
+.collapse-header:hover{background:hsla(var(--hue-ui),60%,30%,.15)}
+.collapse-arrow{transition:transform .2s ease;display:inline-block;font-size:.8em;color:var(--neon-bright)}
 .collapse.open .collapse-arrow{transform:rotate(90deg)}
 .collapse-body{max-height:0;overflow:hidden;transition:max-height .35s ease}
 .collapse.open .collapse-body{max-height:80vh;overflow:auto}
 .collapse-content{padding:.8em;font-size:.8rem;line-height:1.7}
-.collapse-content code,.kbd{background:hsla(var(–hue-ui),60%,30%,.18);padding:.1em .45em;border-radius:2px;color:var(–neon-bright);font-size:.85em;font-family:‘Space Mono’,monospace;border:1px solid var(–neon-vdim)}
+.collapse-content code,.kbd{background:hsla(var(--hue-ui),60%,30%,.18);padding:.1em .45em;border-radius:2px;color:var(--neon-bright);font-size:.85em;font-family:'Space Mono',monospace;border:1px solid var(--neon-vdim)}
 .kbd{font-weight:700;min-width:1.5em;text-align:center;display:inline-block}
 .collapse-content p{margin-bottom:.6em}
-.collapse-content h5{font-family:‘Orbitron’,sans-serif;color:var(–neon);font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;margin:.8em 0 .3em}
+.collapse-content h5{font-family:'Orbitron',sans-serif;color:var(--neon);font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;margin:.8em 0 .3em}
 .collapse-content ul{list-style:none;padding-left:0}
-.collapse-content li{padding:.2em 0;border-bottom:1px dashed var(–neon-vdim)}
+.collapse-content li{padding:.2em 0;border-bottom:1px dashed var(--neon-vdim)}
 .collapse-content li:last-child{border:none}
 
 /* Note nav */
-.note-nav{display:flex;flex-wrap:wrap;gap:.25em;padding:.4em;background:rgba(0,0,0,.4);border:1px solid var(–neon-dim);border-radius:3px}
-.note-nav-btn{flex:1;min-width:2.6em;background:transparent;border:1px solid var(–neon-vdim);color:var(–neon);padding:.45em .3em;font-family:‘Orbitron’,monospace;font-size:.78rem;font-weight:700;cursor:pointer;border-radius:2px;letter-spacing:.04em;transition:all .15s ease}
-.note-nav-btn:hover{border-color:var(–neon);background:var(–neon-bg);box-shadow:0 0 8px var(–neon-glow)}
-.note-nav-btn.active{background:var(–neon);color:#000;border-color:var(–neon);box-shadow:0 0 12px var(–neon-glow)}
+.note-nav{display:flex;flex-wrap:wrap;gap:.25em;padding:.4em;background:rgba(0,0,0,.4);border:1px solid var(--neon-dim);border-radius:3px}
+.note-nav-btn{flex:1;min-width:2.6em;background:transparent;border:1px solid var(--neon-vdim);color:var(--neon);padding:.45em .3em;font-family:'Orbitron',monospace;font-size:.78rem;font-weight:700;cursor:pointer;border-radius:2px;letter-spacing:.04em;transition:all .15s ease}
+.note-nav-btn:hover{border-color:var(--neon);background:var(--neon-bg);box-shadow:0 0 8px var(--neon-glow)}
+.note-nav-btn.active{background:var(--neon);color:#000;border-color:var(--neon);box-shadow:0 0 12px var(--neon-glow)}
 
 /* Chord library */
 .cat-section{margin-bottom:1em}
-.cat-title{font-family:‘Orbitron’,sans-serif;font-size:.7rem;color:var(–neon);letter-spacing:.18em;text-transform:uppercase;padding:.5em .2em;border-bottom:1px solid var(–neon-dim);margin-bottom:.4em;text-shadow:0 0 6px var(–neon-glow);position:sticky;top:0;background:var(–bg);z-index:1}
-.cat-title::before{content:’░ ’;color:var(–neon-bright)}
+.cat-title{font-family:'Orbitron',sans-serif;font-size:.7rem;color:var(--neon);letter-spacing:.18em;text-transform:uppercase;padding:.5em .2em;border-bottom:1px solid var(--neon-dim);margin-bottom:.4em;text-shadow:0 0 6px var(--neon-glow);position:sticky;top:0;background:var(--bg);z-index:1}
+.cat-title::before{content:'░ ';color:var(--neon-bright)}
 .chord-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(108px,1fr));gap:.3em}
-.chord-item{background:rgba(0,0,0,.3);border:1px solid var(–neon-dim);color:var(–neon);padding:.55em .4em;text-align:center;cursor:pointer;border-radius:2px;font-family:‘Orbitron’,sans-serif;font-size:.75rem;letter-spacing:.02em;transition:all .15s ease;font-weight:500;line-height:1.3}
-.chord-item:hover{border-color:var(–neon);background:var(–neon-bg);box-shadow:0 0 8px var(–neon-glow)}
-.chord-item.active{background:var(–neon);color:#000;border-color:var(–neon-bright);box-shadow:0 0 14px var(–neon-glow);text-shadow:none}
-.chord-item .desc{display:block;font-size:.6rem;color:var(–text-dim);font-family:‘Space Mono’,monospace;letter-spacing:.05em;margin-top:.15em;font-weight:400}
+.chord-item{background:rgba(0,0,0,.3);border:1px solid var(--neon-dim);color:var(--neon);padding:.55em .4em;text-align:center;cursor:pointer;border-radius:2px;font-family:'Orbitron',sans-serif;font-size:.75rem;letter-spacing:.02em;transition:all .15s ease;font-weight:500;line-height:1.3}
+.chord-item:hover{border-color:var(--neon);background:var(--neon-bg);box-shadow:0 0 8px var(--neon-glow)}
+.chord-item.active{background:var(--neon);color:#000;border-color:var(--neon-bright);box-shadow:0 0 14px var(--neon-glow);text-shadow:none}
+.chord-item .desc{display:block;font-size:.6rem;color:var(--text-dim);font-family:'Space Mono',monospace;letter-spacing:.05em;margin-top:.15em;font-weight:400}
 .chord-item.active .desc{color:rgba(0,0,0,.7)}
 
 /* Mini piano in guide */
-.mini-piano-wrap{position:sticky;top:0;background:var(–bg);z-index:5;padding:.4em 0 .6em;border-bottom:1px solid var(–neon-vdim);margin:-.8em -1em .6em;padding-left:1em;padding-right:1em}
-.mini-piano{width:100%;height:90px;display:flex;background:var(–bg-2);border:1px solid var(–neon);border-radius:3px;overflow:hidden;user-select:none;-webkit-user-select:none;position:relative;box-shadow:0 0 12px var(–neon-glow-soft)}
+.mini-piano-wrap{position:sticky;top:0;background:var(--bg);z-index:5;padding:.4em 0 .6em;border-bottom:1px solid var(--neon-vdim);margin:-.8em -1em .6em;padding-left:1em;padding-right:1em}
+.mini-piano{width:100%;height:90px;display:flex;background:var(--bg-2);border:1px solid var(--neon);border-radius:3px;overflow:hidden;user-select:none;-webkit-user-select:none;position:relative;box-shadow:0 0 12px var(--neon-glow-soft)}
 .guide-bar{display:flex;gap:.3em;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:.5em}
 .guide-bar .indicator{font-size:.75rem;min-width:5em}
-.guide-display{text-align:center;font-family:‘Orbitron’,monospace;color:var(–neon);font-size:.85rem;letter-spacing:.1em;margin-top:.4em;text-shadow:0 0 6px var(–neon-glow);min-height:1.3em}
+.guide-display{text-align:center;font-family:'Orbitron',monospace;color:var(--neon);font-size:.85rem;letter-spacing:.1em;margin-top:.4em;text-shadow:0 0 6px var(--neon-glow);min-height:1.3em}
 
 /* Tabs */
-.tabs{display:flex;gap:.25em;padding:.3em 0;border-bottom:1px solid var(–neon-dim);margin-bottom:.6em;flex-wrap:wrap;position:sticky;top:0;background:var(–bg);z-index:3}
-.tab{background:transparent;border:1px solid var(–neon-vdim);color:var(–text-dim);padding:.4em .7em;font-size:.7rem;cursor:pointer;border-radius:2px;font-family:‘Space Mono’,monospace;letter-spacing:.06em;font-weight:700;text-transform:uppercase}
-.tab.active{color:var(–neon-bright);border-color:var(–neon);background:var(–neon-bg);box-shadow:0 0 6px var(–neon-glow)}
-.tab:hover:not(.active){color:var(–neon);border-color:var(–neon-dim)}
+.tabs{display:flex;gap:.25em;padding:.3em 0;border-bottom:1px solid var(--neon-dim);margin-bottom:.6em;flex-wrap:wrap;position:sticky;top:0;background:var(--bg);z-index:3}
+.tab{background:transparent;border:1px solid var(--neon-vdim);color:var(--text-dim);padding:.4em .7em;font-size:.7rem;cursor:pointer;border-radius:2px;font-family:'Space Mono',monospace;letter-spacing:.06em;font-weight:700;text-transform:uppercase}
+.tab.active{color:var(--neon-bright);border-color:var(--neon);background:var(--neon-bg);box-shadow:0 0 6px var(--neon-glow)}
+.tab:hover:not(.active){color:var(--neon);border-color:var(--neon-dim)}
 
 /* Toast */
-.toast{position:fixed;bottom:calc(2em + var(–safe-bottom));left:50%;transform:translateX(-50%) translateY(20px);background:var(–bg);border:1px solid var(–neon);color:var(–neon);padding:.6em 1.2em;font-family:‘Orbitron’,monospace;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;border-radius:2px;box-shadow:0 0 18px var(–neon-glow);z-index:300;opacity:0;pointer-events:none;transition:all .25s ease;white-space:nowrap}
+.toast{position:fixed;bottom:calc(2em + var(--safe-bottom));left:50%;transform:translateX(-50%) translateY(20px);background:var(--bg);border:1px solid var(--neon);color:var(--neon);padding:.6em 1.2em;font-family:'Orbitron',monospace;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;border-radius:2px;box-shadow:0 0 18px var(--neon-glow);z-index:300;opacity:0;pointer-events:none;transition:all .25s ease;white-space:nowrap}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
 /* keyboard help table */
 .kbd-table{width:100%;border-collapse:collapse;font-size:.78rem;margin-top:.4em}
-.kbd-table td{padding:.4em .6em;border-bottom:1px solid var(–neon-vdim);vertical-align:top}
-.kbd-table td:first-child{width:40%;color:var(–neon-bright)}
-.kbd-table td:last-child{color:var(–text-dim)}
+.kbd-table td{padding:.4em .6em;border-bottom:1px solid var(--neon-vdim);vertical-align:top}
+.kbd-table td:first-child{width:40%;color:var(--neon-bright)}
+.kbd-table td:last-child{color:var(--text-dim)}
 .kbd-row{display:flex;gap:.25em;flex-wrap:wrap;align-items:center}
 
 /* Disabled state for octave buttons when at limit */
 .icon-btn:disabled{opacity:.3;cursor:not-allowed}
-.icon-btn:disabled:hover{box-shadow:none;border-color:var(–neon-dim)}
+.icon-btn:disabled:hover{box-shadow:none;border-color:var(--neon-dim)}
 
 /* Chord ID mode indicator badge on body */
 .app.id-mode .id-status{display:inline-flex}
-.id-status{display:none;align-items:center;gap:.4em;background:hsla(var(–hue-ui),60%,30%,.18);border:1px solid var(–neon);padding:.2em .55em;border-radius:2px;font-family:‘Orbitron’,monospace;font-size:.6rem;letter-spacing:.18em;color:var(–neon-bright);text-transform:uppercase;animation:idPulse 2s infinite;text-shadow:0 0 6px var(–neon-glow)}
-.id-status::before{content:‘●’;color:var(–neon-bright);font-size:.5em}
-@keyframes idPulse{0%,100%{box-shadow:0 0 4px var(–neon-glow-soft)}50%{box-shadow:0 0 12px var(–neon-glow)}}
+.id-status{display:none;align-items:center;gap:.4em;background:hsla(var(--hue-ui),60%,30%,.18);border:1px solid var(--neon);padding:.2em .55em;border-radius:2px;font-family:'Orbitron',monospace;font-size:.6rem;letter-spacing:.18em;color:var(--neon-bright);text-transform:uppercase;animation:idPulse 2s infinite;text-shadow:0 0 6px var(--neon-glow)}
+.id-status::before{content:'●';color:var(--neon-bright);font-size:.5em}
+@keyframes idPulse{0%,100%{box-shadow:0 0 4px var(--neon-glow-soft)}50%{box-shadow:0 0 12px var(--neon-glow)}}
 
 /* Analysis panel — always visible, lives between display & piano */
-.analysis-panel{display:grid;grid-template-columns:1fr;gap:.15em;padding:.4em .7em;background:rgba(0,0,0,.5);border:1px solid var(–neon-vdim);border-radius:3px;font-family:‘Space Mono’,monospace;flex-shrink:0;min-height:3em;position:relative;overflow:hidden}
-.app.id-mode .analysis-panel{border-color:var(–neon);box-shadow:inset 0 0 14px hsla(var(–hue-ui),60%,30%,.15)}
+.analysis-panel{display:grid;grid-template-columns:1fr;gap:.15em;padding:.4em .7em;background:rgba(0,0,0,.5);border:1px solid var(--neon-vdim);border-radius:3px;font-family:'Space Mono',monospace;flex-shrink:0;min-height:3em;position:relative;overflow:hidden}
+.app.id-mode .analysis-panel{border-color:var(--neon);box-shadow:inset 0 0 14px hsla(var(--hue-ui),60%,30%,.15)}
 .analysis-line{display:flex;align-items:center;gap:.5em;font-size:.74rem;line-height:1.35;min-height:1em}
-.analysis-line.empty{color:var(–text-dim);font-style:italic;letter-spacing:.06em}
-.analysis-tag{display:inline-block;font-family:‘VT323’,monospace;font-size:.85rem;letter-spacing:.18em;color:var(–text-dim);text-transform:uppercase;min-width:5em;flex-shrink:0}
-.analysis-val{color:var(–neon);font-family:‘Orbitron’,monospace;letter-spacing:.04em;font-weight:700;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.analysis-val.large{font-size:1.05rem;text-shadow:0 0 8px var(–neon-glow);font-weight:900}
-.analysis-val .alt{color:var(–text-dim);font-weight:400;margin-left:.5em;font-size:.85em;letter-spacing:.05em}
-.analysis-val .id-real{color:var(–neon-bright);text-shadow:0 0 10px var(–neon-glow)}
-.analysis-val .id-arrow{color:var(–text-dim);margin:0 .35em}
-.analysis-val .id-played{color:var(–text-dim)}
+.analysis-line.empty{color:var(--text-dim);font-style:italic;letter-spacing:.06em}
+.analysis-tag{display:inline-block;font-family:'VT323',monospace;font-size:.85rem;letter-spacing:.18em;color:var(--text-dim);text-transform:uppercase;min-width:5em;flex-shrink:0}
+.analysis-val{color:var(--neon);font-family:'Orbitron',monospace;letter-spacing:.04em;font-weight:700;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.analysis-val.large{font-size:1.05rem;text-shadow:0 0 8px var(--neon-glow);font-weight:900}
+.analysis-val .alt{color:var(--text-dim);font-weight:400;margin-left:.5em;font-size:.85em;letter-spacing:.05em}
+.analysis-val .id-real{color:var(--neon-bright);text-shadow:0 0 10px var(--neon-glow)}
+.analysis-val .id-arrow{color:var(--text-dim);margin:0 .35em}
+.analysis-val .id-played{color:var(--text-dim)}
 .analysis-mini{display:flex;flex-wrap:wrap;gap:.25em;margin-top:.1em}
-.analysis-mini .pill{display:inline-block;padding:.1em .45em;background:hsla(var(–hue-ui),60%,30%,.12);border:1px solid var(–neon-vdim);border-radius:2px;font-size:.68rem;color:var(–neon);letter-spacing:.05em;font-family:‘Space Mono’,monospace}
-.analysis-mini .pill.bass{border-color:var(–neon);color:var(–neon-bright)}
+.analysis-mini .pill{display:inline-block;padding:.1em .45em;background:hsla(var(--hue-ui),60%,30%,.12);border:1px solid var(--neon-vdim);border-radius:2px;font-size:.68rem;color:var(--neon);letter-spacing:.05em;font-family:'Space Mono',monospace}
+.analysis-mini .pill.bass{border-color:var(--neon);color:var(--neon-bright)}
 
 /* Save toolbar */
 .save-toolbar{display:flex;gap:.3em;align-items:center;flex-wrap:wrap;justify-content:center}
 .save-toolbar .icon-btn{padding:.45em .7em;font-size:.68rem}
-.save-toolbar .icon-btn.id-toggle.toggle-on{background:var(–neon-bg);border-color:var(–neon);color:var(–neon-bright);box-shadow:0 0 14px var(–neon-glow)}
+.save-toolbar .icon-btn.id-toggle.toggle-on{background:var(--neon-bg);border-color:var(--neon);color:var(--neon-bright);box-shadow:0 0 14px var(--neon-glow)}
 
 /* Sticky bank nav */
-.bank-nav-wrap{position:sticky;top:-.8em;background:var(–bg);z-index:20;padding:.5em 0 .4em;margin:-.8em -1em .5em;padding-left:1em;padding-right:1em;border-bottom:1px solid var(–neon-vdim);box-shadow:0 4px 8px rgba(0,0,0,.6)}
-.bank-nav-wrap .label{font-family:‘VT323’,monospace;font-size:.8rem;letter-spacing:.18em;color:var(–text-dim);margin-bottom:.3em;text-transform:uppercase}
+.bank-nav-wrap{position:sticky;top:-.8em;background:var(--bg);z-index:20;padding:.5em 0 .4em;margin:-.8em -1em .5em;padding-left:1em;padding-right:1em;border-bottom:1px solid var(--neon-vdim);box-shadow:0 4px 8px rgba(0,0,0,.6)}
+.bank-nav-wrap .label{font-family:'VT323',monospace;font-size:.8rem;letter-spacing:.18em;color:var(--text-dim);margin-bottom:.3em;text-transform:uppercase}
 #bankList .cat-section .cat-title{position:static}
 
 /* Library modal */
-.lib-empty{text-align:center;padding:2em 1em;color:var(–text-dim);font-style:italic;letter-spacing:.06em;font-size:.85rem}
-.lib-toolbar{display:flex;gap:.4em;flex-wrap:wrap;align-items:center;margin-bottom:.7em;padding-bottom:.6em;border-bottom:1px solid var(–neon-vdim);position:sticky;top:0;background:var(–bg);z-index:5;padding-top:.2em}
-.lib-toolbar .count-badge{font-family:‘Orbitron’,monospace;font-size:.72rem;color:var(–neon);letter-spacing:.15em;margin-right:auto}
+.lib-empty{text-align:center;padding:2em 1em;color:var(--text-dim);font-style:italic;letter-spacing:.06em;font-size:.85rem}
+.lib-toolbar{display:flex;gap:.4em;flex-wrap:wrap;align-items:center;margin-bottom:.7em;padding-bottom:.6em;border-bottom:1px solid var(--neon-vdim);position:sticky;top:0;background:var(--bg);z-index:5;padding-top:.2em}
+.lib-toolbar .count-badge{font-family:'Orbitron',monospace;font-size:.72rem;color:var(--neon);letter-spacing:.15em;margin-right:auto}
 .lib-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.6em}
-.lib-card{background:rgba(0,0,0,.45);border:1px solid var(–neon-dim);border-radius:3px;padding:.6em;display:flex;flex-direction:column;gap:.4em;transition:all .2s ease;cursor:pointer}
-.lib-card:hover{border-color:var(–neon);box-shadow:0 0 12px var(–neon-glow);transform:translateY(-2px)}
-.lib-card-name{font-family:‘Orbitron’,sans-serif;font-size:.95rem;color:var(–neon);font-weight:700;letter-spacing:.04em;word-break:break-word;text-shadow:0 0 6px var(–neon-glow)}
-.lib-card-name input{background:transparent;border:none;color:var(–neon);font-family:inherit;font-weight:inherit;font-size:inherit;width:100%;padding:.2em .3em;border-bottom:1px solid var(–neon-dim);outline:none}
-.lib-card-name input:focus{border-color:var(–neon);background:rgba(0,0,0,.4)}
-.lib-card-notes{font-family:‘Space Mono’,monospace;font-size:.7rem;color:var(–text-dim);letter-spacing:.05em;line-height:1.4}
-.lib-piano{width:100%;height:64px;display:block;border:1px solid var(–neon-vdim);border-radius:2px;background:var(–bg-2)}
+.lib-card{background:rgba(0,0,0,.45);border:1px solid var(--neon-dim);border-radius:3px;padding:.6em;display:flex;flex-direction:column;gap:.4em;transition:all .2s ease;cursor:pointer}
+.lib-card:hover{border-color:var(--neon);box-shadow:0 0 12px var(--neon-glow);transform:translateY(-2px)}
+.lib-card-name{font-family:'Orbitron',sans-serif;font-size:.95rem;color:var(--neon);font-weight:700;letter-spacing:.04em;word-break:break-word;text-shadow:0 0 6px var(--neon-glow)}
+.lib-card-name input{background:transparent;border:none;color:var(--neon);font-family:inherit;font-weight:inherit;font-size:inherit;width:100%;padding:.2em .3em;border-bottom:1px solid var(--neon-dim);outline:none}
+.lib-card-name input:focus{border-color:var(--neon);background:rgba(0,0,0,.4)}
+.lib-card-notes{font-family:'Space Mono',monospace;font-size:.7rem;color:var(--text-dim);letter-spacing:.05em;line-height:1.4}
+.lib-piano{width:100%;height:64px;display:block;border:1px solid var(--neon-vdim);border-radius:2px;background:var(--bg-2)}
 .lib-card-actions{display:flex;gap:.3em;margin-top:.2em}
 .lib-card-actions .icon-btn{flex:1;padding:.4em .3em;font-size:.62rem}
-.lib-card-meta{font-size:.6rem;color:var(–text-dim);letter-spacing:.06em;font-family:‘Space Mono’,monospace;font-style:italic}
-.lib-empty-icon{font-size:2.4rem;color:var(–neon-vdim);margin-bottom:.4em;display:block}
-.lib-toast{position:absolute;top:.5em;left:50%;transform:translateX(-50%);font-size:.7rem;color:var(–neon-bright);background:var(–bg);padding:.3em .8em;border:1px solid var(–neon);border-radius:2px;opacity:0;pointer-events:none;transition:opacity .3s}
+.lib-card-meta{font-size:.6rem;color:var(--text-dim);letter-spacing:.06em;font-family:'Space Mono',monospace;font-style:italic}
+.lib-empty-icon{font-size:2.4rem;color:var(--neon-vdim);margin-bottom:.4em;display:block}
+.lib-toast{position:absolute;top:.5em;left:50%;transform:translateX(-50%);font-size:.7rem;color:var(--neon-bright);background:var(--bg);padding:.3em .8em;border:1px solid var(--neon);border-radius:2px;opacity:0;pointer-events:none;transition:opacity .3s}
 .lib-toast.show{opacity:1}
 </style>
-
 </head>
 <body>
 
 <!-- HOME -->
-
 <div class="home" id="home">
   <div class="home-frame">
     <div class="home-prelude">// Cheat Tool ‹ for Complex Chords ›</div>
@@ -301,7 +298,6 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
 </div>
 
 <!-- APP -->
-
 <div class="app" id="app">
   <div class="topbar">
     <div class="brand">UnleashYaKeys</div>
@@ -354,42 +350,38 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
       </div>
     </div>
 
-```
-<div class="control-group">
-  <span class="control-label">Octaves</span>
-  <div class="control-row">
-    <button class="icon-btn" id="layoutMinus">−</button>
-    <span class="indicator" id="layoutDisplay">1</span>
-    <button class="icon-btn" id="layoutPlus">+</button>
-  </div>
-</div>
+    <div class="control-group">
+      <span class="control-label">Octaves</span>
+      <div class="control-row">
+        <button class="icon-btn" id="layoutMinus">−</button>
+        <span class="indicator" id="layoutDisplay">1</span>
+        <button class="icon-btn" id="layoutPlus">+</button>
+      </div>
+    </div>
 
-<div class="control-group">
-  <span class="control-label">Transpose</span>
-  <div class="control-row">
-    <button class="icon-btn" id="transMinus">−</button>
-    <span class="indicator" id="transDisplay" title="Click to reset">0</span>
-    <button class="icon-btn" id="transPlus">+</button>
-  </div>
-</div>
+    <div class="control-group">
+      <span class="control-label">Transpose</span>
+      <div class="control-row">
+        <button class="icon-btn" id="transMinus">−</button>
+        <span class="indicator" id="transDisplay" title="Click to reset">0</span>
+        <button class="icon-btn" id="transPlus">+</button>
+      </div>
+    </div>
 
-<div class="control-group">
-  <span class="control-label">Octave</span>
-  <div class="control-row">
-    <button class="icon-btn" id="octShiftMinus">↓</button>
-    <span class="indicator" id="octShiftDisplay">4</span>
-    <button class="icon-btn" id="octShiftPlus">↑</button>
-  </div>
-</div>
-```
-
+    <div class="control-group">
+      <span class="control-label">Octave</span>
+      <div class="control-row">
+        <button class="icon-btn" id="octShiftMinus">↓</button>
+        <span class="indicator" id="octShiftDisplay">4</span>
+        <button class="icon-btn" id="octShiftPlus">↑</button>
+      </div>
+    </div>
   </div>
 
   <div class="credit">Designed by Mario Garcia, for artists looking for another way.</div>
 </div>
 
 <!-- THEME modal -->
-
 <div class="modal-backdrop" id="modal-theme">
   <div class="modal">
     <div class="modal-header">
@@ -427,7 +419,6 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
 </div>
 
 <!-- TYPE-CHORDS HELP modal -->
-
 <div class="modal-backdrop" id="modal-help">
   <div class="modal">
     <div class="modal-header">
@@ -437,114 +428,110 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
     <div class="modal-body">
       <p style="color:var(--text-dim);margin-bottom:.8em;font-size:.82rem;line-height:1.6">UnleashYaKeys reads chord symbols flexibly — multiple notations work for the same chord. Tap a section to expand it.</p>
 
-```
-  <div class="collapse open">
-    <div class="collapse-header">Root Notes <span class="collapse-arrow">▶</span></div>
-    <div class="collapse-body"><div class="collapse-content">
-      <p>Use letters <span class="kbd">A</span>–<span class="kbd">G</span> with optional sharps or flats:</p>
-      <ul>
-        <li><code>C</code>, <code>D</code>, <code>E</code>, <code>F</code>, <code>G</code>, <code>A</code>, <code>B</code> — natural notes</li>
-        <li><code>C#</code> or <code>Db</code> — accidentals (sharp/flat are interchangeable)</li>
-        <li>Unicode <code>♯</code> and <code>♭</code> are also accepted</li>
-      </ul>
-    </div></div>
-  </div>
+      <div class="collapse open">
+        <div class="collapse-header">Root Notes <span class="collapse-arrow">▶</span></div>
+        <div class="collapse-body"><div class="collapse-content">
+          <p>Use letters <span class="kbd">A</span>–<span class="kbd">G</span> with optional sharps or flats:</p>
+          <ul>
+            <li><code>C</code>, <code>D</code>, <code>E</code>, <code>F</code>, <code>G</code>, <code>A</code>, <code>B</code> — natural notes</li>
+            <li><code>C#</code> or <code>Db</code> — accidentals (sharp/flat are interchangeable)</li>
+            <li>Unicode <code>♯</code> and <code>♭</code> are also accepted</li>
+          </ul>
+        </div></div>
+      </div>
 
-  <div class="collapse">
-    <div class="collapse-header">Triads &amp; Quality <span class="collapse-arrow">▶</span></div>
-    <div class="collapse-body"><div class="collapse-content">
-      <ul>
-        <li><code>C</code> — major (just the root)</li>
-        <li><code>Cm</code> · <code>Cmin</code> · <code>C-</code> — minor</li>
-        <li><code>Cdim</code> · <code>C°</code> — diminished</li>
-        <li><code>Caug</code> · <code>C+</code> — augmented</li>
-        <li><code>Csus2</code> — suspended 2nd</li>
-        <li><code>Csus4</code> · <code>Csus</code> — suspended 4th</li>
-        <li><code>C5</code> — power chord (root &amp; 5th)</li>
-      </ul>
-    </div></div>
-  </div>
+      <div class="collapse">
+        <div class="collapse-header">Triads &amp; Quality <span class="collapse-arrow">▶</span></div>
+        <div class="collapse-body"><div class="collapse-content">
+          <ul>
+            <li><code>C</code> — major (just the root)</li>
+            <li><code>Cm</code> · <code>Cmin</code> · <code>C-</code> — minor</li>
+            <li><code>Cdim</code> · <code>C°</code> — diminished</li>
+            <li><code>Caug</code> · <code>C+</code> — augmented</li>
+            <li><code>Csus2</code> — suspended 2nd</li>
+            <li><code>Csus4</code> · <code>Csus</code> — suspended 4th</li>
+            <li><code>C5</code> — power chord (root &amp; 5th)</li>
+          </ul>
+        </div></div>
+      </div>
 
-  <div class="collapse">
-    <div class="collapse-header">7th Chords <span class="collapse-arrow">▶</span></div>
-    <div class="collapse-body"><div class="collapse-content">
-      <ul>
-        <li><code>C7</code> — dominant 7</li>
-        <li><code>Cmaj7</code> · <code>CM7</code> · <code>CΔ</code> — major 7</li>
-        <li><code>Cm7</code> · <code>Cmin7</code> · <code>C-7</code> — minor 7</li>
-        <li><code>CmMaj7</code> · <code>Cm(maj7)</code> — minor major 7</li>
-        <li><code>Cdim7</code> · <code>C°7</code> — full diminished 7</li>
-        <li><code>Cm7b5</code> · <code>Cø</code> — half diminished</li>
-        <li><code>Caug7</code> · <code>C7#5</code> — augmented 7</li>
-        <li><code>C7sus4</code> — dominant 7 sus 4</li>
-      </ul>
-    </div></div>
-  </div>
+      <div class="collapse">
+        <div class="collapse-header">7th Chords <span class="collapse-arrow">▶</span></div>
+        <div class="collapse-body"><div class="collapse-content">
+          <ul>
+            <li><code>C7</code> — dominant 7</li>
+            <li><code>Cmaj7</code> · <code>CM7</code> · <code>CΔ</code> — major 7</li>
+            <li><code>Cm7</code> · <code>Cmin7</code> · <code>C-7</code> — minor 7</li>
+            <li><code>CmMaj7</code> · <code>Cm(maj7)</code> — minor major 7</li>
+            <li><code>Cdim7</code> · <code>C°7</code> — full diminished 7</li>
+            <li><code>Cm7b5</code> · <code>Cø</code> — half diminished</li>
+            <li><code>Caug7</code> · <code>C7#5</code> — augmented 7</li>
+            <li><code>C7sus4</code> — dominant 7 sus 4</li>
+          </ul>
+        </div></div>
+      </div>
 
-  <div class="collapse">
-    <div class="collapse-header">Extensions: 9 · 11 · 13 <span class="collapse-arrow">▶</span></div>
-    <div class="collapse-body"><div class="collapse-content">
-      <ul>
-        <li><code>C9</code> · <code>Cmaj9</code> · <code>Cm9</code> — 9th chords</li>
-        <li><code>C11</code> · <code>Cmaj11</code> · <code>Cm11</code> — 11ths</li>
-        <li><code>C13</code> · <code>Cmaj13</code> · <code>Cm13</code> — 13ths</li>
-        <li><code>Cadd9</code> · <code>Cm(add9)</code> — adds without the 7th</li>
-        <li><code>C6</code> · <code>Cm6</code> · <code>C6/9</code> · <code>Cm6/9</code></li>
-      </ul>
-    </div></div>
-  </div>
+      <div class="collapse">
+        <div class="collapse-header">Extensions: 9 · 11 · 13 <span class="collapse-arrow">▶</span></div>
+        <div class="collapse-body"><div class="collapse-content">
+          <ul>
+            <li><code>C9</code> · <code>Cmaj9</code> · <code>Cm9</code> — 9th chords</li>
+            <li><code>C11</code> · <code>Cmaj11</code> · <code>Cm11</code> — 11ths</li>
+            <li><code>C13</code> · <code>Cmaj13</code> · <code>Cm13</code> — 13ths</li>
+            <li><code>Cadd9</code> · <code>Cm(add9)</code> — adds without the 7th</li>
+            <li><code>C6</code> · <code>Cm6</code> · <code>C6/9</code> · <code>Cm6/9</code></li>
+          </ul>
+        </div></div>
+      </div>
 
-  <div class="collapse">
-    <div class="collapse-header">Alterations · ♯ &amp; ♭ <span class="collapse-arrow">▶</span></div>
-    <div class="collapse-body"><div class="collapse-content">
-      <p>Alterations stack right after the chord type:</p>
-      <ul>
-        <li><code>C7b9</code> · <code>C7#9</code> — altered 9</li>
-        <li><code>C7#11</code> · <code>Cmaj7#11</code> — Lydian sound</li>
-        <li><code>C7b13</code> · <code>C7#5</code> — altered 5/13</li>
-        <li><code>C9b5</code> · <code>C9#5</code> · <code>C9#11</code></li>
-        <li><code>C13b9</code> · <code>C13#9</code> · <code>C13#11</code></li>
-        <li><code>C7alt</code> — altered dominant (♭9 ♯9 ♯11 ♭13)</li>
-        <li>Combined: <code>C7b9b13</code>, <code>C7#9#11</code>, <code>C7b9#11</code></li>
-      </ul>
-    </div></div>
-  </div>
+      <div class="collapse">
+        <div class="collapse-header">Alterations · ♯ &amp; ♭ <span class="collapse-arrow">▶</span></div>
+        <div class="collapse-body"><div class="collapse-content">
+          <p>Alterations stack right after the chord type:</p>
+          <ul>
+            <li><code>C7b9</code> · <code>C7#9</code> — altered 9</li>
+            <li><code>C7#11</code> · <code>Cmaj7#11</code> — Lydian sound</li>
+            <li><code>C7b13</code> · <code>C7#5</code> — altered 5/13</li>
+            <li><code>C9b5</code> · <code>C9#5</code> · <code>C9#11</code></li>
+            <li><code>C13b9</code> · <code>C13#9</code> · <code>C13#11</code></li>
+            <li><code>C7alt</code> — altered dominant (♭9 ♯9 ♯11 ♭13)</li>
+            <li>Combined: <code>C7b9b13</code>, <code>C7#9#11</code>, <code>C7b9#11</code></li>
+          </ul>
+        </div></div>
+      </div>
 
-  <div class="collapse">
-    <div class="collapse-header">Slash Chords / Bass <span class="collapse-arrow">▶</span></div>
-    <div class="collapse-body"><div class="collapse-content">
-      <p>Add a bass note with <code>/</code> followed by the note name:</p>
-      <ul>
-        <li><code>C/E</code> — C major over E (1st inversion)</li>
-        <li><code>Cmaj7/G</code> — Cmaj7 over G</li>
-        <li><code>Dm7/G</code> — Dm7 over G (a G9sus sound)</li>
-        <li><code>F/G</code> — F triad over G (G9sus polychord)</li>
-      </ul>
-      <p style="color:var(--text-dim);font-size:.78rem;margin-top:.5em">Tip: <code>C6/9</code> is parsed as a chord type, not a slash — the parser knows.</p>
-    </div></div>
-  </div>
+      <div class="collapse">
+        <div class="collapse-header">Slash Chords / Bass <span class="collapse-arrow">▶</span></div>
+        <div class="collapse-body"><div class="collapse-content">
+          <p>Add a bass note with <code>/</code> followed by the note name:</p>
+          <ul>
+            <li><code>C/E</code> — C major over E (1st inversion)</li>
+            <li><code>Cmaj7/G</code> — Cmaj7 over G</li>
+            <li><code>Dm7/G</code> — Dm7 over G (a G9sus sound)</li>
+            <li><code>F/G</code> — F triad over G (G9sus polychord)</li>
+          </ul>
+          <p style="color:var(--text-dim);font-size:.78rem;margin-top:.5em">Tip: <code>C6/9</code> is parsed as a chord type, not a slash — the parser knows.</p>
+        </div></div>
+      </div>
 
-  <div class="collapse">
-    <div class="collapse-header">Special Symbols <span class="collapse-arrow">▶</span></div>
-    <div class="collapse-body"><div class="collapse-content">
-      <ul>
-        <li><code>Δ</code> = maj7 (so <code>CΔ</code> = <code>Cmaj7</code>)</li>
-        <li><code>°</code> = diminished (<code>C°</code> = <code>Cdim</code>)</li>
-        <li><code>ø</code> = half-diminished (<code>Cø</code> = <code>Cm7b5</code>)</li>
-        <li><code>+</code> = augmented (<code>C+</code> = <code>Caug</code>)</li>
-        <li><code>-</code> = minor (<code>C-7</code> = <code>Cm7</code>)</li>
-        <li><code>♯</code> / <code>♭</code> = sharp / flat</li>
-      </ul>
-    </div></div>
-  </div>
-</div>
-```
-
+      <div class="collapse">
+        <div class="collapse-header">Special Symbols <span class="collapse-arrow">▶</span></div>
+        <div class="collapse-body"><div class="collapse-content">
+          <ul>
+            <li><code>Δ</code> = maj7 (so <code>CΔ</code> = <code>Cmaj7</code>)</li>
+            <li><code>°</code> = diminished (<code>C°</code> = <code>Cdim</code>)</li>
+            <li><code>ø</code> = half-diminished (<code>Cø</code> = <code>Cm7b5</code>)</li>
+            <li><code>+</code> = augmented (<code>C+</code> = <code>Caug</code>)</li>
+            <li><code>-</code> = minor (<code>C-7</code> = <code>Cm7</code>)</li>
+            <li><code>♯</code> / <code>♭</code> = sharp / flat</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
   </div>
 </div>
 
 <!-- CHORD BANK modal -->
-
 <div class="modal-backdrop" id="modal-bank">
   <div class="modal">
     <div class="modal-header">
@@ -562,7 +549,6 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
 </div>
 
 <!-- COMPLEX GUIDE modal -->
-
 <div class="modal-backdrop" id="modal-guide">
   <div class="modal">
     <div class="modal-header">
@@ -582,24 +568,20 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
         <div class="guide-display" id="guideDisplay">Tap a chord below to see its shape.</div>
       </div>
 
-```
-  <div class="collapse" id="guideNavCollapse">
-    <div class="collapse-header">Quick Jump · Tap a Root <span class="collapse-arrow">▶</span></div>
-    <div class="collapse-body"><div class="collapse-content" style="padding:.5em">
-      <div class="note-nav" id="guideNav"></div>
-      <p style="color:var(--text-dim);font-size:.7rem;margin-top:.5em;letter-spacing:.05em">Sets the root for every chord in the guide. Use ◀ ▶ Trans buttons above to nudge by semitone.</p>
-    </div></div>
-  </div>
+      <div class="collapse" id="guideNavCollapse">
+        <div class="collapse-header">Quick Jump · Tap a Root <span class="collapse-arrow">▶</span></div>
+        <div class="collapse-body"><div class="collapse-content" style="padding:.5em">
+          <div class="note-nav" id="guideNav"></div>
+          <p style="color:var(--text-dim);font-size:.7rem;margin-top:.5em;letter-spacing:.05em">Sets the root for every chord in the guide. Use ◀ ▶ Trans buttons above to nudge by semitone.</p>
+        </div></div>
+      </div>
 
-  <div id="guideList"></div>
-</div>
-```
-
+      <div id="guideList"></div>
+    </div>
   </div>
 </div>
 
 <!-- KEYBOARD SHORTCUTS modal -->
-
 <div class="modal-backdrop" id="modal-kbd">
   <div class="modal">
     <div class="modal-header">
@@ -609,49 +591,45 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
     <div class="modal-body">
       <p style="color:var(--text-dim);font-size:.82rem;line-height:1.6;margin-bottom:.8em">Connect a Bluetooth or USB keyboard. Click anywhere on the app first to give it focus, then use these keys. (When the chord input field is focused, only Enter / Escape work — click off the field for the rest.)</p>
 
-```
-  <h5 style="font-family:'Orbitron';color:var(--neon);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.4em">Piano Keys (Lower Octave)</h5>
-  <div class="kbd-row" style="margin-bottom:.4em">
-    <span class="kbd">Z</span>=C <span class="kbd">S</span>=C♯ <span class="kbd">X</span>=D <span class="kbd">D</span>=D♯ <span class="kbd">C</span>=E <span class="kbd">V</span>=F <span class="kbd">G</span>=F♯ <span class="kbd">B</span>=G <span class="kbd">H</span>=G♯ <span class="kbd">N</span>=A <span class="kbd">J</span>=A♯ <span class="kbd">M</span>=B
-  </div>
+      <h5 style="font-family:'Orbitron';color:var(--neon);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.4em">Piano Keys (Lower Octave)</h5>
+      <div class="kbd-row" style="margin-bottom:.4em">
+        <span class="kbd">Z</span>=C <span class="kbd">S</span>=C♯ <span class="kbd">X</span>=D <span class="kbd">D</span>=D♯ <span class="kbd">C</span>=E <span class="kbd">V</span>=F <span class="kbd">G</span>=F♯ <span class="kbd">B</span>=G <span class="kbd">H</span>=G♯ <span class="kbd">N</span>=A <span class="kbd">J</span>=A♯ <span class="kbd">M</span>=B
+      </div>
 
-  <h5 style="font-family:'Orbitron';color:var(--neon);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;margin:.8em 0 .4em">Piano Keys (Upper Octave)</h5>
-  <div class="kbd-row" style="margin-bottom:.4em">
-    <span class="kbd">Q</span>=C <span class="kbd">2</span>=C♯ <span class="kbd">W</span>=D <span class="kbd">3</span>=D♯ <span class="kbd">E</span>=E <span class="kbd">R</span>=F <span class="kbd">5</span>=F♯ <span class="kbd">T</span>=G <span class="kbd">6</span>=G♯ <span class="kbd">Y</span>=A <span class="kbd">7</span>=A♯ <span class="kbd">U</span>=B
-  </div>
+      <h5 style="font-family:'Orbitron';color:var(--neon);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;margin:.8em 0 .4em">Piano Keys (Upper Octave)</h5>
+      <div class="kbd-row" style="margin-bottom:.4em">
+        <span class="kbd">Q</span>=C <span class="kbd">2</span>=C♯ <span class="kbd">W</span>=D <span class="kbd">3</span>=D♯ <span class="kbd">E</span>=E <span class="kbd">R</span>=F <span class="kbd">5</span>=F♯ <span class="kbd">T</span>=G <span class="kbd">6</span>=G♯ <span class="kbd">Y</span>=A <span class="kbd">7</span>=A♯ <span class="kbd">U</span>=B
+      </div>
 
-  <h5 style="font-family:'Orbitron';color:var(--neon);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;margin:.8em 0 .4em">Controls</h5>
-  <table class="kbd-table">
-    <tbody>
-      <tr><td><span class="kbd">Space</span></td><td>Play current chord</td></tr>
-      <tr><td><span class="kbd">Backspace</span> · <span class="kbd">Del</span></td><td>Clear all illuminated keys</td></tr>
-      <tr><td><span class="kbd">←</span> / <span class="kbd">→</span></td><td>Transpose ±1 semitone</td></tr>
-      <tr><td><span class="kbd">↓</span> / <span class="kbd">↑</span></td><td>Octave shift ±1</td></tr>
-      <tr><td><span class="kbd">[</span> / <span class="kbd">]</span></td><td>Remove / add octave to layout</td></tr>
-      <tr><td><span class="kbd">L</span></td><td>Toggle note labels</td></tr>
-      <tr><td><span class="kbd">P</span></td><td>Play current chord</td></tr>
-      <tr><td><span class="kbd">Tab</span></td><td>Switch sound (Rhodes ↔ Lead)</td></tr>
-      <tr><td><span class="kbd">/</span></td><td>Focus chord input</td></tr>
-      <tr><td><span class="kbd">Enter</span></td><td>(in input) Submit chord</td></tr>
-      <tr><td><span class="kbd">Esc</span></td><td>Close modal · unfocus input · clear if idle</td></tr>
-      <tr><td><span class="kbd">B</span> <span style="color:var(--text-dim);font-size:.7rem">(with Shift)</span></td><td>Open Chord Bank</td></tr>
-      <tr><td><span class="kbd">G</span> <span style="color:var(--text-dim);font-size:.7rem">(with Shift)</span></td><td>Open Complex Guide</td></tr>
-      <tr><td><span class="kbd">L</span> <span style="color:var(--text-dim);font-size:.7rem">(with Shift)</span></td><td>Open Saved Library</td></tr>
-      <tr><td><span class="kbd">T</span> <span style="color:var(--text-dim);font-size:.7rem">(with Shift)</span></td><td>Open Theme</td></tr>
-      <tr><td><span class="kbd">I</span> <span style="color:var(--text-dim);font-size:.7rem">(with Shift)</span></td><td>Toggle Chord ID mode</td></tr>
-      <tr><td><span class="kbd">S</span> <span style="color:var(--text-dim);font-size:.7rem">(with Shift)</span></td><td>Save current chord to Library</td></tr>
-      <tr><td><span class="kbd">?</span></td><td>Open Type Guide</td></tr>
-    </tbody>
-  </table>
-  <p style="color:var(--text-dim);font-size:.72rem;line-height:1.6;margin-top:.8em;letter-spacing:.04em">Note: piano-key letters work without modifiers. <span class="kbd">Shift</span> + letter triggers app shortcuts to avoid conflict.</p>
-</div>
-```
-
+      <h5 style="font-family:'Orbitron';color:var(--neon);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;margin:.8em 0 .4em">Controls</h5>
+      <table class="kbd-table">
+        <tbody>
+          <tr><td><span class="kbd">Space</span></td><td>Play current chord</td></tr>
+          <tr><td><span class="kbd">Backspace</span> · <span class="kbd">Del</span></td><td>Clear all illuminated keys</td></tr>
+          <tr><td><span class="kbd">←</span> / <span class="kbd">→</span></td><td>Transpose ±1 semitone</td></tr>
+          <tr><td><span class="kbd">↓</span> / <span class="kbd">↑</span></td><td>Octave shift ±1</td></tr>
+          <tr><td><span class="kbd">[</span> / <span class="kbd">]</span></td><td>Remove / add octave to layout</td></tr>
+          <tr><td><span class="kbd">L</span></td><td>Toggle note labels</td></tr>
+          <tr><td><span class="kbd">P</span></td><td>Play current chord</td></tr>
+          <tr><td><span class="kbd">Tab</span></td><td>Switch sound (Rhodes ↔ Lead)</td></tr>
+          <tr><td><span class="kbd">/</span></td><td>Focus chord input</td></tr>
+          <tr><td><span class="kbd">Enter</span></td><td>(in input) Submit chord</td></tr>
+          <tr><td><span class="kbd">Esc</span></td><td>Close modal · unfocus input · clear if idle</td></tr>
+          <tr><td><span class="kbd">B</span> <span style="color:var(--text-dim);font-size:.7rem">(with Shift)</span></td><td>Open Chord Bank</td></tr>
+          <tr><td><span class="kbd">G</span> <span style="color:var(--text-dim);font-size:.7rem">(with Shift)</span></td><td>Open Complex Guide</td></tr>
+          <tr><td><span class="kbd">L</span> <span style="color:var(--text-dim);font-size:.7rem">(with Shift)</span></td><td>Open Saved Library</td></tr>
+          <tr><td><span class="kbd">T</span> <span style="color:var(--text-dim);font-size:.7rem">(with Shift)</span></td><td>Open Theme</td></tr>
+          <tr><td><span class="kbd">I</span> <span style="color:var(--text-dim);font-size:.7rem">(with Shift)</span></td><td>Toggle Chord ID mode</td></tr>
+          <tr><td><span class="kbd">S</span> <span style="color:var(--text-dim);font-size:.7rem">(with Shift)</span></td><td>Save current chord to Library</td></tr>
+          <tr><td><span class="kbd">?</span></td><td>Open Type Guide</td></tr>
+        </tbody>
+      </table>
+      <p style="color:var(--text-dim);font-size:.72rem;line-height:1.6;margin-top:.8em;letter-spacing:.04em">Note: piano-key letters work without modifiers. <span class="kbd">Shift</span> + letter triggers app shortcuts to avoid conflict.</p>
+    </div>
   </div>
 </div>
 
 <!-- LIBRARY modal -->
-
 <div class="modal-backdrop" id="modal-library">
   <div class="modal">
     <div class="modal-header">
@@ -671,8 +649,8 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
 </div>
 
 <!-- TOAST -->
-
 <div class="toast" id="toast"></div>
+
 
 <script>
 // ============================================================
@@ -2068,7 +2046,6 @@ h1{font-family:'Orbitron',sans-serif;letter-spacing:.18em;font-size:1.6rem;text-
 .lib-piano{display:block;width:100%;height:auto}
 @media print{body{background:#fff;color:#000}h1{color:#000;text-shadow:none}.card{border-color:#333;background:#fff}.cn{color:#000;text-shadow:none}}
 </style></head><body>
-
 <h1>◆ UnleashYaKeys · Chord Library</h1>
 <div class="sub">${state.savedChords.length} chord${state.savedChords.length===1?'':'s'} · exported ${escapeHtml(date)}</div>
 <div class="creds">Designed by Mario Garcia, for artists looking for another way.</div>
@@ -2085,507 +2062,507 @@ h1{font-family:'Orbitron',sans-serif;letter-spacing:.18em;font-size:1.6rem;text-
 });
 
 // Export library as a single PNG sheet (uses canvas)
-$(‘libExportPng’).addEventListener(‘click’, async () => {
-if (state.savedChords.length === 0) { showToast(‘No chords to export’); return; }
-const cols = Math.min(2, state.savedChords.length);
-const rows = Math.ceil(state.savedChords.length / cols);
-const cardW = 460, cardH = 200, pad = 30, header = 100;
-const W = cardW * cols + pad * (cols + 1);
-const H = header + rows * cardH + pad * (rows + 1);
-const canvas = document.createElement(‘canvas’);
-canvas.width = W; canvas.height = H;
-const ctx = canvas.getContext(‘2d’);
-const t = state.theme;
-const neon = `hsl(${t.uH},${t.uS}%,${t.uL}%)`;
-const wKey = `hsl(${t.wH},${t.wS}%,${t.wL}%)`;
-const bKey = `hsl(${t.bH},${t.bS}%,${t.bL}%)`;
+$('libExportPng').addEventListener('click', async () => {
+  if (state.savedChords.length === 0) { showToast('No chords to export'); return; }
+  const cols = Math.min(2, state.savedChords.length);
+  const rows = Math.ceil(state.savedChords.length / cols);
+  const cardW = 460, cardH = 200, pad = 30, header = 100;
+  const W = cardW * cols + pad * (cols + 1);
+  const H = header + rows * cardH + pad * (rows + 1);
+  const canvas = document.createElement('canvas');
+  canvas.width = W; canvas.height = H;
+  const ctx = canvas.getContext('2d');
+  const t = state.theme;
+  const neon = `hsl(${t.uH},${t.uS}%,${t.uL}%)`;
+  const wKey = `hsl(${t.wH},${t.wS}%,${t.wL}%)`;
+  const bKey = `hsl(${t.bH},${t.bS}%,${t.bL}%)`;
 
-ctx.fillStyle = ‘#000’; ctx.fillRect(0, 0, W, H);
-ctx.fillStyle = neon;
-ctx.font = ‘bold 26px sans-serif’;
-ctx.fillText(‘◆ UnleashYaKeys · Chord Library’, pad, 40);
-ctx.fillStyle = ‘#888’;
-ctx.font = ‘12px sans-serif’;
-ctx.fillText(state.savedChords.length + ’ chord’ + (state.savedChords.length===1?’’:‘s’) + ’ · ’ + new Date().toLocaleString(), pad, 60);
-ctx.fillStyle = ‘#666’;
-ctx.font = ‘italic 11px sans-serif’;
-ctx.fillText(‘Designed by Mario Garcia, for artists looking for another way.’, pad, 78);
+  ctx.fillStyle = '#000'; ctx.fillRect(0, 0, W, H);
+  ctx.fillStyle = neon;
+  ctx.font = 'bold 26px sans-serif';
+  ctx.fillText('◆ UnleashYaKeys · Chord Library', pad, 40);
+  ctx.fillStyle = '#888';
+  ctx.font = '12px sans-serif';
+  ctx.fillText(state.savedChords.length + ' chord' + (state.savedChords.length===1?'':'s') + ' · ' + new Date().toLocaleString(), pad, 60);
+  ctx.fillStyle = '#666';
+  ctx.font = 'italic 11px sans-serif';
+  ctx.fillText('Designed by Mario Garcia, for artists looking for another way.', pad, 78);
 
-state.savedChords.forEach((c, idx) => {
-const col = idx % cols;
-const row = Math.floor(idx / cols);
-const x = pad + col * (cardW + pad);
-const y = header + pad + row * (cardH + pad);
-// card border
-ctx.strokeStyle = neon + ‘88’;
-ctx.lineWidth = 1;
-ctx.strokeRect(x, y, cardW, cardH);
-// name
-ctx.fillStyle = neon;
-ctx.font = ‘bold 22px sans-serif’;
-ctx.fillText(c.name, x + 14, y + 28);
-// notes
-const noteList = c.notes.map(m => {
-const useFlat = [1,3,6,8,10].includes(pc(m));
-return (useFlat?PRETTY_FLAT:PRETTY_SHARP)[pc(m)] + midiToOctave(m);
-}).join(’ · ’);
-ctx.fillStyle = ‘#888’;
-ctx.font = ‘12px sans-serif’;
-ctx.fillText(noteList, x + 14, y + cardH - 14);
-// piano
-drawPianoOnCanvas(ctx, c.notes, x + 14, y + 40, cardW - 28, cardH - 70, neon, wKey, bKey);
-});
+  state.savedChords.forEach((c, idx) => {
+    const col = idx % cols;
+    const row = Math.floor(idx / cols);
+    const x = pad + col * (cardW + pad);
+    const y = header + pad + row * (cardH + pad);
+    // card border
+    ctx.strokeStyle = neon + '88';
+    ctx.lineWidth = 1;
+    ctx.strokeRect(x, y, cardW, cardH);
+    // name
+    ctx.fillStyle = neon;
+    ctx.font = 'bold 22px sans-serif';
+    ctx.fillText(c.name, x + 14, y + 28);
+    // notes
+    const noteList = c.notes.map(m => {
+      const useFlat = [1,3,6,8,10].includes(pc(m));
+      return (useFlat?PRETTY_FLAT:PRETTY_SHARP)[pc(m)] + midiToOctave(m);
+    }).join(' · ');
+    ctx.fillStyle = '#888';
+    ctx.font = '12px sans-serif';
+    ctx.fillText(noteList, x + 14, y + cardH - 14);
+    // piano
+    drawPianoOnCanvas(ctx, c.notes, x + 14, y + 40, cardW - 28, cardH - 70, neon, wKey, bKey);
+  });
 
-canvas.toBlob(blob => {
-const url = URL.createObjectURL(blob);
-const a = document.createElement(‘a’);
-a.href = url;
-a.download = ‘UnleashYaKeys-Library-’ + Date.now() + ‘.png’;
-document.body.appendChild(a); a.click(); document.body.removeChild(a);
-setTimeout(() => URL.revokeObjectURL(url), 1000);
-showToast(‘Exported PNG’);
-}, ‘image/png’);
+  canvas.toBlob(blob => {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'UnleashYaKeys-Library-' + Date.now() + '.png';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    showToast('Exported PNG');
+  }, 'image/png');
 });
 
 function drawPianoOnCanvas(ctx, midis, x, y, w, h, neon, wKey, bKey) {
-if (!midis.length) return;
-const sortedMidis = […midis].sort((a,b)=>a-b);
-const lo = sortedMidis[0], hi = sortedMidis[sortedMidis.length - 1];
-const startOct = Math.floor(lo / 12) - 1;
-const endOct = Math.floor(hi / 12) - 1;
-const numOcts = Math.max(1, endOct - startOct + 1);
-const totalWhite = numOcts * 7;
-const wkW = w / totalWhite;
-const set = new Set(midis);
-let xc = x;
-for (let o = 0; o < numOcts; o++) {
-const oct = startOct + o;
-const baseMidi = (oct + 1) * 12;
-[0,2,4,5,7,9,11].forEach(p => {
-const m = baseMidi + p;
-ctx.fillStyle = set.has(m) ? neon : wKey;
-ctx.fillRect(xc, y, wkW, h);
-ctx.strokeStyle = neon; ctx.lineWidth = 0.6;
-ctx.strokeRect(xc, y, wkW, h);
-xc += wkW;
-});
-}
-const bkW = wkW * 0.62, bkH = h * 0.6;
-for (let o = 0; o < numOcts; o++) {
-const oct = startOct + o;
-const baseMidi = (oct + 1) * 12;
-const octStartX = x + o * 7 * wkW;
-[{p:1,after:0},{p:3,after:1},{p:6,after:3},{p:8,after:4},{p:10,after:5}].forEach(({p, after}) => {
-const m = baseMidi + p;
-const bx = octStartX + (after + 1) * wkW - bkW / 2;
-ctx.fillStyle = set.has(m) ? neon : bKey;
-ctx.fillRect(bx, y, bkW, bkH);
-ctx.strokeStyle = neon; ctx.lineWidth = 0.6;
-ctx.strokeRect(bx, y, bkW, bkH);
-});
-}
+  if (!midis.length) return;
+  const sortedMidis = [...midis].sort((a,b)=>a-b);
+  const lo = sortedMidis[0], hi = sortedMidis[sortedMidis.length - 1];
+  const startOct = Math.floor(lo / 12) - 1;
+  const endOct = Math.floor(hi / 12) - 1;
+  const numOcts = Math.max(1, endOct - startOct + 1);
+  const totalWhite = numOcts * 7;
+  const wkW = w / totalWhite;
+  const set = new Set(midis);
+  let xc = x;
+  for (let o = 0; o < numOcts; o++) {
+    const oct = startOct + o;
+    const baseMidi = (oct + 1) * 12;
+    [0,2,4,5,7,9,11].forEach(p => {
+      const m = baseMidi + p;
+      ctx.fillStyle = set.has(m) ? neon : wKey;
+      ctx.fillRect(xc, y, wkW, h);
+      ctx.strokeStyle = neon; ctx.lineWidth = 0.6;
+      ctx.strokeRect(xc, y, wkW, h);
+      xc += wkW;
+    });
+  }
+  const bkW = wkW * 0.62, bkH = h * 0.6;
+  for (let o = 0; o < numOcts; o++) {
+    const oct = startOct + o;
+    const baseMidi = (oct + 1) * 12;
+    const octStartX = x + o * 7 * wkW;
+    [{p:1,after:0},{p:3,after:1},{p:6,after:3},{p:8,after:4},{p:10,after:5}].forEach(({p, after}) => {
+      const m = baseMidi + p;
+      const bx = octStartX + (after + 1) * wkW - bkW / 2;
+      ctx.fillStyle = set.has(m) ? neon : bKey;
+      ctx.fillRect(bx, y, bkW, bkH);
+      ctx.strokeStyle = neon; ctx.lineWidth = 0.6;
+      ctx.strokeRect(bx, y, bkW, bkH);
+    });
+  }
 }
 
-$(‘libClear’).addEventListener(‘click’, () => {
-if (state.savedChords.length === 0) return;
-if (confirm(‘Delete all ’ + state.savedChords.length + ’ saved chord’ + (state.savedChords.length===1?’’:‘s’) + ‘? This cannot be undone.’)) {
-state.savedChords = [];
-saveLocal();
-renderLibrary();
-showToast(‘Library cleared’);
-}
+$('libClear').addEventListener('click', () => {
+  if (state.savedChords.length === 0) return;
+  if (confirm('Delete all ' + state.savedChords.length + ' saved chord' + (state.savedChords.length===1?'':'s') + '? This cannot be undone.')) {
+    state.savedChords = [];
+    saveLocal();
+    renderLibrary();
+    showToast('Library cleared');
+  }
 });
 
 // ============================================================
 // LAUNCH
 // ============================================================
-$(‘launch’).addEventListener(‘click’, () => {
-$(‘home’).classList.add(‘hidden’);
-$(‘app’).classList.add(‘active’);
-ensureAudioRunning();
+$('launch').addEventListener('click', () => {
+  $('home').classList.add('hidden');
+  $('app').classList.add('active');
+  ensureAudioRunning();
 });
 
 // ============================================================
 // THEME — sliders & presets
 // ============================================================
 const THEME_INPUTS = [
-[‘ui-h’,‘uH’],[‘ui-s’,‘uS’],[‘ui-l’,‘uL’],
-[‘w-h’,‘wH’], [‘w-s’,‘wS’], [‘w-l’,‘wL’],
-[‘b-h’,‘bH’], [‘b-s’,‘bS’], [‘b-l’,‘bL’],
+  ['ui-h','uH'],['ui-s','uS'],['ui-l','uL'],
+  ['w-h','wH'], ['w-s','wS'], ['w-l','wL'],
+  ['b-h','bH'], ['b-s','bS'], ['b-l','bL'],
 ];
 THEME_INPUTS.forEach(([id, key]) => {
-$(id).addEventListener(‘input’, e => {
-state.theme[key] = parseInt(e.target.value);
-applyTheme();
-});
+  $(id).addEventListener('input', e => {
+    state.theme[key] = parseInt(e.target.value);
+    applyTheme();
+  });
 });
 
 const THEME_PRESETS = [
-{ name:‘Teal’,     swatch:’#2cf0d3’, t:{ uH:168, uS:78, uL:56, wH:0, wS:0, wL:96, bH:0, bS:0, bL:9 } },
-{ name:‘Amber’,    swatch:’#ffb347’, t:{ uH:33,  uS:90, uL:60, wH:30,wS:10,wL:94, bH:25,bS:15,bL:10 } },
-{ name:‘Magenta’,  swatch:’#ff4dd2’, t:{ uH:316, uS:88, uL:64, wH:300,wS:5,wL:96, bH:300,bS:8,bL:10 } },
-{ name:‘Crimson’,  swatch:’#ff3b54’, t:{ uH:351, uS:85, uL:58, wH:0, wS:0, wL:94, bH:0, bS:0, bL:8 } },
-{ name:‘Violet’,   swatch:’#9d6bff’, t:{ uH:262, uS:82, uL:64, wH:260,wS:5,wL:96, bH:260,bS:10,bL:10 } },
-{ name:‘Lime’,     swatch:’#a8ff60’, t:{ uH:96,  uS:85, uL:60, wH:80,wS:8,wL:95, bH:90,bS:10,bL:10 } },
-{ name:‘Ice’,      swatch:’#5fb8ff’, t:{ uH:206, uS:88, uL:62, wH:200,wS:8,wL:96, bH:200,bS:12,bL:12 } },
-{ name:‘Vapor’,    swatch:’#ff9bd4’, t:{ uH:330, uS:78, uL:70, wH:280,wS:10,wL:94, bH:300,bS:12,bL:14 } },
-{ name:‘Mono’,     swatch:’#dddddd’, t:{ uH:0,   uS:0,  uL:78, wH:0, wS:0, wL:96, bH:0, bS:0, bL:8 } },
-{ name:‘Lava’,     swatch:’#ff7233’, t:{ uH:18,  uS:92, uL:58, wH:20,wS:15,wL:94, bH:0, bS:30,bL:14 } },
-{ name:‘Night·Inverted’, swatch:’#000000’, t:{ uH:168, uS:78, uL:56, wH:0, wS:0, wL:8, bH:0, bS:80, bL:38 } }, // black & red keys vibe
-{ name:‘Forest’,   swatch:’#3df091’, t:{ uH:148, uS:78, uL:54, wH:120,wS:8,wL:94, bH:140,bS:14,bL:10 } },
+  { name:'Teal',     swatch:'#2cf0d3', t:{ uH:168, uS:78, uL:56, wH:0, wS:0, wL:96, bH:0, bS:0, bL:9 } },
+  { name:'Amber',    swatch:'#ffb347', t:{ uH:33,  uS:90, uL:60, wH:30,wS:10,wL:94, bH:25,bS:15,bL:10 } },
+  { name:'Magenta',  swatch:'#ff4dd2', t:{ uH:316, uS:88, uL:64, wH:300,wS:5,wL:96, bH:300,bS:8,bL:10 } },
+  { name:'Crimson',  swatch:'#ff3b54', t:{ uH:351, uS:85, uL:58, wH:0, wS:0, wL:94, bH:0, bS:0, bL:8 } },
+  { name:'Violet',   swatch:'#9d6bff', t:{ uH:262, uS:82, uL:64, wH:260,wS:5,wL:96, bH:260,bS:10,bL:10 } },
+  { name:'Lime',     swatch:'#a8ff60', t:{ uH:96,  uS:85, uL:60, wH:80,wS:8,wL:95, bH:90,bS:10,bL:10 } },
+  { name:'Ice',      swatch:'#5fb8ff', t:{ uH:206, uS:88, uL:62, wH:200,wS:8,wL:96, bH:200,bS:12,bL:12 } },
+  { name:'Vapor',    swatch:'#ff9bd4', t:{ uH:330, uS:78, uL:70, wH:280,wS:10,wL:94, bH:300,bS:12,bL:14 } },
+  { name:'Mono',     swatch:'#dddddd', t:{ uH:0,   uS:0,  uL:78, wH:0, wS:0, wL:96, bH:0, bS:0, bL:8 } },
+  { name:'Lava',     swatch:'#ff7233', t:{ uH:18,  uS:92, uL:58, wH:20,wS:15,wL:94, bH:0, bS:30,bL:14 } },
+  { name:'Night·Inverted', swatch:'#000000', t:{ uH:168, uS:78, uL:56, wH:0, wS:0, wL:8, bH:0, bS:80, bL:38 } }, // black & red keys vibe
+  { name:'Forest',   swatch:'#3df091', t:{ uH:148, uS:78, uL:54, wH:120,wS:8,wL:94, bH:140,bS:14,bL:10 } },
 ];
 function buildPresets() {
-const wrap = $(‘presets’); wrap.innerHTML = ‘’;
-THEME_PRESETS.forEach(p => {
-const b = document.createElement(‘button’);
-b.className = ‘preset-btn’;
-b.innerHTML = `<span class="swatch" style="background:${p.swatch}"></span>${p.name}`;
-b.addEventListener(‘click’, () => applyPreset(p.t));
-wrap.appendChild(b);
-});
+  const wrap = $('presets'); wrap.innerHTML = '';
+  THEME_PRESETS.forEach(p => {
+    const b = document.createElement('button');
+    b.className = 'preset-btn';
+    b.innerHTML = `<span class="swatch" style="background:${p.swatch}"></span>${p.name}`;
+    b.addEventListener('click', () => applyPreset(p.t));
+    wrap.appendChild(b);
+  });
 }
 function applyPreset(t) {
-Object.assign(state.theme, t);
-// Sync sliders
-$(‘ui-h’).value = t.uH; $(‘ui-s’).value = t.uS; $(‘ui-l’).value = t.uL;
-$(‘w-h’).value = t.wH;  $(‘w-s’).value = t.wS;  $(‘w-l’).value = t.wL;
-$(‘b-h’).value = t.bH;  $(‘b-s’).value = t.bS;  $(‘b-l’).value = t.bL;
-applyTheme();
+  Object.assign(state.theme, t);
+  // Sync sliders
+  $('ui-h').value = t.uH; $('ui-s').value = t.uS; $('ui-l').value = t.uL;
+  $('w-h').value = t.wH;  $('w-s').value = t.wS;  $('w-l').value = t.wL;
+  $('b-h').value = t.bH;  $('b-s').value = t.bS;  $('b-l').value = t.bL;
+  applyTheme();
 }
-$(‘resetTheme’).addEventListener(‘click’, () => applyPreset(DEFAULT_THEME));
+$('resetTheme').addEventListener('click', () => applyPreset(DEFAULT_THEME));
 
 // ============================================================
 // CHORD BANK — populate & wire
 // ============================================================
 function populateBank() {
-// Quick-jump nav
-const nav = $(‘bankNav’); nav.innerHTML = ‘’;
-BANK_ROOT_ORDER.forEach((r, i) => {
-const b = document.createElement(‘button’);
-b.className = ‘note-nav-btn’;
-b.textContent = r.name.split(’ ‘)[0]; // short label
-b.title = r.name;
-b.dataset.idx = i;
-b.addEventListener(‘click’, () => {
-const target = $(‘bank-root-’ + i);
-if (target) target.scrollIntoView({behavior:‘smooth’, block:‘start’});
-document.querySelectorAll(’#bankNav .note-nav-btn’).forEach(x => x.classList.remove(‘active’));
-b.classList.add(‘active’);
-});
-nav.appendChild(b);
-});
-// Chord lists
-const list = $(‘bankList’); list.innerHTML = ‘’;
-BANK_ROOT_ORDER.forEach((root, i) => {
-const sec = document.createElement(‘div’);
-sec.className = ‘cat-section’;
-sec.id = ‘bank-root-’ + i;
-sec.innerHTML = `<div class="cat-title">Root: ${root.name}</div>`;
-BANK_CATEGORIES.forEach(cat => {
-const cT = document.createElement(‘div’);
-cT.style.cssText = ‘font-family:Orbitron;font-size:.65rem;letter-spacing:.15em;color:var(–text-dim);margin:.6em 0 .2em;text-transform:uppercase’;
-cT.textContent = cat.cat;
-sec.appendChild(cT);
-const grid = document.createElement(‘div’);
-grid.className = ‘chord-grid’;
-cat.items.forEach(it => {
-const sym = (PRETTY_SHARP[root.pc]) + it.sfx;
-// For pretty display, prefer the natural / commonly used spelling
-const symPretty = sym;
-const btn = document.createElement(‘div’);
-btn.className = ‘chord-item’;
-btn.innerHTML = `${symPretty}<span class="desc">${it.name}</span>`;
-btn.dataset.sym = sym;
-btn.addEventListener(‘click’, () => {
-const c = parseChord(sym);
-if (c) {
-setSelectedFromChord(c);
-update();
-ensureAudioRunning();
-playChord([…state.selectedNotes]);
-showToast(‘Loaded: ’ + symPretty);
-// visual feedback
-document.querySelectorAll(’.chord-item.active’).forEach(x => x.classList.remove(‘active’));
-btn.classList.add(‘active’);
-// also highlight the relevant root nav button
-document.querySelectorAll(’#bankNav .note-nav-btn’).forEach((nb, navIdx) => {
-nb.classList.toggle(‘active’, navIdx === i);
-});
-}
-});
-grid.appendChild(btn);
-});
-sec.appendChild(grid);
-});
-list.appendChild(sec);
-});
+  // Quick-jump nav
+  const nav = $('bankNav'); nav.innerHTML = '';
+  BANK_ROOT_ORDER.forEach((r, i) => {
+    const b = document.createElement('button');
+    b.className = 'note-nav-btn';
+    b.textContent = r.name.split(' ')[0]; // short label
+    b.title = r.name;
+    b.dataset.idx = i;
+    b.addEventListener('click', () => {
+      const target = $('bank-root-' + i);
+      if (target) target.scrollIntoView({behavior:'smooth', block:'start'});
+      document.querySelectorAll('#bankNav .note-nav-btn').forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+    });
+    nav.appendChild(b);
+  });
+  // Chord lists
+  const list = $('bankList'); list.innerHTML = '';
+  BANK_ROOT_ORDER.forEach((root, i) => {
+    const sec = document.createElement('div');
+    sec.className = 'cat-section';
+    sec.id = 'bank-root-' + i;
+    sec.innerHTML = `<div class="cat-title">Root: ${root.name}</div>`;
+    BANK_CATEGORIES.forEach(cat => {
+      const cT = document.createElement('div');
+      cT.style.cssText = 'font-family:Orbitron;font-size:.65rem;letter-spacing:.15em;color:var(--text-dim);margin:.6em 0 .2em;text-transform:uppercase';
+      cT.textContent = cat.cat;
+      sec.appendChild(cT);
+      const grid = document.createElement('div');
+      grid.className = 'chord-grid';
+      cat.items.forEach(it => {
+        const sym = (PRETTY_SHARP[root.pc]) + it.sfx;
+        // For pretty display, prefer the natural / commonly used spelling
+        const symPretty = sym;
+        const btn = document.createElement('div');
+        btn.className = 'chord-item';
+        btn.innerHTML = `${symPretty}<span class="desc">${it.name}</span>`;
+        btn.dataset.sym = sym;
+        btn.addEventListener('click', () => {
+          const c = parseChord(sym);
+          if (c) {
+            setSelectedFromChord(c);
+            update();
+            ensureAudioRunning();
+            playChord([...state.selectedNotes]);
+            showToast('Loaded: ' + symPretty);
+            // visual feedback
+            document.querySelectorAll('.chord-item.active').forEach(x => x.classList.remove('active'));
+            btn.classList.add('active');
+            // also highlight the relevant root nav button
+            document.querySelectorAll('#bankNav .note-nav-btn').forEach((nb, navIdx) => {
+              nb.classList.toggle('active', navIdx === i);
+            });
+          }
+        });
+        grid.appendChild(btn);
+      });
+      sec.appendChild(grid);
+    });
+    list.appendChild(sec);
+  });
 }
 
 // ============================================================
 // COMPLEX GUIDE — populate & wire
 // ============================================================
 function populateGuide() {
-// Quick-jump for guide root
-const nav = $(‘guideNav’); nav.innerHTML = ‘’;
-for (let p = 0; p < 12; p++) {
-const b = document.createElement(‘button’);
-b.className = ‘note-nav-btn’;
-b.textContent = PRETTY_SHARP[p];
-b.dataset.pc = p;
-b.addEventListener(‘click’, () => {
-state.guideRootPc = p;
-updateGuideRootLabel();
-renderGuideList(); // reflect new chord names
-// refresh mini piano if a chord was active
-if (state.guideActiveChord) selectGuideChord(state.guideActiveChord, true);
-});
-nav.appendChild(b);
-}
-renderGuideList();
+  // Quick-jump for guide root
+  const nav = $('guideNav'); nav.innerHTML = '';
+  for (let p = 0; p < 12; p++) {
+    const b = document.createElement('button');
+    b.className = 'note-nav-btn';
+    b.textContent = PRETTY_SHARP[p];
+    b.dataset.pc = p;
+    b.addEventListener('click', () => {
+      state.guideRootPc = p;
+      updateGuideRootLabel();
+      renderGuideList(); // reflect new chord names
+      // refresh mini piano if a chord was active
+      if (state.guideActiveChord) selectGuideChord(state.guideActiveChord, true);
+    });
+    nav.appendChild(b);
+  }
+  renderGuideList();
 }
 
 function renderGuideList() {
-const list = $(‘guideList’); list.innerHTML = ‘’;
-// Group by category
-const byCat = {};
-COMPLEX_CHORDS.forEach(c => {
-(byCat[c.cat] = byCat[c.cat] || []).push(c);
-});
-Object.keys(byCat).forEach(cat => {
-const sec = document.createElement(‘div’);
-sec.className = ‘cat-section’;
-sec.innerHTML = `<div class="cat-title">${cat}</div>`;
-const grid = document.createElement(‘div’);
-grid.className = ‘chord-grid’;
-byCat[cat].forEach(c => {
-const rootName = PRETTY_SHARP[state.guideRootPc];
-const display = rootName + (c.sfx ? c.sfx.replace(/^maj/,‘maj’) : c.name.replace(/^m?aj?7?(b?\d|#?\d|sus\d?|alt|sus|add\d|(.*?))*/,’$&’));
-// For display, prepend root for suffix-based items, or use full name as-is
-let label;
-if (c.sfx !== undefined) {
-label = rootName + (c.sfx === ‘’ ? ‘’ : c.sfx);
-} else {
-// notes-defined; display name as given (may include ‘C’ which we replace)
-label = c.name;
-}
-const btn = document.createElement(‘div’);
-btn.className = ‘chord-item’;
-btn.innerHTML = `${label}<span class="desc">${c.desc}</span>`;
-if (state.guideActiveChord && state.guideActiveChord === c) btn.classList.add(‘active’);
-btn.addEventListener(‘click’, () => selectGuideChord(c));
-grid.appendChild(btn);
-});
-sec.appendChild(grid);
-list.appendChild(sec);
-});
+  const list = $('guideList'); list.innerHTML = '';
+  // Group by category
+  const byCat = {};
+  COMPLEX_CHORDS.forEach(c => {
+    (byCat[c.cat] = byCat[c.cat] || []).push(c);
+  });
+  Object.keys(byCat).forEach(cat => {
+    const sec = document.createElement('div');
+    sec.className = 'cat-section';
+    sec.innerHTML = `<div class="cat-title">${cat}</div>`;
+    const grid = document.createElement('div');
+    grid.className = 'chord-grid';
+    byCat[cat].forEach(c => {
+      const rootName = PRETTY_SHARP[state.guideRootPc];
+      const display = rootName + (c.sfx ? c.sfx.replace(/^maj/,'maj') : c.name.replace(/^m?aj?7?(b?\d|#?\d|sus\d?|alt|sus|add\d|\(.*?\))*/,'$&'));
+      // For display, prepend root for suffix-based items, or use full name as-is
+      let label;
+      if (c.sfx !== undefined) {
+        label = rootName + (c.sfx === '' ? '' : c.sfx);
+      } else {
+        // notes-defined; display name as given (may include 'C' which we replace)
+        label = c.name;
+      }
+      const btn = document.createElement('div');
+      btn.className = 'chord-item';
+      btn.innerHTML = `${label}<span class="desc">${c.desc}</span>`;
+      if (state.guideActiveChord && state.guideActiveChord === c) btn.classList.add('active');
+      btn.addEventListener('click', () => selectGuideChord(c));
+      grid.appendChild(btn);
+    });
+    sec.appendChild(grid);
+    list.appendChild(sec);
+  });
 }
 
 function chordToMidis(c, rootPc) {
-// Returns array of MIDI notes for the chord at rootPc, anchored around C4=60
-const baseRoot = 60 + rootPc;
-let intervals;
-if (c.sfx !== undefined) {
-intervals = Q[c.sfx];
-if (!intervals) return [];
-} else if (c.notes) {
-intervals = c.notes;
-} else return [];
-return intervals.map(iv => baseRoot + iv);
+  // Returns array of MIDI notes for the chord at rootPc, anchored around C4=60
+  const baseRoot = 60 + rootPc;
+  let intervals;
+  if (c.sfx !== undefined) {
+    intervals = Q[c.sfx];
+    if (!intervals) return [];
+  } else if (c.notes) {
+    intervals = c.notes;
+  } else return [];
+  return intervals.map(iv => baseRoot + iv);
 }
 
 function selectGuideChord(c, fromTranspose=false) {
-state.guideActiveChord = c;
-const midis = chordToMidis(c, state.guideRootPc);
-if (!midis.length) return;
-state.guideSelected = new Set(midis);
+  state.guideActiveChord = c;
+  const midis = chordToMidis(c, state.guideRootPc);
+  if (!midis.length) return;
+  state.guideSelected = new Set(midis);
 
-// First-time auto-fit; subsequent selections respect the user’s chosen layout
-if (!state.guideLayoutLocked) {
-const lowest = Math.min(…midis);
-const highest = Math.max(…midis);
-state.guideStartOct = Math.max(2, Math.min(6, Math.floor(lowest / 12) - 1));
-const newBase = (state.guideStartOct + 1) * 12;
-const span = highest - newBase + 1;
-state.guideOctaves = Math.min(5, Math.max(3, Math.ceil(span / 12)));
-state.guideLayoutLocked = true;
-} else {
-// Layout stays put: fold any out-of-range notes back into the visible window
-const folded = midis.map(n => foldToVisible(n, state.guideStartOct, state.guideOctaves));
-state.guideSelected = new Set(folded);
-}
+  // First-time auto-fit; subsequent selections respect the user's chosen layout
+  if (!state.guideLayoutLocked) {
+    const lowest = Math.min(...midis);
+    const highest = Math.max(...midis);
+    state.guideStartOct = Math.max(2, Math.min(6, Math.floor(lowest / 12) - 1));
+    const newBase = (state.guideStartOct + 1) * 12;
+    const span = highest - newBase + 1;
+    state.guideOctaves = Math.min(5, Math.max(3, Math.ceil(span / 12)));
+    state.guideLayoutLocked = true;
+  } else {
+    // Layout stays put: fold any out-of-range notes back into the visible window
+    const folded = midis.map(n => foldToVisible(n, state.guideStartOct, state.guideOctaves));
+    state.guideSelected = new Set(folded);
+  }
 
-updateMiniPiano();
-// Update display name
-const rootName = PRETTY_SHARP[state.guideRootPc];
-let label = (c.sfx !== undefined) ? rootName + c.sfx : c.name;
-$(‘guideDisplay’).textContent = label + (c.desc ? ’  —  ’ + c.desc : ‘’);
-// Highlight active item
-if (!fromTranspose) {
-document.querySelectorAll(’#guideList .chord-item’).forEach(x => x.classList.remove(‘active’));
-renderGuideList();
-}
-ensureAudioRunning();
-playChord([…state.guideSelected]);
+  updateMiniPiano();
+  // Update display name
+  const rootName = PRETTY_SHARP[state.guideRootPc];
+  let label = (c.sfx !== undefined) ? rootName + c.sfx : c.name;
+  $('guideDisplay').textContent = label + (c.desc ? '  —  ' + c.desc : '');
+  // Highlight active item
+  if (!fromTranspose) {
+    document.querySelectorAll('#guideList .chord-item').forEach(x => x.classList.remove('active'));
+    renderGuideList();
+  }
+  ensureAudioRunning();
+  playChord([...state.guideSelected]);
 }
 
 function updateMiniPiano() {
-renderPiano($(‘miniPiano’), state.guideOctaves, state.guideStartOct, state.guideSelected);
+  renderPiano($('miniPiano'), state.guideOctaves, state.guideStartOct, state.guideSelected);
 }
 
 function updateGuideRootLabel() {
-$(‘guideRoot’).textContent = PRETTY_SHARP[state.guideRootPc] + ’ / ’ + PRETTY_FLAT[state.guideRootPc];
-// Also update active highlight
-document.querySelectorAll(’#guideNav .note-nav-btn’).forEach(b => {
-b.classList.toggle(‘active’, parseInt(b.dataset.pc) === state.guideRootPc);
-});
+  $('guideRoot').textContent = PRETTY_SHARP[state.guideRootPc] + ' / ' + PRETTY_FLAT[state.guideRootPc];
+  // Also update active highlight
+  document.querySelectorAll('#guideNav .note-nav-btn').forEach(b => {
+    b.classList.toggle('active', parseInt(b.dataset.pc) === state.guideRootPc);
+  });
 }
 
 // Mini piano click — toggle keys directly
-$(‘miniPiano’).addEventListener(‘click’, e => {
-const k = e.target.closest(’.white-key, .black-key’);
-if (!k) return;
-const midi = parseInt(k.dataset.midi);
-if (isNaN(midi)) return;
-if (state.guideSelected.has(midi)) state.guideSelected.delete(midi);
-else state.guideSelected.add(midi);
-updateMiniPiano();
-ensureAudioRunning();
-playSingleNote(midi);
+$('miniPiano').addEventListener('click', e => {
+  const k = e.target.closest('.white-key, .black-key');
+  if (!k) return;
+  const midi = parseInt(k.dataset.midi);
+  if (isNaN(midi)) return;
+  if (state.guideSelected.has(midi)) state.guideSelected.delete(midi);
+  else state.guideSelected.add(midi);
+  updateMiniPiano();
+  ensureAudioRunning();
+  playSingleNote(midi);
 });
 
-$(‘guideTransMinus’).addEventListener(‘click’, () => {
-state.guideRootPc = (state.guideRootPc + 11) % 12;
-updateGuideRootLabel();
-renderGuideList();
-if (state.guideActiveChord) selectGuideChord(state.guideActiveChord, true);
+$('guideTransMinus').addEventListener('click', () => {
+  state.guideRootPc = (state.guideRootPc + 11) % 12;
+  updateGuideRootLabel();
+  renderGuideList();
+  if (state.guideActiveChord) selectGuideChord(state.guideActiveChord, true);
 });
-$(‘guideTransPlus’).addEventListener(‘click’, () => {
-state.guideRootPc = (state.guideRootPc + 1) % 12;
-updateGuideRootLabel();
-renderGuideList();
-if (state.guideActiveChord) selectGuideChord(state.guideActiveChord, true);
+$('guideTransPlus').addEventListener('click', () => {
+  state.guideRootPc = (state.guideRootPc + 1) % 12;
+  updateGuideRootLabel();
+  renderGuideList();
+  if (state.guideActiveChord) selectGuideChord(state.guideActiveChord, true);
 });
-$(‘guidePlay’).addEventListener(‘click’, () => {
-if (state.guideSelected.size === 0) { showToast(‘No chord selected’); return; }
-ensureAudioRunning();
-playChord([…state.guideSelected].sort((a,b)=>a-b));
+$('guidePlay').addEventListener('click', () => {
+  if (state.guideSelected.size === 0) { showToast('No chord selected'); return; }
+  ensureAudioRunning();
+  playChord([...state.guideSelected].sort((a,b)=>a-b));
 });
-$(‘sendToMain’).addEventListener(‘click’, () => {
-if (state.guideSelected.size === 0) { showToast(‘No chord to send’); return; }
-// Send to main piano — fold notes into main piano range
-const folded = […state.guideSelected].map(n => foldToVisible(n, state.startOctave, state.octaves));
-state.selectedNotes = new Set(folded);
-state.transpose = 0;
-closeAllModals();
-update();
-showToast(‘Sent to main piano’);
+$('sendToMain').addEventListener('click', () => {
+  if (state.guideSelected.size === 0) { showToast('No chord to send'); return; }
+  // Send to main piano — fold notes into main piano range
+  const folded = [...state.guideSelected].map(n => foldToVisible(n, state.startOctave, state.octaves));
+  state.selectedNotes = new Set(folded);
+  state.transpose = 0;
+  closeAllModals();
+  update();
+  showToast('Sent to main piano');
 });
 
 // ============================================================
 // COLLAPSIBLE PANELS (Type Guide and Quick-Nav collapses)
 // ============================================================
-document.addEventListener(‘click’, e => {
-const h = e.target.closest(’.collapse-header’);
-if (h) {
-h.parentElement.classList.toggle(‘open’);
-}
+document.addEventListener('click', e => {
+  const h = e.target.closest('.collapse-header');
+  if (h) {
+    h.parentElement.classList.toggle('open');
+  }
 });
 
 // ============================================================
 // KEYBOARD HANDLING — Bluetooth/USB keyboard support
 // ============================================================
 const KEY_MAP_LOWER = {
-‘KeyZ’: 0, ‘KeyS’: 1, ‘KeyX’: 2, ‘KeyD’: 3, ‘KeyC’: 4, ‘KeyV’: 5,
-‘KeyG’: 6, ‘KeyB’: 7, ‘KeyH’: 8, ‘KeyN’: 9, ‘KeyJ’: 10, ‘KeyM’: 11
+  'KeyZ': 0, 'KeyS': 1, 'KeyX': 2, 'KeyD': 3, 'KeyC': 4, 'KeyV': 5,
+  'KeyG': 6, 'KeyB': 7, 'KeyH': 8, 'KeyN': 9, 'KeyJ': 10, 'KeyM': 11
 };
 const KEY_MAP_UPPER = {
-‘KeyQ’: 0, ‘Digit2’: 1, ‘KeyW’: 2, ‘Digit3’: 3, ‘KeyE’: 4, ‘KeyR’: 5,
-‘Digit5’: 6, ‘KeyT’: 7, ‘Digit6’: 8, ‘KeyY’: 9, ‘Digit7’: 10, ‘KeyU’: 11
+  'KeyQ': 0, 'Digit2': 1, 'KeyW': 2, 'Digit3': 3, 'KeyE': 4, 'KeyR': 5,
+  'Digit5': 6, 'KeyT': 7, 'Digit6': 8, 'KeyY': 9, 'Digit7': 10, 'KeyU': 11
 };
 
-document.addEventListener(‘keydown’, e => {
-const focusInput = document.activeElement && document.activeElement.tagName === ‘INPUT’;
-const anyModalOpen = document.querySelector(’.modal-backdrop.active’);
+document.addEventListener('keydown', e => {
+  const focusInput = document.activeElement && document.activeElement.tagName === 'INPUT';
+  const anyModalOpen = document.querySelector('.modal-backdrop.active');
 
-// Always-handled keys (regardless of input focus)
-if (e.key === ‘Escape’) {
-if (anyModalOpen) { closeAllModals(); e.preventDefault(); return; }
-if (focusInput) { document.activeElement.blur(); e.preventDefault(); return; }
-if (state.selectedNotes.size > 0) { clearAll(); e.preventDefault(); return; }
-return;
-}
+  // Always-handled keys (regardless of input focus)
+  if (e.key === 'Escape') {
+    if (anyModalOpen) { closeAllModals(); e.preventDefault(); return; }
+    if (focusInput) { document.activeElement.blur(); e.preventDefault(); return; }
+    if (state.selectedNotes.size > 0) { clearAll(); e.preventDefault(); return; }
+    return;
+  }
 
-if (focusInput) return; // when typing chord, don’t intercept
+  if (focusInput) return; // when typing chord, don't intercept
 
-// Shift modifiers — open modals (so single letters can still be piano keys)
-if (e.shiftKey && !e.ctrlKey && !e.metaKey && !e.altKey) {
-if (e.code === ‘KeyB’) { openModal(‘bank’); e.preventDefault(); return; }
-if (e.code === ‘KeyG’) { openModal(‘guide’); e.preventDefault(); return; }
-if (e.code === ‘KeyT’) { openModal(‘theme’); e.preventDefault(); return; }
-if (e.code === ‘KeyK’) { openModal(‘kbd’); e.preventDefault(); return; }
-if (e.code === ‘KeyL’) { openModal(‘library’); e.preventDefault(); return; }
-if (e.code === ‘KeyI’) {
-$(‘btnChordId’).click(); e.preventDefault(); return;
-}
-if (e.code === ‘KeyS’) {
-$(‘btnSave’).click(); e.preventDefault(); return;
-}
-if (e.key === ‘?’)     { openModal(‘help’); e.preventDefault(); return; }
-}
-if (e.key === ‘?’) { openModal(‘help’); e.preventDefault(); return; }
+  // Shift modifiers — open modals (so single letters can still be piano keys)
+  if (e.shiftKey && !e.ctrlKey && !e.metaKey && !e.altKey) {
+    if (e.code === 'KeyB') { openModal('bank'); e.preventDefault(); return; }
+    if (e.code === 'KeyG') { openModal('guide'); e.preventDefault(); return; }
+    if (e.code === 'KeyT') { openModal('theme'); e.preventDefault(); return; }
+    if (e.code === 'KeyK') { openModal('kbd'); e.preventDefault(); return; }
+    if (e.code === 'KeyL') { openModal('library'); e.preventDefault(); return; }
+    if (e.code === 'KeyI') {
+      $('btnChordId').click(); e.preventDefault(); return;
+    }
+    if (e.code === 'KeyS') {
+      $('btnSave').click(); e.preventDefault(); return;
+    }
+    if (e.key === '?')     { openModal('help'); e.preventDefault(); return; }
+  }
+  if (e.key === '?') { openModal('help'); e.preventDefault(); return; }
 
-// Piano keys — toggle illumination + play
-if (!e.repeat && KEY_MAP_LOWER.hasOwnProperty(e.code)) {
-const pcVal = KEY_MAP_LOWER[e.code];
-const midi = (state.startOctave + 1) * 12 + pcVal;
-toggleNote(midi);
-ensureAudioRunning();
-playSingleNote(midi);
-e.preventDefault(); return;
-}
-if (!e.repeat && KEY_MAP_UPPER.hasOwnProperty(e.code)) {
-const pcVal = KEY_MAP_UPPER[e.code];
-const targetOct = state.startOctave + 1;
-const midi = (targetOct + 1) * 12 + pcVal;
-toggleNote(midi);
-ensureAudioRunning();
-playSingleNote(midi);
-e.preventDefault(); return;
-}
+  // Piano keys — toggle illumination + play
+  if (!e.repeat && KEY_MAP_LOWER.hasOwnProperty(e.code)) {
+    const pcVal = KEY_MAP_LOWER[e.code];
+    const midi = (state.startOctave + 1) * 12 + pcVal;
+    toggleNote(midi);
+    ensureAudioRunning();
+    playSingleNote(midi);
+    e.preventDefault(); return;
+  }
+  if (!e.repeat && KEY_MAP_UPPER.hasOwnProperty(e.code)) {
+    const pcVal = KEY_MAP_UPPER[e.code];
+    const targetOct = state.startOctave + 1;
+    const midi = (targetOct + 1) * 12 + pcVal;
+    toggleNote(midi);
+    ensureAudioRunning();
+    playSingleNote(midi);
+    e.preventDefault(); return;
+  }
 
-// Controls
-switch (e.key) {
-case ’ ’:
-if (!e.repeat) {
-if (state.selectedNotes.size > 0) { ensureAudioRunning(); playChord([…state.selectedNotes]); }
-e.preventDefault();
-}
-break;
-case ‘Backspace’: case ‘Delete’:
-clearAll(); e.preventDefault(); break;
-case ‘ArrowLeft’: transposeBy(-1); e.preventDefault(); break;
-case ‘ArrowRight’: transposeBy(+1); e.preventDefault(); break;
-case ‘ArrowUp’: octaveShift(+1); e.preventDefault(); break;
-case ‘ArrowDown’: octaveShift(-1); e.preventDefault(); break;
-case ‘[’:
-if (state.octaves > 1) { state.octaves–; update(); } e.preventDefault(); break;
-case ‘]’:
-if (state.octaves < 5) { state.octaves++; update(); } e.preventDefault(); break;
-case ‘l’: case ‘L’:
-state.showLabels = !state.showLabels; update();
-showToast(state.showLabels ? ‘Labels ON’ : ‘Labels OFF’);
-e.preventDefault(); break;
-case ‘p’: case ‘P’:
-if (state.selectedNotes.size > 0) { ensureAudioRunning(); playChord([…state.selectedNotes]); }
-e.preventDefault(); break;
-case ‘Tab’:
-state.sound = (state.sound === ‘rhodes’) ? ‘lead’ : ‘rhodes’;
-update();
-showToast(’Sound: ’ + (state.sound === ‘rhodes’ ? ‘Rhodes’ : ‘Lead Synth’));
-e.preventDefault(); break;
-case ‘/’:
-chordInputEl.focus(); chordInputEl.select(); e.preventDefault(); break;
-}
+  // Controls
+  switch (e.key) {
+    case ' ':
+      if (!e.repeat) {
+        if (state.selectedNotes.size > 0) { ensureAudioRunning(); playChord([...state.selectedNotes]); }
+        e.preventDefault();
+      }
+      break;
+    case 'Backspace': case 'Delete':
+      clearAll(); e.preventDefault(); break;
+    case 'ArrowLeft': transposeBy(-1); e.preventDefault(); break;
+    case 'ArrowRight': transposeBy(+1); e.preventDefault(); break;
+    case 'ArrowUp': octaveShift(+1); e.preventDefault(); break;
+    case 'ArrowDown': octaveShift(-1); e.preventDefault(); break;
+    case '[':
+      if (state.octaves > 1) { state.octaves--; update(); } e.preventDefault(); break;
+    case ']':
+      if (state.octaves < 5) { state.octaves++; update(); } e.preventDefault(); break;
+    case 'l': case 'L':
+      state.showLabels = !state.showLabels; update();
+      showToast(state.showLabels ? 'Labels ON' : 'Labels OFF');
+      e.preventDefault(); break;
+    case 'p': case 'P':
+      if (state.selectedNotes.size > 0) { ensureAudioRunning(); playChord([...state.selectedNotes]); }
+      e.preventDefault(); break;
+    case 'Tab':
+      state.sound = (state.sound === 'rhodes') ? 'lead' : 'rhodes';
+      update();
+      showToast('Sound: ' + (state.sound === 'rhodes' ? 'Rhodes' : 'Lead Synth'));
+      e.preventDefault(); break;
+    case '/':
+      chordInputEl.focus(); chordInputEl.select(); e.preventDefault(); break;
+  }
 });
 
 // ============================================================
@@ -2593,48 +2570,48 @@ chordInputEl.focus(); chordInputEl.select(); e.preventDefault(); break;
 // ============================================================
 let toastTimer = null;
 function showToast(msg) {
-const t = $(‘toast’);
-t.textContent = msg;
-t.classList.add(‘show’);
-clearTimeout(toastTimer);
-toastTimer = setTimeout(() => t.classList.remove(‘show’), 1600);
+  const t = $('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 1600);
 }
 
 // ============================================================
 // LOCAL STORAGE
 // ============================================================
 function saveLocal() {
-try {
-const data = {
-theme: state.theme, sound: state.sound, octaves: state.octaves,
-startOctave: state.startOctave, showLabels: state.showLabels,
-chordIdMode: state.chordIdMode,
-savedChords: state.savedChords,
-};
-localStorage.setItem(‘uyk_settings’, JSON.stringify(data));
-} catch (e) {}
+  try {
+    const data = {
+      theme: state.theme, sound: state.sound, octaves: state.octaves,
+      startOctave: state.startOctave, showLabels: state.showLabels,
+      chordIdMode: state.chordIdMode,
+      savedChords: state.savedChords,
+    };
+    localStorage.setItem('uyk_settings', JSON.stringify(data));
+  } catch (e) {}
 }
 function loadLocal() {
-try {
-const raw = localStorage.getItem(‘uyk_settings’);
-if (!raw) return;
-const d = JSON.parse(raw);
-if (d.theme) Object.assign(state.theme, d.theme);
-if (d.sound) state.sound = d.sound;
-if (typeof d.octaves === ‘number’) state.octaves = Math.max(1, Math.min(5, d.octaves));
-if (typeof d.startOctave === ‘number’) state.startOctave = Math.max(0, Math.min(7, d.startOctave));
-if (typeof d.showLabels === ‘boolean’) state.showLabels = d.showLabels;
-if (typeof d.chordIdMode === ‘boolean’) state.chordIdMode = d.chordIdMode;
-if (Array.isArray(d.savedChords)) state.savedChords = d.savedChords;
-} catch (e) {}
+  try {
+    const raw = localStorage.getItem('uyk_settings');
+    if (!raw) return;
+    const d = JSON.parse(raw);
+    if (d.theme) Object.assign(state.theme, d.theme);
+    if (d.sound) state.sound = d.sound;
+    if (typeof d.octaves === 'number') state.octaves = Math.max(1, Math.min(5, d.octaves));
+    if (typeof d.startOctave === 'number') state.startOctave = Math.max(0, Math.min(7, d.startOctave));
+    if (typeof d.showLabels === 'boolean') state.showLabels = d.showLabels;
+    if (typeof d.chordIdMode === 'boolean') state.chordIdMode = d.chordIdMode;
+    if (Array.isArray(d.savedChords)) state.savedChords = d.savedChords;
+  } catch (e) {}
 }
 
 // Sync sliders to current theme
 function syncSliders() {
-const t = state.theme;
-$(‘ui-h’).value = t.uH; $(‘ui-s’).value = t.uS; $(‘ui-l’).value = t.uL;
-$(‘w-h’).value = t.wH;  $(‘w-s’).value = t.wS;  $(‘w-l’).value = t.wL;
-$(‘b-h’).value = t.bH;  $(‘b-s’).value = t.bS;  $(‘b-l’).value = t.bL;
+  const t = state.theme;
+  $('ui-h').value = t.uH; $('ui-s').value = t.uS; $('ui-l').value = t.uL;
+  $('w-h').value = t.wH;  $('w-s').value = t.wS;  $('w-l').value = t.wL;
+  $('b-h').value = t.bH;  $('b-s').value = t.bS;  $('b-l').value = t.bL;
 }
 
 // ============================================================
@@ -2650,14 +2627,13 @@ updateGuideRootLabel();
 update();
 
 // Resume audio on first user interaction (browser autoplay policy)
-[‘click’,‘touchstart’,‘keydown’].forEach(ev =>
-document.addEventListener(ev, () => ensureAudioRunning(), { once:true })
+['click','touchstart','keydown'].forEach(ev =>
+  document.addEventListener(ev, () => ensureAudioRunning(), { once:true })
 );
 
 // Orientation change: just trigger a reflow update
-window.addEventListener(‘orientationchange’, () => setTimeout(update, 250));
-window.addEventListener(‘resize’, () => { /* CSS handles layout */ });
+window.addEventListener('orientationchange', () => setTimeout(update, 250));
+window.addEventListener('resize', () => { /* CSS handles layout */ });
 </script>
-
 </body>
 </html>
