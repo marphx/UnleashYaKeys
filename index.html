@@ -2634,6 +2634,112 @@ update();
 // Orientation change: just trigger a reflow update
 window.addEventListener('orientationchange', () => setTimeout(update, 250));
 window.addEventListener('resize', () => { /* CSS handles layout */ });
+
+// ============================================================
+// MIDI CONTROLLER SUPPORT — Bluetooth / USB MIDI
+// Adds hardware MIDI input without changing the existing UI or app controls.
+// ============================================================
+const midiControlState = {
+  access: null,
+  initialized: false,
+  downNotes: new Set(),
+  sustainedNotes: new Set(),
+  sustainOn: false,
+};
+
+function setSelectedFromMidiHeldNotes() {
+  state.selectedNotes = new Set([...midiControlState.downNotes, ...midiControlState.sustainedNotes]);
+  ensureViewContains();
+  update();
+}
+
+function midiNoteOn(noteNumber, velocity) {
+  const midi = Math.max(0, Math.min(127, noteNumber | 0));
+  midiControlState.downNotes.add(midi);
+  midiControlState.sustainedNotes.delete(midi);
+  setSelectedFromMidiHeldNotes();
+  ensureAudioRunning();
+  playSingleNote(midi);
+}
+
+function midiNoteOff(noteNumber) {
+  const midi = Math.max(0, Math.min(127, noteNumber | 0));
+  midiControlState.downNotes.delete(midi);
+  if (midiControlState.sustainOn) {
+    midiControlState.sustainedNotes.add(midi);
+  } else {
+    midiControlState.sustainedNotes.delete(midi);
+  }
+  setSelectedFromMidiHeldNotes();
+}
+
+function midiSustain(value) {
+  midiControlState.sustainOn = value >= 64;
+  if (!midiControlState.sustainOn) {
+    midiControlState.sustainedNotes.clear();
+    setSelectedFromMidiHeldNotes();
+  }
+}
+
+function midiAllNotesOff() {
+  midiControlState.downNotes.clear();
+  midiControlState.sustainedNotes.clear();
+  midiControlState.sustainOn = false;
+  setSelectedFromMidiHeldNotes();
+}
+
+function handleMidiInputMessage(event) {
+  const data = event.data;
+  if (!data || data.length < 2) return;
+
+  const command = data[0] & 0xF0;
+  const note = data[1];
+  const value = data.length > 2 ? data[2] : 0;
+
+  // Note On with velocity 0 is treated as Note Off by many MIDI devices.
+  if (command === 0x90 && value > 0) {
+    midiNoteOn(note, value);
+  } else if (command === 0x80 || (command === 0x90 && value === 0)) {
+    midiNoteOff(note);
+  } else if (command === 0xB0) {
+    // Sustain pedal and common panic/all-notes-off messages.
+    if (note === 64) midiSustain(value);
+    if (note === 120 || note === 123) midiAllNotesOff();
+  }
+}
+
+function attachMidiInputs() {
+  if (!midiControlState.access) return;
+  midiControlState.access.inputs.forEach(input => {
+    input.onmidimessage = handleMidiInputMessage;
+  });
+}
+
+function initMidiControllerSupport() {
+  if (midiControlState.initialized) return;
+  midiControlState.initialized = true;
+
+  if (!navigator.requestMIDIAccess) {
+    console.warn('Web MIDI is not supported in this browser.');
+    return;
+  }
+
+  navigator.requestMIDIAccess({ sysex:false }).then(access => {
+    midiControlState.access = access;
+    attachMidiInputs();
+    access.onstatechange = () => attachMidiInputs();
+    const count = access.inputs ? access.inputs.size : 0;
+    if (count > 0) showToast('MIDI controller ready');
+    else console.info('Web MIDI is ready. Connect or pair a MIDI controller, then reload if needed.');
+  }).catch(err => {
+    console.warn('MIDI access was not granted or is unavailable:', err);
+  });
+}
+
+['click','touchstart','keydown'].forEach(ev =>
+  document.addEventListener(ev, initMidiControllerSupport, { once:true })
+);
+
 </script>
 </body>
 </html>
