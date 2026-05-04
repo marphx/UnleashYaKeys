@@ -1,0 +1,2663 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#000000">
+<meta name="mobile-web-app-capable" content="yes">
+<title>UnleashYaKeys</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=VT323&display=swap" rel="stylesheet">
+<style>
+:root{
+  --hue-ui:168; --sat-ui:78%; --light-ui:56%;
+  --hue-wkey:0; --sat-wkey:0%; --light-wkey:96%;
+  --hue-bkey:0; --sat-bkey:0%; --light-bkey:9%;
+  --neon:hsl(var(--hue-ui),var(--sat-ui),var(--light-ui));
+  --neon-bright:hsl(var(--hue-ui),var(--sat-ui),72%);
+  --neon-dim:hsl(var(--hue-ui),50%,28%);
+  --neon-vdim:hsl(var(--hue-ui),35%,16%);
+  --neon-glow:hsla(var(--hue-ui),var(--sat-ui),var(--light-ui),0.55);
+  --neon-glow-soft:hsla(var(--hue-ui),var(--sat-ui),var(--light-ui),0.18);
+  --neon-bg:hsla(var(--hue-ui),60%,30%,0.07);
+  --white-key:hsl(var(--hue-wkey),var(--sat-wkey),var(--light-wkey));
+  --white-key-shade:hsl(var(--hue-wkey),var(--sat-wkey),calc(var(--light-wkey) - 8%));
+  --black-key:hsl(var(--hue-bkey),var(--sat-bkey),var(--light-bkey));
+  --black-key-shade:hsl(var(--hue-bkey),var(--sat-bkey),calc(var(--light-bkey) + 6%));
+  --bg:#000; --bg-2:#050807;
+  --text-dim:hsl(var(--hue-ui),22%,42%);
+  --safe-top:env(safe-area-inset-top,0px);
+  --safe-bottom:env(safe-area-inset-bottom,0px);
+  --safe-left:env(safe-area-inset-left,0px);
+  --safe-right:env(safe-area-inset-right,0px);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+*::selection{background:var(--neon-glow);color:#000}
+html,body{height:100%;width:100%;overflow:hidden;background:#000;color:var(--neon);font-family:'Space Mono',ui-monospace,monospace;-webkit-font-smoothing:antialiased;touch-action:manipulation}
+body{position:fixed;inset:0;background:radial-gradient(circle at 50% -10%,hsla(var(--hue-ui),80%,50%,0.08),transparent 55%),radial-gradient(circle at 50% 110%,hsla(var(--hue-ui),80%,50%,0.06),transparent 55%),#000;background-attachment:fixed}
+body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent 0,transparent 2px,hsla(var(--hue-ui),80%,50%,0.022) 2px,hsla(var(--hue-ui),80%,50%,0.022) 3px);pointer-events:none;z-index:9998;mix-blend-mode:screen}
+body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at center,transparent 50%,rgba(0,0,0,0.55) 100%);pointer-events:none;z-index:9997}
+
+/* HOME */
+.home{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;z-index:50;padding:1.5em;padding-top:calc(1.5em + var(–safe-top));padding-bottom:calc(1.5em + var(–safe-bottom));transition:opacity .7s cubic-bezier(.6,.05,.3,1),transform .7s cubic-bezier(.6,.05,.3,1)}
+.home.hidden{opacity:0;pointer-events:none;transform:scale(.96)}
+.home-frame{width:min(560px,100%);border:1px solid var(–neon-dim);padding:3em 1.5em;position:relative;background:linear-gradient(180deg,hsla(var(–hue-ui),60%,8%,.4),transparent 40%,hsla(var(–hue-ui),60%,8%,.4)),rgba(0,0,0,.4);box-shadow:0 0 0 1px var(–neon-vdim) inset,0 0 60px hsla(var(–hue-ui),80%,50%,.08)}
+.home-frame::before,.home-frame::after{content:’’;position:absolute;width:16px;height:16px;border:1px solid var(–neon)}
+.home-frame::before{top:-1px;left:-1px;border-right:none;border-bottom:none}
+.home-frame::after{bottom:-1px;right:-1px;border-left:none;border-top:none}
+.home-prelude{font-family:‘VT323’,monospace;font-size:clamp(.85rem,2.6vw,1.05rem);letter-spacing:.4em;color:var(–text-dim);margin-bottom:1.4em;text-transform:uppercase}
+.home-title{font-family:‘Orbitron’,sans-serif;font-weight:900;font-size:clamp(2rem,9vw,3.8rem);letter-spacing:.04em;color:var(–neon);text-shadow:0 0 6px var(–neon-glow),0 0 20px var(–neon-glow),0 0 44px var(–neon-bg);line-height:1;margin-bottom:.4em;animation:flick 4.5s infinite}
+@keyframes flick{0%,22%,24%,26%,100%{opacity:1}23%,25%{opacity:.85}72%{opacity:1}73%{opacity:.92}}
+.home-tagline{font-size:clamp(.65rem,2.3vw,.85rem);color:var(–text-dim);letter-spacing:.32em;text-transform:uppercase;margin-bottom:2.6em}
+.home-divider{width:60%;max-width:200px;height:1px;background:linear-gradient(90deg,transparent,var(–neon-dim),transparent);margin:0 auto 2.6em}
+.launch-btn{font-family:‘Orbitron’,sans-serif;background:transparent;border:1px solid var(–neon);color:var(–neon);padding:1.1em 3em;font-size:clamp(.85rem,3vw,1.1rem);letter-spacing:.3em;text-transform:uppercase;cursor:pointer;font-weight:700;transition:all .3s ease;box-shadow:0 0 18px var(–neon-glow),inset 0 0 18px hsla(var(–hue-ui),80%,50%,.07)}
+.launch-btn:hover,.launch-btn:active{background:var(–neon-bg);box-shadow:0 0 36px var(–neon-glow),inset 0 0 36px hsla(var(–hue-ui),80%,50%,.15);letter-spacing:.36em}
+.home-credit{position:absolute;bottom:calc(1em + var(–safe-bottom));left:0;right:0;text-align:center;font-size:clamp(.6rem,2vw,.7rem);color:var(–text-dim);font-style:italic;letter-spacing:.15em;padding:0 1em}
+
+/* APP */
+.app{position:fixed;inset:0;display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .6s ease .1s;padding-top:var(–safe-top);padding-bottom:var(–safe-bottom);padding-left:var(–safe-left);padding-right:var(–safe-right)}
+.app.active{opacity:1;pointer-events:auto}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:.5em .75em;border-bottom:1px solid var(–neon-vdim);background:rgba(0,0,0,.7);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);flex-wrap:wrap;gap:.4em;flex-shrink:0}
+.brand{font-family:‘Orbitron’,sans-serif;font-weight:700;color:var(–neon);font-size:.85rem;letter-spacing:.18em;text-shadow:0 0 8px var(–neon-glow);white-space:nowrap}
+.brand::before{content:‘◆’;margin-right:.5em;font-size:.7em;color:var(–neon-bright)}
+.topbar-actions{display:flex;gap:.3em;flex-wrap:wrap}
+.icon-btn{background:rgba(0,0,0,.4);border:1px solid var(–neon-dim);color:var(–neon);padding:.45em .7em;font-family:‘Space Mono’,monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all .18s ease;white-space:nowrap;font-weight:700;line-height:1}
+.icon-btn:hover{border-color:var(–neon);box-shadow:0 0 8px var(–neon-glow)}
+.icon-btn:active{background:var(–neon-bg);transform:scale(.97)}
+.icon-btn.toggle-on{background:var(–neon-bg);border-color:var(–neon);box-shadow:0 0 10px var(–neon-glow);color:var(–neon-bright)}
+.icon-btn.primary{color:var(–neon-bright);border-color:var(–neon);box-shadow:0 0 8px var(–neon-glow)}
+.icon-btn.kbd-btn{padding:.45em .55em;font-size:.95rem}
+
+.piano-area{flex:1;display:flex;flex-direction:column;justify-content:center;padding:.4em .5em;min-height:0;gap:.3em;overflow:hidden}
+.piano-display{font-family:‘Orbitron’,monospace;font-size:clamp(.75rem,2.5vw,1rem);text-align:center;color:var(–neon);letter-spacing:.12em;text-shadow:0 0 8px var(–neon-glow);min-height:1.4em;padding:0 .5em}
+.piano-display .display-sub{font-size:.65em;color:var(–text-dim);letter-spacing:.2em;margin-left:.6em}
+.piano-display .display-empty{color:var(–text-dim);text-shadow:none;font-style:italic;letter-spacing:.18em;font-size:.85em}
+
+.piano{width:100%;height:clamp(110px,26vh,240px);display:flex;background:var(–bg-2);border:1px solid var(–neon);border-radius:3px;overflow:hidden;user-select:none;-webkit-user-select:none;position:relative;box-shadow:0 0 20px var(–neon-glow-soft),inset 0 0 24px rgba(0,0,0,.6);flex-shrink:0}
+@media (orientation:landscape){.piano{height:clamp(140px,48vh,320px)}}
+@media (orientation:portrait) and (min-height:700px){.piano{height:clamp(140px,30vh,280px)}}
+.octave{flex:1;display:flex;position:relative;min-width:0}
+.white-key{flex:1;background:linear-gradient(180deg,var(–white-key) 0%,var(–white-key-shade) 100%);border-right:1px solid var(–neon);position:relative;cursor:pointer;transition:filter .12s ease,box-shadow .12s ease;display:flex;align-items:flex-end;justify-content:center;padding-bottom:.4em;font-family:‘Space Mono’,monospace;font-size:.55rem;color:var(–neon-dim);letter-spacing:.05em}
+.octave:last-child .white-key:last-child{border-right:none}
+.white-key.active{background:linear-gradient(180deg,var(–neon) 0%,var(–neon-dim) 100%);box-shadow:inset 0 0 24px hsla(var(–hue-ui),80%,90%,.4),inset 0 0 48px hsla(var(–hue-ui),80%,50%,.6),0 0 18px var(–neon-glow);color:#000}
+.white-key.active .key-label{color:#000;font-weight:700}
+.black-key{position:absolute;top:0;width:8.571%;height:60%;background:linear-gradient(180deg,var(–black-key-shade) 0%,var(–black-key) 60%,var(–black-key-shade) 100%);border:1px solid var(–neon);cursor:pointer;transition:filter .12s ease,box-shadow .12s ease;z-index:2;border-radius:0 0 2px 2px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:.3em;font-family:‘Space Mono’,monospace;font-size:.5rem;color:var(–neon-bright);letter-spacing:.05em;box-shadow:inset 0 -3px 0 rgba(0,0,0,.4)}
+.black-key.active{background:linear-gradient(180deg,var(–neon-bright) 0%,var(–neon) 70%,var(–neon-dim) 100%);box-shadow:inset 0 0 12px hsla(var(–hue-ui),80%,90%,.5),0 0 18px var(–neon-glow),inset 0 -3px 0 rgba(0,0,0,.3);color:#000}
+.black-key.active .key-label{color:#000;font-weight:700}
+.black-key[data-pc=“1”]{left:10%}
+.black-key[data-pc=“3”]{left:24.286%}
+.black-key[data-pc=“6”]{left:52.857%}
+.black-key[data-pc=“8”]{left:67.143%}
+.black-key[data-pc=“10”]{left:81.429%}
+.key-label{pointer-events:none;font-size:inherit;transition:opacity .15s ease}
+.piano:not(.show-labels) .key-label{opacity:0}
+.piano.show-labels .key-label{opacity:1}
+.piano.show-active-labels:not(.show-labels) .white-key.active .key-label,
+.piano.show-active-labels:not(.show-labels) .black-key.active .key-label{opacity:1}
+
+/* Controls */
+.controls{display:grid;grid-template-columns:1fr;gap:.4em;padding:.5em .75em;border-top:1px solid var(–neon-vdim);background:rgba(0,0,0,.5);flex-shrink:0}
+@media (min-width:560px){.controls{grid-template-columns:2.2fr 1fr 1fr 1fr}}
+@media (orientation:landscape) and (max-height:520px){.controls{grid-template-columns:2.2fr 1fr 1fr 1fr;gap:.3em;padding:.35em .5em}}
+.control-group{display:flex;flex-direction:column;gap:.2em;align-items:center}
+.control-label{font-family:‘VT323’,monospace;letter-spacing:.25em;font-size:.7rem;color:var(–text-dim);text-transform:uppercase}
+.control-row{display:flex;gap:.3em;align-items:center}
+.control-row .icon-btn{width:2em;height:2em;padding:0;font-size:1rem;display:flex;align-items:center;justify-content:center}
+.indicator{display:inline-flex;align-items:center;justify-content:center;background:rgba(0,0,0,.6);border:1px solid var(–neon-dim);color:var(–neon);padding:.3em .5em;font-family:‘Orbitron’,monospace;font-size:.8rem;border-radius:2px;min-width:2.5em;text-align:center;font-weight:700;text-shadow:0 0 4px var(–neon-glow);cursor:pointer}
+.indicator:hover{border-color:var(–neon);box-shadow:0 0 6px var(–neon-glow)}
+
+.chord-input-group{display:flex;flex-direction:column;grid-column:1/-1;gap:.3em}
+@media (min-width:560px){.chord-input-group{grid-column:1/2}}
+.chord-input-row{display:flex;gap:.3em}
+.chord-input{flex:1;background:rgba(0,0,0,.6);border:1px solid var(–neon-dim);color:var(–neon);padding:.6em .8em;font-family:‘Orbitron’,monospace;font-size:.95rem;letter-spacing:.04em;border-radius:2px;outline:none;transition:all .2s ease;min-width:0}
+.chord-input:focus{border-color:var(–neon);box-shadow:0 0 12px var(–neon-glow),inset 0 0 8px var(–neon-glow-soft)}
+.chord-input::placeholder{color:var(–text-dim);font-family:‘Space Mono’,monospace;font-size:.85em;letter-spacing:.02em}
+.chord-input.error{border-color:hsl(0,70%,55%);color:hsl(0,70%,70%);box-shadow:0 0 12px hsla(0,70%,55%,.4);animation:shake .3s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-3px)}75%{transform:translateX(3px)}}
+
+/* Play row */
+.play-row{display:flex;gap:.3em;align-items:center;justify-content:center;flex-wrap:wrap}
+.play-btn{background:var(–neon-bg);border:1px solid var(–neon);color:var(–neon-bright);padding:.45em .9em;font-family:‘Orbitron’,monospace;font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all .18s ease;font-weight:700;box-shadow:0 0 12px var(–neon-glow);display:flex;align-items:center;gap:.4em}
+.play-btn:hover{box-shadow:0 0 18px var(–neon-glow);background:hsla(var(–hue-ui),60%,30%,.15)}
+.play-btn:active{transform:scale(.96)}
+.play-btn.playing{animation:playPulse 1s infinite}
+@keyframes playPulse{0%,100%{box-shadow:0 0 12px var(–neon-glow)}50%{box-shadow:0 0 22px var(–neon-glow),0 0 40px var(–neon-glow-soft)}}
+.play-btn .triangle{width:0;height:0;border-left:7px solid currentColor;border-top:5px solid transparent;border-bottom:5px solid transparent}
+.sound-toggle{display:flex;border:1px solid var(–neon-dim);border-radius:2px;overflow:hidden}
+.sound-toggle .icon-btn{border:none;border-radius:0;padding:.45em .6em;font-size:.65rem}
+.sound-toggle .icon-btn:not(:last-child){border-right:1px solid var(–neon-vdim)}
+
+/* Credit */
+.credit{font-size:.62rem;text-align:center;padding:.4em .5em;color:var(–text-dim);letter-spacing:.13em;font-style:italic;border-top:1px solid var(–neon-vdim);flex-shrink:0;background:rgba(0,0,0,.5)}
+
+/* MODALS */
+.modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:200;opacity:0;pointer-events:none;transition:opacity .3s ease;display:flex;align-items:center;justify-content:center;padding:calc(1em + var(–safe-top)) calc(1em + var(–safe-right)) calc(1em + var(–safe-bottom)) calc(1em + var(–safe-left))}
+.modal-backdrop.active{opacity:1;pointer-events:auto}
+.modal{background:var(–bg);border:1px solid var(–neon);border-radius:3px;max-width:780px;width:100%;max-height:100%;display:flex;flex-direction:column;box-shadow:0 0 60px var(–neon-glow),inset 0 0 0 1px var(–neon-vdim);overflow:hidden;transform:scale(.96) translateY(8px);transition:transform .3s cubic-bezier(.5,.05,.3,1)}
+.modal-backdrop.active .modal{transform:scale(1) translateY(0)}
+.modal-header{display:flex;align-items:center;justify-content:space-between;padding:.7em 1em;border-bottom:1px solid var(–neon-dim);background:linear-gradient(180deg,var(–neon-bg),transparent);flex-shrink:0;gap:.5em}
+.modal-title{font-family:‘Orbitron’,sans-serif;font-weight:700;letter-spacing:.18em;color:var(–neon);font-size:.85rem;text-transform:uppercase;text-shadow:0 0 6px var(–neon-glow)}
+.modal-title::before{content:’▸ ’;color:var(–neon-bright)}
+.modal-close{background:transparent;border:1px solid var(–neon-dim);color:var(–neon);width:1.8em;height:1.8em;font-size:.95rem;cursor:pointer;border-radius:50%;transition:all .2s ease;display:flex;align-items:center;justify-content:center;font-family:inherit;flex-shrink:0}
+.modal-close:hover{border-color:var(–neon);box-shadow:0 0 8px var(–neon-glow);transform:rotate(90deg)}
+.modal-body{flex:1;overflow-y:auto;padding:.8em 1em;-webkit-overflow-scrolling:touch}
+.modal-body::-webkit-scrollbar{width:6px}
+.modal-body::-webkit-scrollbar-track{background:rgba(0,0,0,.3)}
+.modal-body::-webkit-scrollbar-thumb{background:var(–neon-dim);border-radius:3px}
+.modal-body::-webkit-scrollbar-thumb:hover{background:var(–neon)}
+
+/* Sliders */
+.slider-section{border:1px solid var(–neon-dim);border-radius:3px;padding:.8em;margin-bottom:.8em;background:rgba(0,0,0,.3)}
+.slider-section h4{font-family:‘Orbitron’,sans-serif;color:var(–neon);font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.6em;display:flex;align-items:center;gap:.5em}
+.color-preview{display:inline-block;width:1em;height:1em;border-radius:50%;border:1px solid var(–neon-dim);box-shadow:0 0 8px currentColor}
+.slider-row{display:flex;align-items:center;gap:.6em;margin-bottom:.4em}
+.slider-row label{width:3em;color:var(–text-dim);font-family:‘VT323’,monospace;font-size:.95rem;letter-spacing:.1em;flex-shrink:0;text-transform:uppercase}
+.slider-row input[type=“range”]{flex:1;-webkit-appearance:none;appearance:none;background:transparent;cursor:pointer;height:22px;min-width:0}
+.slider-row input[type=“range”].hue::-webkit-slider-runnable-track{background:linear-gradient(90deg,hsl(0,90%,55%),hsl(60,90%,55%),hsl(120,90%,55%),hsl(180,90%,55%),hsl(240,90%,55%),hsl(300,90%,55%),hsl(360,90%,55%));height:6px;border-radius:3px;border:1px solid var(–neon-vdim)}
+.slider-row input[type=“range”].hue::-moz-range-track{background:linear-gradient(90deg,hsl(0,90%,55%),hsl(60,90%,55%),hsl(120,90%,55%),hsl(180,90%,55%),hsl(240,90%,55%),hsl(300,90%,55%),hsl(360,90%,55%));height:6px;border-radius:3px;border:1px solid var(–neon-vdim)}
+.slider-row input[type=“range”].sat::-webkit-slider-runnable-track,.slider-row input[type=“range”].light::-webkit-slider-runnable-track{background:linear-gradient(90deg,#222,var(–neon));height:6px;border-radius:3px;border:1px solid var(–neon-vdim)}
+.slider-row input[type=“range”].sat::-moz-range-track,.slider-row input[type=“range”].light::-moz-range-track{background:linear-gradient(90deg,#222,var(–neon));height:6px;border-radius:3px;border:1px solid var(–neon-vdim)}
+.slider-row input[type=“range”]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;background:var(–neon);border:2px solid #fff;border-radius:50%;margin-top:-7px;box-shadow:0 0 8px var(–neon-glow);cursor:pointer}
+.slider-row input[type=“range”]::-moz-range-thumb{width:18px;height:18px;background:var(–neon);border:2px solid #fff;border-radius:50%;box-shadow:0 0 8px var(–neon-glow);cursor:pointer}
+.slider-row .value{width:2.6em;font-family:‘Orbitron’,monospace;font-size:.7rem;text-align:right;color:var(–neon);flex-shrink:0}
+
+.preset-row{display:flex;gap:.4em;flex-wrap:wrap;margin-top:.6em}
+.preset-btn{background:transparent;border:1px solid var(–neon-dim);color:var(–neon);padding:.45em .8em;font-size:.7rem;letter-spacing:.1em;cursor:pointer;border-radius:2px;font-family:‘Space Mono’,monospace;text-transform:uppercase;font-weight:700}
+.preset-btn:hover{border-color:var(–neon);box-shadow:0 0 8px var(–neon-glow)}
+.preset-btn .swatch{display:inline-block;width:.6em;height:.6em;border-radius:50%;margin-right:.4em;vertical-align:middle;border:1px solid rgba(255,255,255,.3)}
+
+/* Collapsible */
+.collapse{border:1px solid var(–neon-dim);border-radius:3px;margin-bottom:.5em;overflow:hidden}
+.collapse-header{background:var(–neon-bg);padding:.6em .8em;cursor:pointer;display:flex;align-items:center;justify-content:space-between;font-family:‘Orbitron’,sans-serif;font-size:.72rem;letter-spacing:.12em;color:var(–neon);text-transform:uppercase;user-select:none}
+.collapse-header:hover{background:hsla(var(–hue-ui),60%,30%,.15)}
+.collapse-arrow{transition:transform .2s ease;display:inline-block;font-size:.8em;color:var(–neon-bright)}
+.collapse.open .collapse-arrow{transform:rotate(90deg)}
+.collapse-body{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.collapse.open .collapse-body{max-height:80vh;overflow:auto}
+.collapse-content{padding:.8em;font-size:.8rem;line-height:1.7}
+.collapse-content code,.kbd{background:hsla(var(–hue-ui),60%,30%,.18);padding:.1em .45em;border-radius:2px;color:var(–neon-bright);font-size:.85em;font-family:‘Space Mono’,monospace;border:1px solid var(–neon-vdim)}
+.kbd{font-weight:700;min-width:1.5em;text-align:center;display:inline-block}
+.collapse-content p{margin-bottom:.6em}
+.collapse-content h5{font-family:‘Orbitron’,sans-serif;color:var(–neon);font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;margin:.8em 0 .3em}
+.collapse-content ul{list-style:none;padding-left:0}
+.collapse-content li{padding:.2em 0;border-bottom:1px dashed var(–neon-vdim)}
+.collapse-content li:last-child{border:none}
+
+/* Note nav */
+.note-nav{display:flex;flex-wrap:wrap;gap:.25em;padding:.4em;background:rgba(0,0,0,.4);border:1px solid var(–neon-dim);border-radius:3px}
+.note-nav-btn{flex:1;min-width:2.6em;background:transparent;border:1px solid var(–neon-vdim);color:var(–neon);padding:.45em .3em;font-family:‘Orbitron’,monospace;font-size:.78rem;font-weight:700;cursor:pointer;border-radius:2px;letter-spacing:.04em;transition:all .15s ease}
+.note-nav-btn:hover{border-color:var(–neon);background:var(–neon-bg);box-shadow:0 0 8px var(–neon-glow)}
+.note-nav-btn.active{background:var(–neon);color:#000;border-color:var(–neon);box-shadow:0 0 12px var(–neon-glow)}
+
+/* Chord library */
+.cat-section{margin-bottom:1em}
+.cat-title{font-family:‘Orbitron’,sans-serif;font-size:.7rem;color:var(–neon);letter-spacing:.18em;text-transform:uppercase;padding:.5em .2em;border-bottom:1px solid var(–neon-dim);margin-bottom:.4em;text-shadow:0 0 6px var(–neon-glow);position:sticky;top:0;background:var(–bg);z-index:1}
+.cat-title::before{content:’░ ’;color:var(–neon-bright)}
+.chord-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(108px,1fr));gap:.3em}
+.chord-item{background:rgba(0,0,0,.3);border:1px solid var(–neon-dim);color:var(–neon);padding:.55em .4em;text-align:center;cursor:pointer;border-radius:2px;font-family:‘Orbitron’,sans-serif;font-size:.75rem;letter-spacing:.02em;transition:all .15s ease;font-weight:500;line-height:1.3}
+.chord-item:hover{border-color:var(–neon);background:var(–neon-bg);box-shadow:0 0 8px var(–neon-glow)}
+.chord-item.active{background:var(–neon);color:#000;border-color:var(–neon-bright);box-shadow:0 0 14px var(–neon-glow);text-shadow:none}
+.chord-item .desc{display:block;font-size:.6rem;color:var(–text-dim);font-family:‘Space Mono’,monospace;letter-spacing:.05em;margin-top:.15em;font-weight:400}
+.chord-item.active .desc{color:rgba(0,0,0,.7)}
+
+/* Mini piano in guide */
+.mini-piano-wrap{position:sticky;top:0;background:var(–bg);z-index:5;padding:.4em 0 .6em;border-bottom:1px solid var(–neon-vdim);margin:-.8em -1em .6em;padding-left:1em;padding-right:1em}
+.mini-piano{width:100%;height:90px;display:flex;background:var(–bg-2);border:1px solid var(–neon);border-radius:3px;overflow:hidden;user-select:none;-webkit-user-select:none;position:relative;box-shadow:0 0 12px var(–neon-glow-soft)}
+.guide-bar{display:flex;gap:.3em;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:.5em}
+.guide-bar .indicator{font-size:.75rem;min-width:5em}
+.guide-display{text-align:center;font-family:‘Orbitron’,monospace;color:var(–neon);font-size:.85rem;letter-spacing:.1em;margin-top:.4em;text-shadow:0 0 6px var(–neon-glow);min-height:1.3em}
+
+/* Tabs */
+.tabs{display:flex;gap:.25em;padding:.3em 0;border-bottom:1px solid var(–neon-dim);margin-bottom:.6em;flex-wrap:wrap;position:sticky;top:0;background:var(–bg);z-index:3}
+.tab{background:transparent;border:1px solid var(–neon-vdim);color:var(–text-dim);padding:.4em .7em;font-size:.7rem;cursor:pointer;border-radius:2px;font-family:‘Space Mono’,monospace;letter-spacing:.06em;font-weight:700;text-transform:uppercase}
+.tab.active{color:var(–neon-bright);border-color:var(–neon);background:var(–neon-bg);box-shadow:0 0 6px var(–neon-glow)}
+.tab:hover:not(.active){color:var(–neon);border-color:var(–neon-dim)}
+
+/* Toast */
+.toast{position:fixed;bottom:calc(2em + var(–safe-bottom));left:50%;transform:translateX(-50%) translateY(20px);background:var(–bg);border:1px solid var(–neon);color:var(–neon);padding:.6em 1.2em;font-family:‘Orbitron’,monospace;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;border-radius:2px;box-shadow:0 0 18px var(–neon-glow);z-index:300;opacity:0;pointer-events:none;transition:all .25s ease;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* keyboard help table */
+.kbd-table{width:100%;border-collapse:collapse;font-size:.78rem;margin-top:.4em}
+.kbd-table td{padding:.4em .6em;border-bottom:1px solid var(–neon-vdim);vertical-align:top}
+.kbd-table td:first-child{width:40%;color:var(–neon-bright)}
+.kbd-table td:last-child{color:var(–text-dim)}
+.kbd-row{display:flex;gap:.25em;flex-wrap:wrap;align-items:center}
+
+/* Disabled state for octave buttons when at limit */
+.icon-btn:disabled{opacity:.3;cursor:not-allowed}
+.icon-btn:disabled:hover{box-shadow:none;border-color:var(–neon-dim)}
+
+/* Chord ID mode indicator badge on body */
+.app.id-mode .id-status{display:inline-flex}
+.id-status{display:none;align-items:center;gap:.4em;background:hsla(var(–hue-ui),60%,30%,.18);border:1px solid var(–neon);padding:.2em .55em;border-radius:2px;font-family:‘Orbitron’,monospace;font-size:.6rem;letter-spacing:.18em;color:var(–neon-bright);text-transform:uppercase;animation:idPulse 2s infinite;text-shadow:0 0 6px var(–neon-glow)}
+.id-status::before{content:‘●’;color:var(–neon-bright);font-size:.5em}
+@keyframes idPulse{0%,100%{box-shadow:0 0 4px var(–neon-glow-soft)}50%{box-shadow:0 0 12px var(–neon-glow)}}
+
+/* Analysis panel — always visible, lives between display & piano */
+.analysis-panel{display:grid;grid-template-columns:1fr;gap:.15em;padding:.4em .7em;background:rgba(0,0,0,.5);border:1px solid var(–neon-vdim);border-radius:3px;font-family:‘Space Mono’,monospace;flex-shrink:0;min-height:3em;position:relative;overflow:hidden}
+.app.id-mode .analysis-panel{border-color:var(–neon);box-shadow:inset 0 0 14px hsla(var(–hue-ui),60%,30%,.15)}
+.analysis-line{display:flex;align-items:center;gap:.5em;font-size:.74rem;line-height:1.35;min-height:1em}
+.analysis-line.empty{color:var(–text-dim);font-style:italic;letter-spacing:.06em}
+.analysis-tag{display:inline-block;font-family:‘VT323’,monospace;font-size:.85rem;letter-spacing:.18em;color:var(–text-dim);text-transform:uppercase;min-width:5em;flex-shrink:0}
+.analysis-val{color:var(–neon);font-family:‘Orbitron’,monospace;letter-spacing:.04em;font-weight:700;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.analysis-val.large{font-size:1.05rem;text-shadow:0 0 8px var(–neon-glow);font-weight:900}
+.analysis-val .alt{color:var(–text-dim);font-weight:400;margin-left:.5em;font-size:.85em;letter-spacing:.05em}
+.analysis-val .id-real{color:var(–neon-bright);text-shadow:0 0 10px var(–neon-glow)}
+.analysis-val .id-arrow{color:var(–text-dim);margin:0 .35em}
+.analysis-val .id-played{color:var(–text-dim)}
+.analysis-mini{display:flex;flex-wrap:wrap;gap:.25em;margin-top:.1em}
+.analysis-mini .pill{display:inline-block;padding:.1em .45em;background:hsla(var(–hue-ui),60%,30%,.12);border:1px solid var(–neon-vdim);border-radius:2px;font-size:.68rem;color:var(–neon);letter-spacing:.05em;font-family:‘Space Mono’,monospace}
+.analysis-mini .pill.bass{border-color:var(–neon);color:var(–neon-bright)}
+
+/* Save toolbar */
+.save-toolbar{display:flex;gap:.3em;align-items:center;flex-wrap:wrap;justify-content:center}
+.save-toolbar .icon-btn{padding:.45em .7em;font-size:.68rem}
+.save-toolbar .icon-btn.id-toggle.toggle-on{background:var(–neon-bg);border-color:var(–neon);color:var(–neon-bright);box-shadow:0 0 14px var(–neon-glow)}
+
+/* Sticky bank nav */
+.bank-nav-wrap{position:sticky;top:-.8em;background:var(–bg);z-index:20;padding:.5em 0 .4em;margin:-.8em -1em .5em;padding-left:1em;padding-right:1em;border-bottom:1px solid var(–neon-vdim);box-shadow:0 4px 8px rgba(0,0,0,.6)}
+.bank-nav-wrap .label{font-family:‘VT323’,monospace;font-size:.8rem;letter-spacing:.18em;color:var(–text-dim);margin-bottom:.3em;text-transform:uppercase}
+#bankList .cat-section .cat-title{position:static}
+
+/* Library modal */
+.lib-empty{text-align:center;padding:2em 1em;color:var(–text-dim);font-style:italic;letter-spacing:.06em;font-size:.85rem}
+.lib-toolbar{display:flex;gap:.4em;flex-wrap:wrap;align-items:center;margin-bottom:.7em;padding-bottom:.6em;border-bottom:1px solid var(–neon-vdim);position:sticky;top:0;background:var(–bg);z-index:5;padding-top:.2em}
+.lib-toolbar .count-badge{font-family:‘Orbitron’,monospace;font-size:.72rem;color:var(–neon);letter-spacing:.15em;margin-right:auto}
+.lib-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.6em}
+.lib-card{background:rgba(0,0,0,.45);border:1px solid var(–neon-dim);border-radius:3px;padding:.6em;display:flex;flex-direction:column;gap:.4em;transition:all .2s ease;cursor:pointer}
+.lib-card:hover{border-color:var(–neon);box-shadow:0 0 12px var(–neon-glow);transform:translateY(-2px)}
+.lib-card-name{font-family:‘Orbitron’,sans-serif;font-size:.95rem;color:var(–neon);font-weight:700;letter-spacing:.04em;word-break:break-word;text-shadow:0 0 6px var(–neon-glow)}
+.lib-card-name input{background:transparent;border:none;color:var(–neon);font-family:inherit;font-weight:inherit;font-size:inherit;width:100%;padding:.2em .3em;border-bottom:1px solid var(–neon-dim);outline:none}
+.lib-card-name input:focus{border-color:var(–neon);background:rgba(0,0,0,.4)}
+.lib-card-notes{font-family:‘Space Mono’,monospace;font-size:.7rem;color:var(–text-dim);letter-spacing:.05em;line-height:1.4}
+.lib-piano{width:100%;height:64px;display:block;border:1px solid var(–neon-vdim);border-radius:2px;background:var(–bg-2)}
+.lib-card-actions{display:flex;gap:.3em;margin-top:.2em}
+.lib-card-actions .icon-btn{flex:1;padding:.4em .3em;font-size:.62rem}
+.lib-card-meta{font-size:.6rem;color:var(–text-dim);letter-spacing:.06em;font-family:‘Space Mono’,monospace;font-style:italic}
+.lib-empty-icon{font-size:2.4rem;color:var(–neon-vdim);margin-bottom:.4em;display:block}
+.lib-toast{position:absolute;top:.5em;left:50%;transform:translateX(-50%);font-size:.7rem;color:var(–neon-bright);background:var(–bg);padding:.3em .8em;border:1px solid var(–neon);border-radius:2px;opacity:0;pointer-events:none;transition:opacity .3s}
+.lib-toast.show{opacity:1}
+</style>
+
+</head>
+<body>
+
+<!-- HOME -->
+
+<div class="home" id="home">
+  <div class="home-frame">
+    <div class="home-prelude">// Cheat Tool ‹ for Complex Chords ›</div>
+    <h1 class="home-title">UnleashYa<br>Keys</h1>
+    <div class="home-tagline">Jazz · Neo-Soul · R&amp;B · Beyond</div>
+    <div class="home-divider"></div>
+    <button class="launch-btn" id="launch">▸ Launch</button>
+  </div>
+  <div class="home-credit">Designed by Mario Garcia, for artists looking for another way.</div>
+</div>
+
+<!-- APP -->
+
+<div class="app" id="app">
+  <div class="topbar">
+    <div class="brand">UnleashYaKeys</div>
+    <div class="topbar-actions">
+      <span class="id-status" id="idStatus" title="Chord ID mode active">ID Mode</span>
+      <button class="icon-btn" data-modal="bank">Bank</button>
+      <button class="icon-btn" data-modal="guide">Guide</button>
+      <button class="icon-btn" data-modal="library">Library</button>
+      <button class="icon-btn" data-modal="help">Type ?</button>
+      <button class="icon-btn" data-modal="theme">Theme</button>
+      <button class="icon-btn kbd-btn" data-modal="kbd" title="Keyboard Shortcuts">⌨</button>
+    </div>
+  </div>
+
+  <div class="piano-area">
+    <div class="piano-display" id="pianoDisplay">
+      <span class="display-empty">tap keys · type a chord · or open the guide</span>
+    </div>
+    <div class="piano show-active-labels" id="piano"></div>
+    <div class="analysis-panel" id="analysisPanel">
+      <div class="analysis-line">
+        <span class="analysis-tag">Chord</span>
+        <span class="analysis-val large" id="anChord">—</span>
+      </div>
+      <div class="analysis-line">
+        <span class="analysis-tag">Notes</span>
+        <span class="analysis-val" id="anNotes">—</span>
+      </div>
+      <div class="analysis-line">
+        <span class="analysis-tag">Detail</span>
+        <span class="analysis-val" id="anDetail" style="font-weight:400;font-family:'Space Mono',monospace;font-size:.78rem">Tap any key to begin.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <div class="chord-input-group">
+      <div class="chord-input-row">
+        <input type="text" class="chord-input" id="chordInput" placeholder="Type a chord — e.g. Cmaj7, Dm9, F#7#11, Bb13sus4…" autocapitalize="off" autocomplete="off" spellcheck="false">
+        <button class="icon-btn" id="btnClear">Clear</button>
+      </div>
+      <div class="save-toolbar">
+        <button class="play-btn" id="btnPlay"><span class="triangle"></span> Play</button>
+        <div class="sound-toggle" role="group" aria-label="Sound">
+          <button class="icon-btn toggle-on" data-sound="rhodes">Rhodes</button>
+          <button class="icon-btn" data-sound="lead">Lead</button>
+        </div>
+        <button class="icon-btn" id="btnSave" title="Save current chord to library">⌑ Save</button>
+        <button class="icon-btn id-toggle" id="btnChordId" title="Chord ID mode: shows the real chord name as you transpose">Chord ID</button>
+      </div>
+    </div>
+
+```
+<div class="control-group">
+  <span class="control-label">Octaves</span>
+  <div class="control-row">
+    <button class="icon-btn" id="layoutMinus">−</button>
+    <span class="indicator" id="layoutDisplay">1</span>
+    <button class="icon-btn" id="layoutPlus">+</button>
+  </div>
+</div>
+
+<div class="control-group">
+  <span class="control-label">Transpose</span>
+  <div class="control-row">
+    <button class="icon-btn" id="transMinus">−</button>
+    <span class="indicator" id="transDisplay" title="Click to reset">0</span>
+    <button class="icon-btn" id="transPlus">+</button>
+  </div>
+</div>
+
+<div class="control-group">
+  <span class="control-label">Octave</span>
+  <div class="control-row">
+    <button class="icon-btn" id="octShiftMinus">↓</button>
+    <span class="indicator" id="octShiftDisplay">4</span>
+    <button class="icon-btn" id="octShiftPlus">↑</button>
+  </div>
+</div>
+```
+
+  </div>
+
+  <div class="credit">Designed by Mario Garcia, for artists looking for another way.</div>
+</div>
+
+<!-- THEME modal -->
+
+<div class="modal-backdrop" id="modal-theme">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">Theme &amp; Colors</div>
+      <button class="modal-close" data-close>✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="slider-section">
+        <h4><span class="color-preview" id="prev-ui" style="color:var(--neon)"></span> UI Accent <span style="color:var(--text-dim);font-size:.65rem;margin-left:auto;letter-spacing:.05em">outline · glow · text</span></h4>
+        <div class="slider-row"><label>Hue</label><input type="range" class="hue" id="ui-h" min="0" max="360" value="168"><span class="value" id="ui-h-v">168</span></div>
+        <div class="slider-row"><label>Sat</label><input type="range" class="sat" id="ui-s" min="0" max="100" value="78"><span class="value" id="ui-s-v">78</span></div>
+        <div class="slider-row"><label>Light</label><input type="range" class="light" id="ui-l" min="20" max="80" value="56"><span class="value" id="ui-l-v">56</span></div>
+      </div>
+      <div class="slider-section">
+        <h4><span class="color-preview" id="prev-w" style="color:var(--white-key)"></span> White Keys</h4>
+        <div class="slider-row"><label>Hue</label><input type="range" class="hue" id="w-h" min="0" max="360" value="0"><span class="value" id="w-h-v">0</span></div>
+        <div class="slider-row"><label>Sat</label><input type="range" class="sat" id="w-s" min="0" max="100" value="0"><span class="value" id="w-s-v">0</span></div>
+        <div class="slider-row"><label>Light</label><input type="range" class="light" id="w-l" min="0" max="100" value="96"><span class="value" id="w-l-v">96</span></div>
+      </div>
+      <div class="slider-section">
+        <h4><span class="color-preview" id="prev-b" style="color:var(--black-key)"></span> Black Keys</h4>
+        <div class="slider-row"><label>Hue</label><input type="range" class="hue" id="b-h" min="0" max="360" value="0"><span class="value" id="b-h-v">0</span></div>
+        <div class="slider-row"><label>Sat</label><input type="range" class="sat" id="b-s" min="0" max="100" value="0"><span class="value" id="b-s-v">0</span></div>
+        <div class="slider-row"><label>Light</label><input type="range" class="light" id="b-l" min="0" max="60" value="9"><span class="value" id="b-l-v">9</span></div>
+      </div>
+      <div class="slider-section">
+        <h4>Presets</h4>
+        <div class="preset-row" id="presets"></div>
+        <div class="preset-row" style="margin-top:.8em">
+          <button class="preset-btn" id="resetTheme">↺ Reset to Default</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TYPE-CHORDS HELP modal -->
+
+<div class="modal-backdrop" id="modal-help">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">How to Type Chords</div>
+      <button class="modal-close" data-close>✕</button>
+    </div>
+    <div class="modal-body">
+      <p style="color:var(--text-dim);margin-bottom:.8em;font-size:.82rem;line-height:1.6">UnleashYaKeys reads chord symbols flexibly — multiple notations work for the same chord. Tap a section to expand it.</p>
+
+```
+  <div class="collapse open">
+    <div class="collapse-header">Root Notes <span class="collapse-arrow">▶</span></div>
+    <div class="collapse-body"><div class="collapse-content">
+      <p>Use letters <span class="kbd">A</span>–<span class="kbd">G</span> with optional sharps or flats:</p>
+      <ul>
+        <li><code>C</code>, <code>D</code>, <code>E</code>, <code>F</code>, <code>G</code>, <code>A</code>, <code>B</code> — natural notes</li>
+        <li><code>C#</code> or <code>Db</code> — accidentals (sharp/flat are interchangeable)</li>
+        <li>Unicode <code>♯</code> and <code>♭</code> are also accepted</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="collapse">
+    <div class="collapse-header">Triads &amp; Quality <span class="collapse-arrow">▶</span></div>
+    <div class="collapse-body"><div class="collapse-content">
+      <ul>
+        <li><code>C</code> — major (just the root)</li>
+        <li><code>Cm</code> · <code>Cmin</code> · <code>C-</code> — minor</li>
+        <li><code>Cdim</code> · <code>C°</code> — diminished</li>
+        <li><code>Caug</code> · <code>C+</code> — augmented</li>
+        <li><code>Csus2</code> — suspended 2nd</li>
+        <li><code>Csus4</code> · <code>Csus</code> — suspended 4th</li>
+        <li><code>C5</code> — power chord (root &amp; 5th)</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="collapse">
+    <div class="collapse-header">7th Chords <span class="collapse-arrow">▶</span></div>
+    <div class="collapse-body"><div class="collapse-content">
+      <ul>
+        <li><code>C7</code> — dominant 7</li>
+        <li><code>Cmaj7</code> · <code>CM7</code> · <code>CΔ</code> — major 7</li>
+        <li><code>Cm7</code> · <code>Cmin7</code> · <code>C-7</code> — minor 7</li>
+        <li><code>CmMaj7</code> · <code>Cm(maj7)</code> — minor major 7</li>
+        <li><code>Cdim7</code> · <code>C°7</code> — full diminished 7</li>
+        <li><code>Cm7b5</code> · <code>Cø</code> — half diminished</li>
+        <li><code>Caug7</code> · <code>C7#5</code> — augmented 7</li>
+        <li><code>C7sus4</code> — dominant 7 sus 4</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="collapse">
+    <div class="collapse-header">Extensions: 9 · 11 · 13 <span class="collapse-arrow">▶</span></div>
+    <div class="collapse-body"><div class="collapse-content">
+      <ul>
+        <li><code>C9</code> · <code>Cmaj9</code> · <code>Cm9</code> — 9th chords</li>
+        <li><code>C11</code> · <code>Cmaj11</code> · <code>Cm11</code> — 11ths</li>
+        <li><code>C13</code> · <code>Cmaj13</code> · <code>Cm13</code> — 13ths</li>
+        <li><code>Cadd9</code> · <code>Cm(add9)</code> — adds without the 7th</li>
+        <li><code>C6</code> · <code>Cm6</code> · <code>C6/9</code> · <code>Cm6/9</code></li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="collapse">
+    <div class="collapse-header">Alterations · ♯ &amp; ♭ <span class="collapse-arrow">▶</span></div>
+    <div class="collapse-body"><div class="collapse-content">
+      <p>Alterations stack right after the chord type:</p>
+      <ul>
+        <li><code>C7b9</code> · <code>C7#9</code> — altered 9</li>
+        <li><code>C7#11</code> · <code>Cmaj7#11</code> — Lydian sound</li>
+        <li><code>C7b13</code> · <code>C7#5</code> — altered 5/13</li>
+        <li><code>C9b5</code> · <code>C9#5</code> · <code>C9#11</code></li>
+        <li><code>C13b9</code> · <code>C13#9</code> · <code>C13#11</code></li>
+        <li><code>C7alt</code> — altered dominant (♭9 ♯9 ♯11 ♭13)</li>
+        <li>Combined: <code>C7b9b13</code>, <code>C7#9#11</code>, <code>C7b9#11</code></li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="collapse">
+    <div class="collapse-header">Slash Chords / Bass <span class="collapse-arrow">▶</span></div>
+    <div class="collapse-body"><div class="collapse-content">
+      <p>Add a bass note with <code>/</code> followed by the note name:</p>
+      <ul>
+        <li><code>C/E</code> — C major over E (1st inversion)</li>
+        <li><code>Cmaj7/G</code> — Cmaj7 over G</li>
+        <li><code>Dm7/G</code> — Dm7 over G (a G9sus sound)</li>
+        <li><code>F/G</code> — F triad over G (G9sus polychord)</li>
+      </ul>
+      <p style="color:var(--text-dim);font-size:.78rem;margin-top:.5em">Tip: <code>C6/9</code> is parsed as a chord type, not a slash — the parser knows.</p>
+    </div></div>
+  </div>
+
+  <div class="collapse">
+    <div class="collapse-header">Special Symbols <span class="collapse-arrow">▶</span></div>
+    <div class="collapse-body"><div class="collapse-content">
+      <ul>
+        <li><code>Δ</code> = maj7 (so <code>CΔ</code> = <code>Cmaj7</code>)</li>
+        <li><code>°</code> = diminished (<code>C°</code> = <code>Cdim</code>)</li>
+        <li><code>ø</code> = half-diminished (<code>Cø</code> = <code>Cm7b5</code>)</li>
+        <li><code>+</code> = augmented (<code>C+</code> = <code>Caug</code>)</li>
+        <li><code>-</code> = minor (<code>C-7</code> = <code>Cm7</code>)</li>
+        <li><code>♯</code> / <code>♭</code> = sharp / flat</li>
+      </ul>
+    </div></div>
+  </div>
+</div>
+```
+
+  </div>
+</div>
+
+<!-- CHORD BANK modal -->
+
+<div class="modal-backdrop" id="modal-bank">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">Chord Bank · A → G</div>
+      <button class="modal-close" data-close>✕</button>
+    </div>
+    <div class="modal-body" id="bankBody">
+      <div class="bank-nav-wrap">
+        <div class="label">Quick Jump · Tap a Note</div>
+        <div class="note-nav" id="bankNav"></div>
+      </div>
+      <div id="bankList"></div>
+    </div>
+  </div>
+</div>
+
+<!-- COMPLEX GUIDE modal -->
+
+<div class="modal-backdrop" id="modal-guide">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">Complex Chord Guide · Jazz · Neo-Soul · R&amp;B</div>
+      <button class="modal-close" data-close>✕</button>
+    </div>
+    <div class="modal-body" id="guideBody">
+      <div class="mini-piano-wrap">
+        <div class="mini-piano show-active-labels" id="miniPiano"></div>
+        <div class="guide-bar">
+          <button class="icon-btn" id="guideTransMinus">− Trans</button>
+          <span class="indicator" id="guideRoot">C</span>
+          <button class="icon-btn" id="guideTransPlus">Trans +</button>
+          <button class="icon-btn" id="guidePlay" style="margin-left:.4em"><span class="triangle" style="display:inline-block;width:0;height:0;border-left:6px solid currentColor;border-top:4px solid transparent;border-bottom:4px solid transparent"></span> Play</button>
+          <button class="icon-btn" id="sendToMain" title="Send selection to main piano">→ Main</button>
+        </div>
+        <div class="guide-display" id="guideDisplay">Tap a chord below to see its shape.</div>
+      </div>
+
+```
+  <div class="collapse" id="guideNavCollapse">
+    <div class="collapse-header">Quick Jump · Tap a Root <span class="collapse-arrow">▶</span></div>
+    <div class="collapse-body"><div class="collapse-content" style="padding:.5em">
+      <div class="note-nav" id="guideNav"></div>
+      <p style="color:var(--text-dim);font-size:.7rem;margin-top:.5em;letter-spacing:.05em">Sets the root for every chord in the guide. Use ◀ ▶ Trans buttons above to nudge by semitone.</p>
+    </div></div>
+  </div>
+
+  <div id="guideList"></div>
+</div>
+```
+
+  </div>
+</div>
+
+<!-- KEYBOARD SHORTCUTS modal -->
+
+<div class="modal-backdrop" id="modal-kbd">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">Keyboard Shortcuts</div>
+      <button class="modal-close" data-close>✕</button>
+    </div>
+    <div class="modal-body">
+      <p style="color:var(--text-dim);font-size:.82rem;line-height:1.6;margin-bottom:.8em">Connect a Bluetooth or USB keyboard. Click anywhere on the app first to give it focus, then use these keys. (When the chord input field is focused, only Enter / Escape work — click off the field for the rest.)</p>
+
+```
+  <h5 style="font-family:'Orbitron';color:var(--neon);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.4em">Piano Keys (Lower Octave)</h5>
+  <div class="kbd-row" style="margin-bottom:.4em">
+    <span class="kbd">Z</span>=C <span class="kbd">S</span>=C♯ <span class="kbd">X</span>=D <span class="kbd">D</span>=D♯ <span class="kbd">C</span>=E <span class="kbd">V</span>=F <span class="kbd">G</span>=F♯ <span class="kbd">B</span>=G <span class="kbd">H</span>=G♯ <span class="kbd">N</span>=A <span class="kbd">J</span>=A♯ <span class="kbd">M</span>=B
+  </div>
+
+  <h5 style="font-family:'Orbitron';color:var(--neon);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;margin:.8em 0 .4em">Piano Keys (Upper Octave)</h5>
+  <div class="kbd-row" style="margin-bottom:.4em">
+    <span class="kbd">Q</span>=C <span class="kbd">2</span>=C♯ <span class="kbd">W</span>=D <span class="kbd">3</span>=D♯ <span class="kbd">E</span>=E <span class="kbd">R</span>=F <span class="kbd">5</span>=F♯ <span class="kbd">T</span>=G <span class="kbd">6</span>=G♯ <span class="kbd">Y</span>=A <span class="kbd">7</span>=A♯ <span class="kbd">U</span>=B
+  </div>
+
+  <h5 style="font-family:'Orbitron';color:var(--neon);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;margin:.8em 0 .4em">Controls</h5>
+  <table class="kbd-table">
+    <tbody>
+      <tr><td><span class="kbd">Space</span></td><td>Play current chord</td></tr>
+      <tr><td><span class="kbd">Backspace</span> · <span class="kbd">Del</span></td><td>Clear all illuminated keys</td></tr>
+      <tr><td><span class="kbd">←</span> / <span class="kbd">→</span></td><td>Transpose ±1 semitone</td></tr>
+      <tr><td><span class="kbd">↓</span> / <span class="kbd">↑</span></td><td>Octave shift ±1</td></tr>
+      <tr><td><span class="kbd">[</span> / <span class="kbd">]</span></td><td>Remove / add octave to layout</td></tr>
+      <tr><td><span class="kbd">L</span></td><td>Toggle note labels</td></tr>
+      <tr><td><span class="kbd">P</span></td><td>Play current chord</td></tr>
+      <tr><td><span class="kbd">Tab</span></td><td>Switch sound (Rhodes ↔ Lead)</td></tr>
+      <tr><td><span class="kbd">/</span></td><td>Focus chord input</td></tr>
+      <tr><td><span class="kbd">Enter</span></td><td>(in input) Submit chord</td></tr>
+      <tr><td><span class="kbd">Esc</span></td><td>Close modal · unfocus input · clear if idle</td></tr>
+      <tr><td><span class="kbd">B</span> <span style="color:var(--text-dim);font-size:.7rem">(with Shift)</span></td><td>Open Chord Bank</td></tr>
+      <tr><td><span class="kbd">G</span> <span style="color:var(--text-dim);font-size:.7rem">(with Shift)</span></td><td>Open Complex Guide</td></tr>
+      <tr><td><span class="kbd">L</span> <span style="color:var(--text-dim);font-size:.7rem">(with Shift)</span></td><td>Open Saved Library</td></tr>
+      <tr><td><span class="kbd">T</span> <span style="color:var(--text-dim);font-size:.7rem">(with Shift)</span></td><td>Open Theme</td></tr>
+      <tr><td><span class="kbd">I</span> <span style="color:var(--text-dim);font-size:.7rem">(with Shift)</span></td><td>Toggle Chord ID mode</td></tr>
+      <tr><td><span class="kbd">S</span> <span style="color:var(--text-dim);font-size:.7rem">(with Shift)</span></td><td>Save current chord to Library</td></tr>
+      <tr><td><span class="kbd">?</span></td><td>Open Type Guide</td></tr>
+    </tbody>
+  </table>
+  <p style="color:var(--text-dim);font-size:.72rem;line-height:1.6;margin-top:.8em;letter-spacing:.04em">Note: piano-key letters work without modifiers. <span class="kbd">Shift</span> + letter triggers app shortcuts to avoid conflict.</p>
+</div>
+```
+
+  </div>
+</div>
+
+<!-- LIBRARY modal -->
+
+<div class="modal-backdrop" id="modal-library">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">Saved Chord Library</div>
+      <button class="modal-close" data-close>✕</button>
+    </div>
+    <div class="modal-body" id="libraryBody">
+      <div class="lib-toolbar">
+        <span class="count-badge" id="libCount">0 chords</span>
+        <button class="icon-btn primary" id="libExport" title="Download an HTML file with all chords + diagrams">↓ Export</button>
+        <button class="icon-btn" id="libExportPng" title="Download a single PNG image of all chord diagrams">↓ PNG</button>
+        <button class="icon-btn" id="libClear" style="border-color:hsl(0,40%,30%);color:hsl(0,50%,75%)">Clear All</button>
+      </div>
+      <div id="libContent"></div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ============================================================
+// STATE
+// ============================================================
+const state = {
+  octaves: 1,            // layout octaves shown on main piano
+  startOctave: 4,        // base octave for main piano (4 = C4)
+  transpose: 0,          // semitone offset
+  selectedNotes: new Set(), // MIDI numbers currently illuminated
+  showLabels: false,
+  sound: 'rhodes',       // 'rhodes' | 'lead'
+  chordIdMode: false,    // When true, transpose buttons don't shift visual notes; instead they apply a virtual offset for naming
+  savedChords: [],       // [{id, name, notes:[midis], created}]
+  // theme
+  theme: { uH:168, uS:78, uL:56, wH:0, wS:0, wL:96, bH:0, bS:0, bL:9 },
+  // guide popup
+  guideRootPc: 0,        // pitch class of guide's root (transpose target)
+  guideOctaves: 3,
+  guideStartOct: 4,
+  guideSelected: new Set(),
+  guideActiveChord: null,
+  guideLayoutLocked: false, // once set true, don't auto-resize the guide piano
+};
+const DEFAULT_THEME = { uH:168, uS:78, uL:56, wH:0, wS:0, wL:96, bH:0, bS:0, bL:9 };
+
+// ============================================================
+// NOTE UTILITIES
+// ============================================================
+const SHARP_NAMES = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
+const FLAT_NAMES  = ['C','Db','D','Eb','E','F','Gb','G','Ab','A','Bb','B'];
+const PRETTY_SHARP = ['C','C♯','D','D♯','E','F','F♯','G','G♯','A','A♯','B'];
+const PRETTY_FLAT  = ['C','D♭','D','E♭','E','F','G♭','G','A♭','A','B♭','B'];
+const NOTE_LETTERS = { C:0, D:2, E:4, F:5, G:7, A:9, B:11 };
+
+const pc = n => ((n % 12) + 12) % 12;
+const midiToOctave = n => Math.floor(n / 12) - 1;
+const pcName = (p, flat=false) => (flat?PRETTY_FLAT:PRETTY_SHARP)[pc(p)];
+const noteName = (m, flat=false) => pcName(pc(m), flat) + midiToOctave(m);
+const noteNameAscii = (m) => SHARP_NAMES[pc(m)] + midiToOctave(m);
+
+function midiFreq(m){ return 440 * Math.pow(2, (m - 69) / 12); }
+
+// ============================================================
+// CHORD QUALITIES (intervals from root in semitones)
+// ============================================================
+const Q = {};
+const QQ = (keys, intervals) => keys.forEach(k => Q[k] = intervals);
+
+QQ([''], [0,4,7]);
+QQ(['maj','M','Maj','MAJ'], [0,4,7]);
+QQ(['m','min','-'], [0,3,7]);
+QQ(['dim','°','o'], [0,3,6]);
+QQ(['aug','+'], [0,4,8]);
+QQ(['sus2'], [0,2,7]);
+QQ(['sus4','sus'], [0,5,7]);
+QQ(['sus2/4','sus24'], [0,2,5,7]);
+QQ(['5'], [0,7]);
+
+// 6
+QQ(['6'], [0,4,7,9]);
+QQ(['m6','min6','-6'], [0,3,7,9]);
+QQ(['6/9','69'], [0,4,7,9,14]);
+QQ(['m6/9','m69','min6/9'], [0,3,7,9,14]);
+
+// 7
+QQ(['7'], [0,4,7,10]);
+QQ(['maj7','M7','Maj7','Δ','Δ7'], [0,4,7,11]);
+QQ(['m7','min7','-7'], [0,3,7,10]);
+QQ(['mMaj7','mM7','m(maj7)','minMaj7','-maj7','-M7'], [0,3,7,11]);
+QQ(['dim7','°7','o7'], [0,3,6,9]);
+QQ(['m7b5','min7b5','ø','ø7','m7-5','-7b5'], [0,3,6,10]);
+QQ(['aug7','+7','7#5','7+5'], [0,4,8,10]);
+QQ(['7b5','7-5'], [0,4,6,10]);
+QQ(['maj7#5','M7#5','+maj7','maj7+5'], [0,4,8,11]);
+QQ(['maj7b5','M7b5'], [0,4,6,11]);
+QQ(['7sus4','7sus'], [0,5,7,10]);
+QQ(['7sus2'], [0,2,7,10]);
+QQ(['maj7sus4','M7sus4','maj7sus'], [0,5,7,11]);
+
+// 9
+QQ(['9'], [0,4,7,10,14]);
+QQ(['maj9','M9','Maj9','Δ9'], [0,4,7,11,14]);
+QQ(['m9','min9','-9'], [0,3,7,10,14]);
+QQ(['mMaj9','mM9','m(maj9)','-maj9'], [0,3,7,11,14]);
+QQ(['add9'], [0,4,7,14]);
+QQ(['m(add9)','madd9','minadd9','-add9'], [0,3,7,14]);
+QQ(['7b9'], [0,4,7,10,13]);
+QQ(['7#9','7+9'], [0,4,7,10,15]);
+QQ(['maj7#9','M7#9'], [0,4,7,11,15]);
+QQ(['9sus4','9sus'], [0,5,7,10,14]);
+QQ(['9b5','9-5'], [0,4,6,10,14]);
+QQ(['9#5','9+5','aug9','+9'], [0,4,8,10,14]);
+QQ(['m9b5','min9b5'], [0,3,6,10,14]);
+QQ(['7b5b9','7-5b9'], [0,4,6,10,13]);
+QQ(['7b5#9'], [0,4,6,10,15]);
+QQ(['7#5b9','+7b9'], [0,4,8,10,13]);
+QQ(['7#5#9','+7#9'], [0,4,8,10,15]);
+
+// 11
+QQ(['11'], [0,4,7,10,14,17]);
+QQ(['maj11','M11'], [0,4,7,11,14,17]);
+QQ(['m11','min11','-11'], [0,3,7,10,14,17]);
+QQ(['mMaj11','mM11'], [0,3,7,11,14,17]);
+QQ(['add11'], [0,4,7,17]);
+QQ(['7#11','7+11'], [0,4,7,10,14,18]);
+QQ(['maj7#11','M7#11','Δ#11'], [0,4,7,11,14,18]);
+QQ(['m7#11'], [0,3,7,10,14,18]);
+QQ(['9#11','9+11'], [0,4,7,10,14,18]);
+QQ(['maj9#11','M9#11'], [0,4,7,11,14,18]);
+QQ(['m9#11'], [0,3,7,10,14,18]);
+QQ(['m11b5','min11b5'], [0,3,6,10,14,17]);
+
+// 13
+QQ(['13'], [0,4,7,10,14,21]);
+QQ(['maj13','M13'], [0,4,7,11,14,21]);
+QQ(['m13','min13','-13'], [0,3,7,10,14,21]);
+QQ(['13b9'], [0,4,7,10,13,21]);
+QQ(['13#9','13+9'], [0,4,7,10,15,21]);
+QQ(['13b5'], [0,4,6,10,14,21]);
+QQ(['13#11','13+11'], [0,4,7,10,14,18,21]);
+QQ(['maj13#11','M13#11'], [0,4,7,11,14,18,21]);
+QQ(['13sus4','13sus'], [0,5,7,10,14,21]);
+
+// Altered & special
+QQ(['7alt','7altered'], [0,4,8,10,13,15]);
+QQ(['7b13'], [0,4,7,10,20]);
+QQ(['7b9b13'], [0,4,7,10,13,20]);
+QQ(['7#9b13'], [0,4,7,10,15,20]);
+QQ(['7b9#11'], [0,4,7,10,13,18]);
+QQ(['7#9#11'], [0,4,7,10,15,18]);
+QQ(['7sus(b9)','7susb9'], [0,5,7,10,13]);
+QQ(['dim(maj7)','dimMaj7','°maj7','o(maj7)'], [0,3,6,11]);
+QQ(['dim7add9'], [0,3,6,9,14]);
+
+// Build sorted list of patterns (longest first) for the parser
+const SORTED_PATTERNS = Object.keys(Q).sort((a,b) => b.length - a.length);
+
+// ============================================================
+// CHORD PARSER
+// ============================================================
+function parseRoot(s, idx=0) {
+  if (idx >= s.length) return null;
+  const c = s[idx].toUpperCase();
+  if (!(c in NOTE_LETTERS)) return null;
+  let p = NOTE_LETTERS[c];
+  let consumed = 1;
+  if (idx + 1 < s.length) {
+    const next = s[idx+1];
+    if (next === '#' || next === '♯') { p = (p + 1) % 12; consumed = 2; }
+    else if (next === 'b' || next === 'B' && idx > 0 || next === '♭') {
+      // Be careful: 'b' as flat only after a note letter context (we're already past root)
+      if (next === 'b' || next === '♭') { p = (p + 11) % 12; consumed = 2; }
+    }
+  }
+  return { pc: p, consumed };
+}
+
+function parseChord(input) {
+  if (!input) return null;
+  let s = String(input).trim();
+  if (!s) return null;
+  // Normalize special characters
+  s = s.replace(/Δ/g, 'maj7').replace(/♯/g, '#').replace(/♭/g, 'b');
+  // Parse bass note (slash chord) — but only if right side parses cleanly as a note
+  let bassPc = null;
+  const slashIdx = s.lastIndexOf('/');
+  if (slashIdx > 0) {
+    const after = s.substring(slashIdx + 1).trim();
+    const r = parseRoot(after, 0);
+    if (r && r.consumed === after.length) {
+      bassPc = r.pc;
+      s = s.substring(0, slashIdx).trim();
+    }
+  }
+  // Parse root
+  const root = parseRoot(s, 0);
+  if (!root) return null;
+  const rootPc = root.pc;
+  const qualityStr = s.substring(root.consumed);
+  // Look up quality
+  let intervals = null;
+  if (qualityStr in Q) {
+    intervals = Q[qualityStr];
+  } else {
+    // Try case-permissive: build a normalized version
+    // Don't lowercase blindly because m vs M matters; only check exact keys
+    // (Already exhaustive aliases in Q for both cases)
+    return null;
+  }
+  // Build MIDI notes around C4 = 60
+  const baseMidi = 60 + rootPc; // root in octave 4
+  const notes = intervals.map(iv => baseMidi + iv);
+  // Bass: if specified, place below root
+  if (bassPc !== null) {
+    let bassMidi = 48 + bassPc; // octave 3
+    if (bassMidi >= notes[0]) bassMidi -= 12;
+    notes.unshift(bassMidi);
+  }
+  return { rootPc, intervals, notes, bassPc };
+}
+
+// ============================================================
+// PIANO RENDERING
+// ============================================================
+function renderPiano(container, octaves, startOctave, selectedNotes) {
+  container.innerHTML = '';
+  for (let i = 0; i < octaves; i++) {
+    const oct = startOctave + i;
+    const baseMidi = (oct + 1) * 12; // C of that octave
+    const octEl = document.createElement('div');
+    octEl.className = 'octave';
+    // 7 white keys
+    [0,2,4,5,7,9,11].forEach(p => {
+      const wk = document.createElement('div');
+      wk.className = 'white-key';
+      wk.dataset.midi = baseMidi + p;
+      wk.dataset.pc = p;
+      const lbl = document.createElement('span');
+      lbl.className = 'key-label';
+      lbl.textContent = (p===0) ? PRETTY_SHARP[p] + (oct) : PRETTY_SHARP[p];
+      wk.appendChild(lbl);
+      if (selectedNotes.has(baseMidi + p)) wk.classList.add('active');
+      octEl.appendChild(wk);
+    });
+    // 5 black keys
+    [1,3,6,8,10].forEach(p => {
+      const bk = document.createElement('div');
+      bk.className = 'black-key';
+      bk.dataset.midi = baseMidi + p;
+      bk.dataset.pc = p;
+      const lbl = document.createElement('span');
+      lbl.className = 'key-label';
+      lbl.textContent = PRETTY_SHARP[p];
+      bk.appendChild(lbl);
+      if (selectedNotes.has(baseMidi + p)) bk.classList.add('active');
+      octEl.appendChild(bk);
+    });
+    container.appendChild(octEl);
+  }
+}
+
+// Map a MIDI note into the visible main-piano range (folding by octave if needed)
+function foldToVisible(midi, startOctave, octaves) {
+  const lo = (startOctave + 1) * 12;
+  const hi = lo + octaves * 12 - 1;
+  let m = midi;
+  while (m < lo) m += 12;
+  while (m > hi) m -= 12;
+  return m;
+}
+
+// ============================================================
+// CHORD DETECTION (best-effort name from a set of pitch classes)
+// ============================================================
+const DETECT_TEMPLATES = [
+  // [intervals, suffix, priority]
+  [[0,4,7,11,14,18,21], 'maj13#11', 11],
+  [[0,3,7,10,14,17,21], 'm13', 11],
+  [[0,4,7,11,14,17,21], 'maj13', 11],
+  [[0,4,7,10,14,18,21], '13#11', 11],
+  [[0,4,7,10,14,21], '13', 10],
+  [[0,4,7,10,15,21], '13#9', 10],
+  [[0,4,7,10,13,21], '13b9', 10],
+  [[0,5,7,10,14,21], '13sus4', 10],
+  [[0,4,7,11,14,18], 'maj9#11', 9],
+  [[0,3,7,10,14,18], 'm9#11', 9],
+  [[0,4,7,10,14,18], '9#11', 9],
+  [[0,3,7,10,14,17], 'm11', 9],
+  [[0,4,7,11,14,17], 'maj11', 9],
+  [[0,4,7,10,14,17], '11', 9],
+  [[0,3,6,10,14,17], 'm11b5', 9],
+  [[0,4,7,11,18], 'maj7#11', 8],
+  [[0,4,7,10,18], '7#11', 8],
+  [[0,4,7,10,13,18], '7b9#11', 8],
+  [[0,4,7,10,15,18], '7#9#11', 8],
+  [[0,4,7,10,13,20], '7b9b13', 8],
+  [[0,4,7,10,15,20], '7#9b13', 8],
+  [[0,4,7,11,14], 'maj9', 7],
+  [[0,4,7,10,14], '9', 7],
+  [[0,3,7,10,14], 'm9', 7],
+  [[0,3,7,11,14], 'mMaj9', 7],
+  [[0,4,8,10,14], '9#5', 7],
+  [[0,4,6,10,14], '9b5', 7],
+  [[0,5,7,10,14], '9sus4', 7],
+  [[0,3,6,10,14], 'm9b5', 7],
+  [[0,4,7,10,13], '7b9', 7],
+  [[0,4,7,10,15], '7#9', 7],
+  [[0,4,7,11,15], 'maj7#9', 7],
+  [[0,4,7,9,14], '6/9', 7],
+  [[0,3,7,9,14], 'm6/9', 7],
+  [[0,4,7,11], 'maj7', 6],
+  [[0,3,7,10], 'm7', 6],
+  [[0,4,7,10], '7', 6],
+  [[0,3,7,11], 'mMaj7', 6],
+  [[0,3,6,9], 'dim7', 6],
+  [[0,3,6,10], 'm7b5', 6],
+  [[0,4,8,10], 'aug7', 6],
+  [[0,4,6,10], '7b5', 6],
+  [[0,4,8,11], 'maj7#5', 6],
+  [[0,5,7,10], '7sus4', 6],
+  [[0,5,7,11], 'maj7sus4', 6],
+  [[0,3,6,11], 'dim(maj7)', 6],
+  [[0,4,7,9], '6', 5],
+  [[0,3,7,9], 'm6', 5],
+  [[0,4,7,14], 'add9', 5],
+  [[0,3,7,14], 'm(add9)', 5],
+  [[0,4,7], '', 4],
+  [[0,3,7], 'm', 4],
+  [[0,3,6], 'dim', 4],
+  [[0,4,8], 'aug', 4],
+  [[0,2,7], 'sus2', 4],
+  [[0,5,7], 'sus4', 4],
+  [[0,7], '5', 3],
+];
+
+function detectChord(midis) {
+  if (!midis || midis.length === 0) return '';
+  const sortedMidis = [...midis].sort((a,b)=>a-b);
+  const lowestPc = pc(sortedMidis[0]);
+  const allPcs = new Set(sortedMidis.map(pc));
+  let best = null;
+  for (let rootPc = 0; rootPc < 12; rootPc++) {
+    for (const [intervals, suffix, priority] of DETECT_TEMPLATES) {
+      const tplPcs = new Set(intervals.map(iv => pc(rootPc + iv)));
+      if (tplPcs.size !== allPcs.size) continue;
+      let match = true;
+      for (const x of tplPcs) if (!allPcs.has(x)) { match = false; break; }
+      if (!match) continue;
+      // Prefer lowest note as root for better priority
+      const rootBoost = (rootPc === lowestPc) ? 2 : 0;
+      const score = priority + rootBoost;
+      if (!best || score > best.score) {
+        best = { rootPc, suffix, score };
+      }
+    }
+  }
+  if (best) {
+    // Prefer flats for accidental roots — more natural in jazz/R&B/neo-soul notation
+    const useFlat = [1, 3, 6, 8, 10].includes(best.rootPc);
+    let name = (useFlat ? PRETTY_FLAT : PRETTY_SHARP)[best.rootPc] + best.suffix;
+    if (pc(sortedMidis[0]) !== best.rootPc) {
+      const useFlatBass = [1,3,6,8,10].includes(lowestPc);
+      name += '/' + (useFlatBass ? PRETTY_FLAT : PRETTY_SHARP)[lowestPc];
+    }
+    return name;
+  }
+  // Fallback: list note names
+  const names = sortedMidis.map(m => PRETTY_SHARP[pc(m)]);
+  return [...new Set(names)].join(' · ');
+}
+
+// ============================================================
+// AUDIO ENGINE — Rhodes (FM tine + tremolo + reverb) & Lead Synth
+// ============================================================
+let audioCtx = null;
+let masterGain = null;
+let reverbNode = null;
+let dryGain = null, wetGain = null;
+let tremoloLFO = null, tremoloDepth = null, tremoloOffset = null;
+let activeVoices = []; // for cleanup
+
+function initAudio() {
+  if (audioCtx) return;
+  const Ctx = window.AudioContext || window.webkitAudioContext;
+  if (!Ctx) return;
+  audioCtx = new Ctx();
+  masterGain = audioCtx.createGain();
+  masterGain.gain.value = 0.7;
+
+  // Dry / Wet bus
+  dryGain = audioCtx.createGain();
+  wetGain = audioCtx.createGain();
+  dryGain.gain.value = 0.7;
+  wetGain.gain.value = 0.45;
+
+  // Reverb (procedural impulse)
+  reverbNode = audioCtx.createConvolver();
+  reverbNode.buffer = makeReverbIR(2.6, 2.4);
+
+  dryGain.connect(masterGain);
+  wetGain.connect(reverbNode);
+  reverbNode.connect(masterGain);
+  masterGain.connect(audioCtx.destination);
+
+  // Tremolo: amplitude LFO that we'll sum into 1 to modulate gain
+  tremoloLFO = audioCtx.createOscillator();
+  tremoloLFO.frequency.value = 5.4;
+  tremoloDepth = audioCtx.createGain();
+  tremoloDepth.gain.value = 0;   // off by default; engaged for Rhodes
+  tremoloLFO.connect(tremoloDepth);
+  tremoloLFO.start();
+}
+
+function makeReverbIR(durationSec, decay) {
+  const sr = audioCtx.sampleRate;
+  const len = Math.max(1, Math.floor(sr * durationSec));
+  const buf = audioCtx.createBuffer(2, len, sr);
+  for (let ch = 0; ch < 2; ch++) {
+    const data = buf.getChannelData(ch);
+    for (let i = 0; i < len; i++) {
+      const t = i / len;
+      // Slight predelay shape, exponential decay, gently filtered noise
+      const shape = Math.pow(1 - t, decay);
+      data[i] = (Math.random() * 2 - 1) * shape * (0.6 + 0.4 * Math.cos(t * Math.PI));
+    }
+  }
+  return buf;
+}
+
+function ensureAudioRunning() {
+  if (!audioCtx) initAudio();
+  if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+}
+
+// Play a single voice
+function playVoice(midi, when, duration) {
+  if (!audioCtx) return;
+  const t = when ?? audioCtx.currentTime;
+  const dur = duration ?? 2.4;
+  const freq = midiFreq(midi);
+
+  if (state.sound === 'rhodes') {
+    // FM: carrier (sine) + modulator (sine) at ~14× freq for the metallic tine
+    const carrier = audioCtx.createOscillator();
+    carrier.type = 'sine';
+    carrier.frequency.value = freq;
+
+    const sub = audioCtx.createOscillator(); // body
+    sub.type = 'sine';
+    sub.frequency.value = freq;
+
+    const modulator = audioCtx.createOscillator();
+    modulator.type = 'sine';
+    // Use ~14× ratio at low pitch, descending toward 6× at high pitch (more body)
+    const ratio = Math.max(5, 14 - Math.max(0, (midi - 48) / 6));
+    modulator.frequency.value = freq * ratio;
+
+    const modGain = audioCtx.createGain();
+    // Modulation index — amount of FM. Decays quickly for tine attack feel.
+    const modIndex = freq * 5.5;
+    modGain.gain.setValueAtTime(modIndex, t);
+    modGain.gain.exponentialRampToValueAtTime(modIndex * 0.04, t + 0.45);
+    modGain.gain.exponentialRampToValueAtTime(0.001, t + dur);
+    modulator.connect(modGain);
+    modGain.connect(carrier.frequency);
+
+    // Body filter + EQ feel
+    const filter = audioCtx.createBiquadFilter();
+    filter.type = 'lowpass';
+    filter.frequency.setValueAtTime(3800, t);
+    filter.frequency.exponentialRampToValueAtTime(1400, t + 1.6);
+    filter.Q.value = 0.8;
+
+    const carrierMix = audioCtx.createGain();
+    carrierMix.gain.value = 0.7;
+    const subMix = audioCtx.createGain();
+    subMix.gain.value = 0.35;
+
+    // Envelope (with tremolo modulating the gain)
+    const env = audioCtx.createGain();
+    env.gain.setValueAtTime(0, t);
+    env.gain.linearRampToValueAtTime(0.55, t + 0.005);
+    env.gain.exponentialRampToValueAtTime(0.18, t + 0.3);
+    env.gain.exponentialRampToValueAtTime(0.001, t + dur);
+
+    // Tremolo: depth ~0.05 modulating gain offset around 1
+    // We achieve this by routing tremoloDepth (LFO output) into env.gain (additive).
+    if (tremoloDepth) {
+      tremoloDepth.gain.value = 0.05;
+      tremoloDepth.connect(env.gain);
+    }
+
+    carrier.connect(carrierMix);
+    sub.connect(subMix);
+    carrierMix.connect(filter);
+    subMix.connect(filter);
+    filter.connect(env);
+    env.connect(dryGain);
+    env.connect(wetGain);
+
+    carrier.start(t); sub.start(t); modulator.start(t);
+    carrier.stop(t + dur + 0.05);
+    sub.stop(t + dur + 0.05);
+    modulator.stop(t + dur + 0.05);
+
+    activeVoices.push({ carrier, sub, modulator, env });
+  } else {
+    // Lead synth: sawtooth + slight detune + lowpass + ADSR
+    const oscA = audioCtx.createOscillator();
+    const oscB = audioCtx.createOscillator();
+    oscA.type = 'sawtooth';
+    oscB.type = 'sawtooth';
+    oscA.frequency.value = freq;
+    oscB.frequency.value = freq * 1.0035; // tiny detune for chorus
+
+    const filter = audioCtx.createBiquadFilter();
+    filter.type = 'lowpass';
+    filter.frequency.setValueAtTime(220, t);
+    filter.frequency.exponentialRampToValueAtTime(2400, t + 0.06);
+    filter.frequency.exponentialRampToValueAtTime(900, t + dur);
+    filter.Q.value = 4;
+
+    const env = audioCtx.createGain();
+    env.gain.setValueAtTime(0, t);
+    env.gain.linearRampToValueAtTime(0.32, t + 0.01);
+    env.gain.linearRampToValueAtTime(0.22, t + 0.18);
+    env.gain.exponentialRampToValueAtTime(0.001, t + dur);
+
+    // Light tremolo off for lead
+    oscA.connect(filter);
+    oscB.connect(filter);
+    filter.connect(env);
+    env.connect(dryGain);
+    // a touch of reverb
+    const wetTap = audioCtx.createGain();
+    wetTap.gain.value = 0.18;
+    env.connect(wetTap);
+    wetTap.connect(wetGain);
+
+    oscA.start(t); oscB.start(t);
+    oscA.stop(t + dur + 0.05);
+    oscB.stop(t + dur + 0.05);
+    activeVoices.push({ oscA, oscB, env });
+  }
+
+  // Cleanup old voices occasionally
+  if (activeVoices.length > 24) activeVoices = activeVoices.slice(-24);
+}
+
+function playChord(midis, strum=0.012) {
+  if (!midis.length) return;
+  ensureAudioRunning();
+  const sorted = [...midis].sort((a,b)=>a-b);
+  const t0 = audioCtx.currentTime + 0.005;
+  sorted.forEach((m, i) => playVoice(m, t0 + i * strum, 2.6));
+}
+
+function playSingleNote(midi) {
+  ensureAudioRunning();
+  playVoice(midi, audioCtx.currentTime, 1.6);
+}
+
+// ============================================================
+// CHORD DATABASE for the Bank (all 12 keys × many qualities)
+// ============================================================
+const BANK_ROOT_ORDER = [
+  // Display name, pc
+  { name:'A',  pc:9  }, { name:'A♯ / B♭', pc:10, alt:'A#/Bb' },
+  { name:'B',  pc:11 }, { name:'C',       pc:0  },
+  { name:'C♯ / D♭', pc:1, alt:'C#/Db' }, { name:'D', pc:2 },
+  { name:'D♯ / E♭', pc:3, alt:'D#/Eb' }, { name:'E', pc:4 },
+  { name:'F',       pc:5 }, { name:'F♯ / G♭', pc:6, alt:'F#/Gb' },
+  { name:'G',       pc:7 }, { name:'G♯ / A♭', pc:8, alt:'G#/Ab' },
+];
+// Categories of chord qualities for display
+const BANK_CATEGORIES = [
+  { cat:'Triads', items:[
+    {sfx:'',     name:'Major',         desc:'1 3 5'},
+    {sfx:'m',    name:'Minor',         desc:'1 ♭3 5'},
+    {sfx:'dim',  name:'Diminished',    desc:'1 ♭3 ♭5'},
+    {sfx:'aug',  name:'Augmented',     desc:'1 3 ♯5'},
+    {sfx:'sus2', name:'Sus 2',         desc:'1 2 5'},
+    {sfx:'sus4', name:'Sus 4',         desc:'1 4 5'},
+    {sfx:'5',    name:'Power (5)',     desc:'1 5'},
+  ]},
+  { cat:'6th Chords', items:[
+    {sfx:'6',    name:'Major 6',       desc:'1 3 5 6'},
+    {sfx:'m6',   name:'Minor 6',       desc:'1 ♭3 5 6'},
+    {sfx:'6/9',  name:'Six-Nine',      desc:'1 3 5 6 9'},
+    {sfx:'m6/9', name:'Minor 6/9',     desc:'1 ♭3 5 6 9'},
+  ]},
+  { cat:'7th Chords', items:[
+    {sfx:'7',        name:'Dominant 7',     desc:'1 3 5 ♭7'},
+    {sfx:'maj7',     name:'Major 7',        desc:'1 3 5 7'},
+    {sfx:'m7',       name:'Minor 7',        desc:'1 ♭3 5 ♭7'},
+    {sfx:'mMaj7',    name:'Minor Major 7',  desc:'1 ♭3 5 7'},
+    {sfx:'dim7',     name:'Diminished 7',   desc:'1 ♭3 ♭5 ♭♭7'},
+    {sfx:'m7b5',     name:'Half Dim',       desc:'1 ♭3 ♭5 ♭7'},
+    {sfx:'aug7',     name:'Augmented 7',    desc:'1 3 ♯5 ♭7'},
+    {sfx:'7b5',      name:'7 ♭5',           desc:'1 3 ♭5 ♭7'},
+    {sfx:'maj7#5',   name:'Major 7 ♯5',     desc:'1 3 ♯5 7'},
+    {sfx:'maj7b5',   name:'Major 7 ♭5',     desc:'1 3 ♭5 7'},
+    {sfx:'7sus4',    name:'7 sus 4',        desc:'1 4 5 ♭7'},
+    {sfx:'maj7sus4', name:'Maj 7 sus 4',    desc:'1 4 5 7'},
+    {sfx:'dim(maj7)',name:'Dim Major 7',    desc:'1 ♭3 ♭5 7'},
+  ]},
+  { cat:'9th Chords', items:[
+    {sfx:'9',        name:'Dominant 9',     desc:'1 3 5 ♭7 9'},
+    {sfx:'maj9',     name:'Major 9',        desc:'1 3 5 7 9'},
+    {sfx:'m9',       name:'Minor 9',        desc:'1 ♭3 5 ♭7 9'},
+    {sfx:'mMaj9',    name:'Min-Maj 9',      desc:'1 ♭3 5 7 9'},
+    {sfx:'add9',     name:'Add 9',          desc:'1 3 5 9'},
+    {sfx:'m(add9)',  name:'Minor add 9',    desc:'1 ♭3 5 9'},
+    {sfx:'7b9',      name:'7 ♭9',           desc:'1 3 5 ♭7 ♭9'},
+    {sfx:'7#9',      name:'7 ♯9',           desc:'1 3 5 ♭7 ♯9'},
+    {sfx:'maj7#9',   name:'Maj 7 ♯9',       desc:'1 3 5 7 ♯9'},
+    {sfx:'9sus4',    name:'9 sus 4',        desc:'1 4 5 ♭7 9'},
+    {sfx:'9b5',      name:'9 ♭5',           desc:'1 3 ♭5 ♭7 9'},
+    {sfx:'9#5',      name:'9 ♯5',           desc:'1 3 ♯5 ♭7 9'},
+    {sfx:'m9b5',     name:'Minor 9 ♭5',     desc:'1 ♭3 ♭5 ♭7 9'},
+  ]},
+  { cat:'11th Chords', items:[
+    {sfx:'11',       name:'Dominant 11',    desc:'1 3 5 ♭7 9 11'},
+    {sfx:'maj11',    name:'Major 11',       desc:'1 3 5 7 9 11'},
+    {sfx:'m11',      name:'Minor 11',       desc:'1 ♭3 5 ♭7 9 11'},
+    {sfx:'mMaj11',   name:'Min-Maj 11',     desc:'1 ♭3 5 7 9 11'},
+    {sfx:'add11',    name:'Add 11',         desc:'1 3 5 11'},
+    {sfx:'7#11',     name:'7 ♯11',          desc:'1 3 5 ♭7 9 ♯11'},
+    {sfx:'maj7#11',  name:'Maj 7 ♯11',      desc:'1 3 5 7 9 ♯11'},
+    {sfx:'m7#11',    name:'Min 7 ♯11',      desc:'1 ♭3 5 ♭7 ♯11'},
+    {sfx:'9#11',     name:'9 ♯11',          desc:'1 3 5 ♭7 9 ♯11'},
+    {sfx:'maj9#11',  name:'Maj 9 ♯11',      desc:'Lydian'},
+    {sfx:'m11b5',    name:'Minor 11 ♭5',    desc:'1 ♭3 ♭5 ♭7 9 11'},
+  ]},
+  { cat:'13th Chords', items:[
+    {sfx:'13',       name:'Dominant 13',    desc:'1 3 5 ♭7 9 13'},
+    {sfx:'maj13',    name:'Major 13',       desc:'1 3 5 7 9 13'},
+    {sfx:'m13',      name:'Minor 13',       desc:'1 ♭3 5 ♭7 9 13'},
+    {sfx:'13b9',     name:'13 ♭9',          desc:''},
+    {sfx:'13#9',     name:'13 ♯9',          desc:''},
+    {sfx:'13#11',    name:'13 ♯11',         desc:''},
+    {sfx:'maj13#11', name:'Maj 13 ♯11',     desc:''},
+    {sfx:'13sus4',   name:'13 sus 4',       desc:''},
+  ]},
+  { cat:'Altered Dominants', items:[
+    {sfx:'7alt',    name:'7 alt',           desc:'♭9 ♯9 ♯11 ♭13'},
+    {sfx:'7b13',    name:'7 ♭13',           desc:''},
+    {sfx:'7b9b13',  name:'7 ♭9 ♭13',        desc:'Phrygian'},
+    {sfx:'7#9b13',  name:'7 ♯9 ♭13',        desc:''},
+    {sfx:'7b9#11',  name:'7 ♭9 ♯11',        desc:''},
+    {sfx:'7#9#11',  name:'7 ♯9 ♯11',        desc:''},
+    {sfx:'7b5b9',   name:'7 ♭5 ♭9',         desc:''},
+    {sfx:'7b5#9',   name:'7 ♭5 ♯9',         desc:''},
+    {sfx:'7#5b9',   name:'7 ♯5 ♭9',         desc:''},
+    {sfx:'7#5#9',   name:'7 ♯5 ♯9',         desc:''},
+    {sfx:'7sus(b9)',name:'7 sus ♭9',        desc:'Phrygian sus'},
+  ]},
+];
+
+// ============================================================
+// COMPLEX CHORD GUIDE — 100+ named voicings rooted at C
+// Each: { name (anchored at C), suffix OR notes (intervals), cat, desc }
+// ============================================================
+const COMPLEX_CHORDS = [
+  // Major 7 family
+  { name:'maj7',         sfx:'maj7',      cat:'Major 7 Family', desc:'Classic Δ7' },
+  { name:'maj9',         sfx:'maj9',      cat:'Major 7 Family', desc:'Δ + 9' },
+  { name:'maj13',        sfx:'maj13',     cat:'Major 7 Family', desc:'Full diatonic' },
+  { name:'6/9',          sfx:'6/9',       cat:'Major 7 Family', desc:'Jazz staple' },
+  { name:'maj7#11',      sfx:'maj7#11',   cat:'Major 7 Family', desc:'Lydian' },
+  { name:'maj9#11',      sfx:'maj9#11',   cat:'Major 7 Family', desc:'Lydian 9' },
+  { name:'maj13#11',     sfx:'maj13#11',  cat:'Major 7 Family', desc:'Full Lydian' },
+  { name:'maj7#5',       sfx:'maj7#5',    cat:'Major 7 Family', desc:'Lydian Aug' },
+  { name:'maj7sus4',     sfx:'maj7sus4',  cat:'Major 7 Family', desc:'Suspended Δ' },
+  { name:'maj7 (rootless E-G-B-D)', notes:[4,7,11,14], cat:'Major 7 Family', desc:'Bill Evans LH' },
+  { name:'maj7/E',       sfx:'maj7/E',    cat:'Major 7 Family', desc:'1st inversion' },
+  { name:'maj7/G',       sfx:'maj7/G',    cat:'Major 7 Family', desc:'2nd inversion' },
+  { name:'maj7/B',       sfx:'maj7/B',    cat:'Major 7 Family', desc:'3rd inversion' },
+  { name:'add9',         sfx:'add9',      cat:'Major 7 Family', desc:'Mu chord' },
+  { name:'6add#11',      notes:[0,4,7,9,18], cat:'Major 7 Family', desc:'6 with Lydian color' },
+
+  // Minor 7 family
+  { name:'m7',           sfx:'m7',        cat:'Minor 7 Family', desc:'Min 7' },
+  { name:'m9',           sfx:'m9',        cat:'Minor 7 Family', desc:'Min 9' },
+  { name:'m11',          sfx:'m11',       cat:'Minor 7 Family', desc:'Min 11' },
+  { name:'m13',          sfx:'m13',       cat:'Minor 7 Family', desc:'Min 13' },
+  { name:'m6',           sfx:'m6',        cat:'Minor 7 Family', desc:'Min 6 (Dorian)' },
+  { name:'m6/9',         sfx:'m6/9',      cat:'Minor 7 Family', desc:'Min 6/9' },
+  { name:'mMaj7',        sfx:'mMaj7',     cat:'Minor 7 Family', desc:'Min-Maj 7' },
+  { name:'mMaj9',        sfx:'mMaj9',     cat:'Minor 7 Family', desc:'Min-Maj 9' },
+  { name:'m(add9)',      sfx:'m(add9)',   cat:'Minor 7 Family', desc:'Min add 9' },
+  { name:'m9 (rootless E♭-G-B♭-D)', notes:[3,7,10,14], cat:'Minor 7 Family', desc:'Glasper LH' },
+  { name:'m11 (Kenny Barron)', notes:[0,7,15,22,26,17], cat:'Minor 7 Family', desc:'C-G-E♭-B♭-F-D' },
+  { name:'m7/E♭',        sfx:'m7/Eb',     cat:'Minor 7 Family', desc:'Min 1st inv' },
+  { name:'m7/G',         sfx:'m7/G',      cat:'Minor 7 Family', desc:'Min 2nd inv' },
+  { name:'m7/B♭',        sfx:'m7/Bb',     cat:'Minor 7 Family', desc:'Min 3rd inv' },
+
+  // Dominant family
+  { name:'7',            sfx:'7',         cat:'Dominant Family', desc:'Dom 7' },
+  { name:'9',            sfx:'9',         cat:'Dominant Family', desc:'Dom 9' },
+  { name:'13',           sfx:'13',        cat:'Dominant Family', desc:'Dom 13' },
+  { name:'7sus4',        sfx:'7sus4',     cat:'Dominant Family', desc:'7 sus' },
+  { name:'9sus4',        sfx:'9sus4',     cat:'Dominant Family', desc:'9 sus (jazz V)' },
+  { name:'13sus4',       sfx:'13sus4',    cat:'Dominant Family', desc:'13 sus' },
+  { name:'7b9',          sfx:'7b9',       cat:'Dominant Family', desc:'7 ♭9' },
+  { name:'7#9 (Hendrix)',sfx:'7#9',       cat:'Dominant Family', desc:'Purple Haze' },
+  { name:'7#11',         sfx:'7#11',      cat:'Dominant Family', desc:'Lydian dom' },
+  { name:'7b13',         sfx:'7b13',      cat:'Dominant Family', desc:'Mixo b13' },
+  { name:'7alt',         sfx:'7alt',      cat:'Dominant Family', desc:'Altered' },
+  { name:'9b5',          sfx:'9b5',       cat:'Dominant Family', desc:'9 ♭5' },
+  { name:'9#5',          sfx:'9#5',       cat:'Dominant Family', desc:'9 ♯5' },
+  { name:'9#11',         sfx:'9#11',      cat:'Dominant Family', desc:'Lydian dom 9' },
+  { name:'13b9',         sfx:'13b9',      cat:'Dominant Family', desc:'13 ♭9' },
+  { name:'13#9',         sfx:'13#9',      cat:'Dominant Family', desc:'13 ♯9' },
+  { name:'13#11',        sfx:'13#11',     cat:'Dominant Family', desc:'13 ♯11' },
+  { name:'7b9b13',       sfx:'7b9b13',    cat:'Dominant Family', desc:'Phrygian dom' },
+  { name:'7#9b13',       sfx:'7#9b13',    cat:'Dominant Family', desc:'Alt ♯9 ♭13' },
+  { name:'7b9#11',       sfx:'7b9#11',    cat:'Dominant Family', desc:'7 ♭9 ♯11' },
+  { name:'7#9#11',       sfx:'7#9#11',    cat:'Dominant Family', desc:'7 ♯9 ♯11' },
+  { name:'7sus(♭9)',     sfx:'7sus(b9)',  cat:'Dominant Family', desc:'Phrygian sus' },
+  { name:'7 (rootless E-B♭-D-A)', notes:[4,10,14,21], cat:'Dominant Family', desc:'A-form 13 voicing' },
+  { name:'7 (rootless E-A-D)', notes:[4,9,14], cat:'Dominant Family', desc:'3-13-9 shell' },
+
+  // Half-Dim & Dim
+  { name:'m7♭5',         sfx:'m7b5',      cat:'Half-Dim & Dim', desc:'Half dim' },
+  { name:'m9♭5',         sfx:'m9b5',      cat:'Half-Dim & Dim', desc:'Half dim 9' },
+  { name:'m11♭5',        sfx:'m11b5',     cat:'Half-Dim & Dim', desc:'Half dim 11' },
+  { name:'dim7',         sfx:'dim7',      cat:'Half-Dim & Dim', desc:'Symmetric' },
+  { name:'dim(maj7)',    sfx:'dim(maj7)', cat:'Half-Dim & Dim', desc:'Dim Δ7' },
+  { name:'dim7add9',     sfx:'dim7add9',  cat:'Half-Dim & Dim', desc:'Dim 7 + 9' },
+
+  // Augmented
+  { name:'aug',          sfx:'aug',       cat:'Augmented', desc:'Aug triad' },
+  { name:'aug7',         sfx:'aug7',      cat:'Augmented', desc:'Aug 7' },
+  { name:'+maj7',        sfx:'maj7#5',    cat:'Augmented', desc:'Aug Δ7' },
+  { name:'aug9',         sfx:'9#5',       cat:'Augmented', desc:'Aug 9' },
+  { name:'+maj9',        notes:[0,4,8,11,14], cat:'Augmented', desc:'Aug maj 9' },
+
+  // Suspended
+  { name:'sus2',         sfx:'sus2',      cat:'Suspended', desc:'1 2 5' },
+  { name:'sus4',         sfx:'sus4',      cat:'Suspended', desc:'1 4 5' },
+  { name:'sus2/4',       sfx:'sus2/4',    cat:'Suspended', desc:'1 2 4 5' },
+  { name:'7sus2',        sfx:'7sus2',     cat:'Suspended', desc:'7 sus 2' },
+
+  // Quartal & Modern
+  { name:'Quartal (1-4-♭7)', notes:[0,5,10],            cat:'Quartal & Modern', desc:'Stacked 4ths' },
+  { name:'Quartal (1-4-♭7-♭3)', notes:[0,5,10,15],      cat:'Quartal & Modern', desc:'4 stacked' },
+  { name:'Quartal (1-4-♭7-♭3-♭6)', notes:[0,5,10,15,20], cat:'Quartal & Modern', desc:'5 stacked' },
+  { name:'So What (Cm11)', notes:[0,5,10,15,19],         cat:'Quartal & Modern', desc:'Miles Davis' },
+  { name:'McCoy Tyner 4ths', notes:[0,5,10,17,22],       cat:'Quartal & Modern', desc:'Pentatonic 4ths' },
+  { name:'Quartal Maj9', notes:[0,5,11,16],              cat:'Quartal & Modern', desc:'C-F-B-E' },
+  { name:'Herbie Maj7', notes:[0,7,11,14,18],            cat:'Quartal & Modern', desc:'Maiden Voyage' },
+
+  // Slash & Polychords
+  { name:'C/D (D9sus)', notes:[-10,0,4,7],         cat:'Slash & Poly', desc:'9sus polychord' },
+  { name:'F/G (G9sus)', notes:[-7,5,9,12],         cat:'Slash & Poly', desc:'9sus polychord' },
+  { name:'D/C (Cmaj7♯11)', notes:[0,14,18,21],     cat:'Slash & Poly', desc:'Lydian poly' },
+  { name:'E♭/D (D7♭9)', notes:[2,15,19,22],        cat:'Slash & Poly', desc:'7♭9 poly' },
+  { name:'A♭/G (Phrygian)', notes:[-5,8,12,15],    cat:'Slash & Poly', desc:'Phrygian poly' },
+  { name:'B♭/C (C9sus)', notes:[0,10,14,17],       cat:'Slash & Poly', desc:'9sus over root' },
+  { name:'E♭/F (F13sus)', notes:[5,15,19,22],      cat:'Slash & Poly', desc:'13sus poly' },
+
+  // Add chords / specific colors
+  { name:'add♯11',  notes:[0,4,7,18],          cat:'Add Chords', desc:'Lydian add' },
+  { name:'madd♯11', notes:[0,3,7,18],          cat:'Add Chords', desc:'Min add ♯11' },
+  { name:'6add9',   sfx:'6/9',                 cat:'Add Chords', desc:'See 6/9' },
+  { name:'m(b6)',   notes:[0,3,7,8],           cat:'Add Chords', desc:'Min ♭6 (Aeolian)' },
+  { name:'majadd♭9',notes:[0,4,7,13],          cat:'Add Chords', desc:'Tense add ♭9' },
+
+  // Iconic & Era-specific Voicings
+  { name:'Hendrix (7♯9)',     sfx:'7#9',      cat:'Iconic Voicings', desc:'Purple Haze' },
+  { name:'Steely Dan μ-chord',notes:[0,4,7,14], cat:'Iconic Voicings', desc:'add9, no 7' },
+  { name:"D'Angelo Δ♯11",     sfx:'maj7#11',  cat:'Iconic Voicings', desc:'Soul Lydian' },
+  { name:'Stevie Wonder 13',  sfx:'13',       cat:'Iconic Voicings', desc:'Soul dom 13' },
+  { name:'Glasper m9 (rootless)', notes:[3,7,10,14,17], cat:'Iconic Voicings', desc:'Modern jazz' },
+  { name:'Bill Evans Δ9 LH', notes:[4,11,14,17], cat:'Iconic Voicings', desc:'E-B-D-F voicing' },
+  { name:'Erykah Badu m11', sfx:'m11', cat:'Iconic Voicings', desc:'Neo-soul anchor' },
+  { name:'Robert Glasper Δ9♯11 spread', notes:[0,11,14,18,21], cat:'Iconic Voicings', desc:'Bright ceiling' },
+  { name:'Tom Misch m9', notes:[0,10,14,15,17], cat:'Iconic Voicings', desc:'Rootless m9 spread' },
+  { name:'J Dilla 6/9', notes:[0,4,9,14],     cat:'Iconic Voicings', desc:'Suspended 6/9' },
+  { name:'Hiatus Kaiyote Δ♯11', notes:[0,7,11,14,18], cat:'Iconic Voicings', desc:'Maj7♯11 spread' },
+  { name:'Alfa Mist Δ9 spread', notes:[0,11,14,16,21], cat:'Iconic Voicings', desc:'Modern jazz' },
+  { name:'Dr. Lonnie Smith B-3', notes:[0,4,7,10,15,17], cat:'Iconic Voicings', desc:'Organ groove' },
+
+  // Drop Voicings (classic comping)
+  { name:'Δ7 Drop 2 (B-E-G-C)', notes:[-1,4,7,12], cat:'Drop Voicings', desc:'Drop 2 of root pos' },
+  { name:'m7 Drop 2 (B♭-E♭-G-C)', notes:[-2,3,7,12], cat:'Drop Voicings', desc:'Drop 2 m7' },
+  { name:'7 Drop 2 (B♭-E-G-C)',  notes:[-2,4,7,12], cat:'Drop Voicings', desc:'Drop 2 7' },
+  { name:'m7♭5 Drop 2',          notes:[-2,3,6,12], cat:'Drop Voicings', desc:'Drop 2 ø' },
+  { name:'Δ7 Drop 3',            notes:[-12,4,7,11], cat:'Drop Voicings', desc:'Wide spread' },
+  { name:'m7 Drop 3',            notes:[-12,3,7,10], cat:'Drop Voicings', desc:'Wide spread' },
+  { name:'7 Drop 3',             notes:[-12,4,7,10], cat:'Drop Voicings', desc:'Wide spread' },
+
+  // Sus / Modal
+  { name:'maj7sus2', notes:[0,2,7,11], cat:'Sus & Modal', desc:'Maj 7 sus 2' },
+  { name:'9sus2',    notes:[0,2,7,10,14], cat:'Sus & Modal', desc:'9 sus 2' },
+  { name:'13sus(♭9)',notes:[0,5,10,13,21], cat:'Sus & Modal', desc:'Phrygian 13 sus' },
+];
+
+// ============================================================
+// RENDERING / UPDATE
+// ============================================================
+const $ = id => document.getElementById(id);
+
+function applyTheme() {
+  const r = document.documentElement;
+  const t = state.theme;
+  r.style.setProperty('--hue-ui',  t.uH);
+  r.style.setProperty('--sat-ui',  t.uS + '%');
+  r.style.setProperty('--light-ui',t.uL + '%');
+  r.style.setProperty('--hue-wkey',t.wH);
+  r.style.setProperty('--sat-wkey',t.wS + '%');
+  r.style.setProperty('--light-wkey',t.wL + '%');
+  r.style.setProperty('--hue-bkey',t.bH);
+  r.style.setProperty('--sat-bkey',t.bS + '%');
+  r.style.setProperty('--light-bkey',t.bL + '%');
+  // Update slider value labels
+  ['ui-h','ui-s','ui-l','w-h','w-s','w-l','b-h','b-s','b-l'].forEach(id => {
+    const el = $(id); if (!el) return;
+    const lbl = $(id+'-v'); if (lbl) lbl.textContent = el.value;
+  });
+  // Update color preview swatches
+  const pUi = $('prev-ui'); if (pUi) pUi.style.color = `hsl(${t.uH},${t.uS}%,${t.uL}%)`;
+  const pW = $('prev-w');   if (pW)  pW.style.color = `hsl(${t.wH},${t.wS}%,${t.wL}%)`;
+  const pB = $('prev-b');   if (pB)  pB.style.color = `hsl(${t.bH},${t.bS}%,${t.bL}%)`;
+  saveLocal();
+}
+
+function update() {
+  // Render main piano (always shows where user actually tapped — un-shifted)
+  renderPiano($('piano'), state.octaves, state.startOctave, state.selectedNotes);
+  $('piano').classList.toggle('show-labels', state.showLabels);
+
+  // Indicators
+  $('layoutDisplay').textContent = state.octaves;
+  $('transDisplay').textContent  = (state.transpose >= 0 ? '+' : '') + state.transpose;
+  $('octShiftDisplay').textContent = state.startOctave;
+  $('layoutMinus').disabled = state.octaves <= 1;
+  $('layoutPlus').disabled  = state.octaves >= 5;
+
+  // Compute display midis (Chord ID applies a virtual offset)
+  const dispMidis = getDisplayMidis();
+
+  // Top display
+  const dispEl = $('pianoDisplay');
+  if (state.selectedNotes.size === 0) {
+    dispEl.innerHTML = '<span class="display-empty">tap keys · type a chord · or open the guide</span>';
+  } else {
+    const chordName = detectChord(dispMidis);
+    const sortedDisp = [...dispMidis].sort((a,b)=>a-b);
+    const useFlatLow = [1,3,6,8,10].includes(pc(sortedDisp[0]));
+    const useFlatHigh = [1,3,6,8,10].includes(pc(sortedDisp[sortedDisp.length-1]));
+    const lowName = (useFlatLow?PRETTY_FLAT:PRETTY_SHARP)[pc(sortedDisp[0])];
+    const highName = (useFlatHigh?PRETTY_FLAT:PRETTY_SHARP)[pc(sortedDisp[sortedDisp.length-1])];
+    let label = chordName || '—';
+    if (state.chordIdMode && state.transpose !== 0) {
+      const playedChord = detectChord([...state.selectedNotes]);
+      label = `<span class="id-played">${playedChord}</span><span class="id-arrow">→</span><span class="id-real">${chordName}</span>`;
+    }
+    dispEl.innerHTML = `<span>${label}</span><span class="display-sub">${sortedDisp.length} notes · ${lowName}${midiToOctave(sortedDisp[0])} → ${highName}${midiToOctave(sortedDisp[sortedDisp.length-1])}</span>`;
+  }
+
+  // Analysis panel — always visible, real time
+  const a = analyzeNotes(dispMidis);
+  if (a.isEmpty) {
+    $('anChord').textContent = '—';
+    $('anNotes').textContent = '—';
+    $('anNotes').className = 'analysis-val';
+    $('anDetail').textContent = state.chordIdMode
+      ? `Chord ID is ON. Transpose offset: ${state.transpose >= 0 ? '+' : ''}${state.transpose}. Tap keys to see what they sound like at that transposition.`
+      : 'Tap any key to begin.';
+  } else {
+    // Chord row: show "played → real" in Chord ID mode w/ offset
+    if (state.chordIdMode && state.transpose !== 0) {
+      const played = analyzeNotes([...state.selectedNotes]);
+      $('anChord').innerHTML = `<span class="id-played">${played.chordName}</span><span class="id-arrow">→</span><span class="id-real">${a.chordName}</span>`;
+    } else {
+      $('anChord').textContent = a.chordName;
+    }
+    // Notes line — pills
+    $('anNotes').innerHTML = a.notesText.split(' · ').map(n => `<span class="pill">${n}</span>`).join(' ');
+    $('anNotes').className = 'analysis-val analysis-mini';
+    // Detail
+    let detailText = (a.chordLong ? a.chordLong + ' — ' : '') + a.detail;
+    if (state.chordIdMode && state.transpose !== 0) {
+      const played = analyzeNotes([...state.selectedNotes]);
+      detailText = `Played shape: ${played.chordName} (${played.chordLong || '—'}) · Transposed ${state.transpose >= 0 ? '+' : ''}${state.transpose} semitones · Sounds as: ${a.chordName} — ${a.chordLong || '—'}`;
+    }
+    $('anDetail').textContent = detailText;
+  }
+
+  // Update sound + ID toggles
+  document.querySelectorAll('[data-sound]').forEach(b => b.classList.toggle('toggle-on', b.dataset.sound === state.sound));
+  $('btnChordId').classList.toggle('toggle-on', state.chordIdMode);
+  $('app').classList.toggle('id-mode', state.chordIdMode);
+}
+
+// ============================================================
+// MAIN PIANO INTERACTIONS
+// ============================================================
+function setSelectedFromChord(chord, opts={}) {
+  if (!chord) return false;
+  // Place chord notes at user's current view base octave; fold to fit, never resize layout
+  const notes = chord.notes.slice();
+  const fitOctaveBase = (state.startOctave + 1) * 12;
+  const lowest = Math.min(...notes);
+  const shiftBy = fitOctaveBase - lowest; // align lowest with current view start
+  let placed = notes.map(n => n + shiftBy);
+  // Always fold notes that exceed visible range so user's layout stays unchanged
+  if (opts.fold !== false) {
+    placed = placed.map(n => foldToVisible(n, state.startOctave, state.octaves));
+    // de-dup after folding
+    placed = [...new Set(placed)];
+  }
+  // In Chord ID mode: don't reset transpose — the user's transpose is meaningful
+  if (!state.chordIdMode) state.transpose = 0;
+  state.selectedNotes = new Set(placed);
+  return true;
+}
+
+function transposeBy(delta) {
+  if (state.chordIdMode) {
+    // In Chord ID mode, transpose buttons add a virtual offset to the displayed name
+    // without moving the highlighted keys. This lets a player whose physical piano
+    // is transposed see the *real* sounding chord name.
+    state.transpose = Math.max(-24, Math.min(24, state.transpose + delta));
+    update();
+    return;
+  }
+  // Normal mode: shift every illuminated note by `delta` semitones
+  if (state.selectedNotes.size === 0) {
+    // Allow transpose to accumulate even with no notes (shows offset)
+    state.transpose = Math.max(-24, Math.min(24, state.transpose + delta));
+    update();
+    return;
+  }
+  const newSet = new Set();
+  for (const n of state.selectedNotes) newSet.add(n + delta);
+  state.selectedNotes = newSet;
+  state.transpose = Math.max(-24, Math.min(24, state.transpose + delta));
+  ensureViewContains();
+  update();
+}
+
+function octaveShift(delta) {
+  // Shifts the view base octave
+  const next = Math.max(0, Math.min(7, state.startOctave + delta));
+  if (next === state.startOctave) return;
+  state.startOctave = next;
+  update();
+}
+
+// Returns the MIDI notes that should be used for name/analysis display
+// (in Chord ID mode, applies the virtual transpose offset)
+function getDisplayMidis() {
+  const arr = [...state.selectedNotes];
+  if (state.chordIdMode && state.transpose !== 0) {
+    return arr.map(n => n + state.transpose);
+  }
+  return arr;
+}
+
+// Comprehensive analysis of currently selected (or display-shifted) notes.
+// Always returns full chord/note information. Updates in real time.
+function analyzeNotes(midis) {
+  const sorted = [...midis].sort((a,b)=>a-b);
+  const result = {
+    chordName: '',
+    chordLong: '',
+    notesText: '',
+    detail: '',
+    intervals: [],
+    isEmpty: sorted.length === 0,
+  };
+  if (sorted.length === 0) {
+    result.detail = 'Tap any key to begin.';
+    return result;
+  }
+  // Build pretty note list
+  const noteList = sorted.map(m => {
+    const useFlat = [1,3,6,8,10].includes(pc(m));
+    return (useFlat ? PRETTY_FLAT : PRETTY_SHARP)[pc(m)] + midiToOctave(m);
+  });
+  result.notesText = noteList.join(' · ');
+
+  if (sorted.length === 1) {
+    const m = sorted[0];
+    const useFlat = [1,3,6,8,10].includes(pc(m));
+    const sharp = PRETTY_SHARP[pc(m)];
+    const flat = PRETTY_FLAT[pc(m)];
+    const octName = midiToOctave(m);
+    const longName = NOTE_LONG[pc(m)];
+    result.chordName = (useFlat ? flat : sharp) + octName;
+    result.chordLong = longName;
+    if (m === 60) result.detail = 'Middle C — the reference C in the center of the piano.';
+    else result.detail = `Single note · pitch class ${useFlat ? flat : sharp}${useFlat ? ' (' + sharp + ')' : ''} · octave ${octName} · ${longName}`;
+    return result;
+  }
+
+  // Multi-note: detect chord
+  const detected = detectChord(sorted);
+  result.chordName = detected || noteList.join(' · ');
+
+  // Use detect to find a structural fit and compute intervals from inferred root
+  const allPcs = new Set(sorted.map(pc));
+  const lowestPc = pc(sorted[0]);
+  let bestFit = null;
+  for (let rootPc = 0; rootPc < 12; rootPc++) {
+    for (const [intervals, suffix, priority] of DETECT_TEMPLATES) {
+      const tplPcs = new Set(intervals.map(iv => pc(rootPc + iv)));
+      if (tplPcs.size !== allPcs.size) continue;
+      let match = true;
+      for (const x of tplPcs) if (!allPcs.has(x)) { match = false; break; }
+      if (!match) continue;
+      const rootBoost = (rootPc === lowestPc) ? 2 : 0;
+      const score = priority + rootBoost;
+      if (!bestFit || score > bestFit.score) bestFit = { rootPc, intervals, suffix, score };
+    }
+  }
+  if (bestFit) {
+    const rN = PRETTY_SHARP[bestFit.rootPc];
+    const useFlatRoot = [1,3,6,8,10].includes(bestFit.rootPc) && bestFit.rootPc !== lowestPc;
+    const rootName = useFlatRoot ? PRETTY_FLAT[bestFit.rootPc] : PRETTY_SHARP[bestFit.rootPc];
+    const fullDesc = describeChord(bestFit.suffix);
+    result.chordLong = `${rootName} ${fullDesc}`;
+    const intervalLabels = bestFit.intervals.map(iv => INTERVAL_NAME[iv % 24] || ('+' + iv));
+    result.intervals = intervalLabels;
+    let detail = `Root: ${rootName} · ${intervalLabels.join(' · ')}`;
+    if (lowestPc !== bestFit.rootPc) {
+      const useFlatBass = [1,3,6,8,10].includes(lowestPc);
+      const bassName = useFlatBass ? PRETTY_FLAT[lowestPc] : PRETTY_SHARP[lowestPc];
+      detail += ` · Bass: ${bassName} (inversion / slash)`;
+    }
+    result.detail = detail;
+  } else {
+    // Couldn't fit a known template — show interval analysis from lowest
+    const root = sorted[0];
+    const ivs = sorted.map(m => m - root);
+    const labels = ivs.map(iv => INTERVAL_NAME[iv % 24] || ('+' + iv));
+    result.intervals = labels;
+    result.chordLong = 'Custom voicing';
+    result.detail = `Lowest: ${PRETTY_SHARP[pc(root)]}${midiToOctave(root)} · Intervals: ${labels.join(' · ')}`;
+  }
+  return result;
+}
+
+const NOTE_LONG = {
+  0:'C natural', 1:'C sharp / D flat', 2:'D natural', 3:'D sharp / E flat',
+  4:'E natural', 5:'F natural', 6:'F sharp / G flat', 7:'G natural',
+  8:'G sharp / A flat', 9:'A natural', 10:'A sharp / B flat', 11:'B natural'
+};
+
+const INTERVAL_NAME = {
+  0:'R', 1:'♭2', 2:'2', 3:'♭3', 4:'3', 5:'4', 6:'♭5/♯4', 7:'5',
+  8:'♭6/♯5', 9:'6', 10:'♭7', 11:'7', 12:'8va',
+  13:'♭9', 14:'9', 15:'♯9', 16:'10', 17:'11', 18:'♯11',
+  19:'12', 20:'♭13', 21:'13', 22:'♯13', 23:'14'
+};
+
+const SUFFIX_LONG = {
+  '':'major triad','maj':'major triad','m':'minor triad','min':'minor triad',
+  'dim':'diminished triad','aug':'augmented triad','sus2':'suspended 2nd',
+  'sus4':'suspended 4th','5':'power chord (root & 5th)',
+  '6':'major 6th','m6':'minor 6th','6/9':'major six-nine','m6/9':'minor six-nine',
+  '7':'dominant 7th','maj7':'major 7th','m7':'minor 7th','mMaj7':'minor major 7th',
+  'dim7':'fully diminished 7th','m7b5':'half-diminished 7th','aug7':'augmented dominant 7th',
+  '7b5':'dominant 7♭5','maj7#5':'major 7♯5 (Lydian aug)','maj7b5':'major 7♭5',
+  '7sus4':'dominant 7 sus 4','maj7sus4':'major 7 sus 4',
+  'dim(maj7)':'diminished major 7','9':'dominant 9th','maj9':'major 9th','m9':'minor 9th',
+  'mMaj9':'minor-major 9th','add9':'add 9 (no 7th)','m(add9)':'minor add 9',
+  '7b9':'dominant 7♭9','7#9':'dominant 7♯9 (Hendrix)','maj7#9':'major 7♯9',
+  '9sus4':'9 sus 4','9b5':'9♭5','9#5':'augmented 9th','m9b5':'minor 9♭5',
+  '7b5b9':'7♭5♭9','7b5#9':'7♭5♯9','7#5b9':'7♯5♭9','7#5#9':'7♯5♯9',
+  '11':'dominant 11th','maj11':'major 11th','m11':'minor 11th','mMaj11':'minor-major 11th',
+  'add11':'add 11','7#11':'dominant 7♯11 (Lydian dom)','maj7#11':'major 7♯11 (Lydian)',
+  'm7#11':'minor 7♯11','9#11':'9♯11 (Lydian dom 9)','maj9#11':'major 9♯11',
+  'm11b5':'minor 11♭5','13':'dominant 13th','maj13':'major 13th','m13':'minor 13th',
+  '13b9':'13♭9','13#9':'13♯9','13#11':'13♯11','maj13#11':'major 13♯11',
+  '13sus4':'13 sus 4','7alt':'altered dominant (♭9 ♯9 ♯11 ♭13)',
+  '7b13':'7♭13','7b9b13':'Phrygian dominant','7#9b13':'7♯9♭13',
+  '7b9#11':'7♭9♯11','7#9#11':'7♯9♯11','7sus(b9)':'Phrygian sus','7sus2':'7 sus 2',
+  'dim7add9':'diminished 7 add 9'
+};
+function describeChord(suffix) { return SUFFIX_LONG[suffix] || suffix || 'chord'; }
+
+function ensureViewContains() {
+  if (state.selectedNotes.size === 0) return;
+  const lowest = Math.min(...state.selectedNotes);
+  const highest = Math.max(...state.selectedNotes);
+  const baseLow = (state.startOctave + 1) * 12;
+  const baseHigh = baseLow + state.octaves * 12 - 1;
+  if (lowest < baseLow) {
+    state.startOctave = Math.max(0, Math.floor(lowest / 12) - 1);
+  } else if (highest > baseHigh) {
+    const need = Math.ceil((highest - baseLow + 1) / 12);
+    if (need <= state.octaves) {
+      // shift up
+      state.startOctave = Math.min(7, Math.floor((highest) / 12) - state.octaves);
+    } else {
+      // grow octaves up to 5
+      state.octaves = Math.min(5, need);
+    }
+  }
+}
+
+function clearAll() {
+  state.selectedNotes = new Set();
+  state.transpose = 0;
+  update();
+}
+
+function toggleNote(midi) {
+  if (state.selectedNotes.has(midi)) state.selectedNotes.delete(midi);
+  else state.selectedNotes.add(midi);
+  update();
+}
+
+// ============================================================
+// EVENT WIRING — main piano clicks (delegated)
+// ============================================================
+$('piano').addEventListener('click', e => {
+  const k = e.target.closest('.white-key, .black-key');
+  if (!k) return;
+  const midi = parseInt(k.dataset.midi);
+  if (isNaN(midi)) return;
+  toggleNote(midi);
+  ensureAudioRunning();
+  playSingleNote(midi);
+});
+
+// Topbar modal buttons
+document.querySelectorAll('[data-modal]').forEach(b => {
+  b.addEventListener('click', () => openModal(b.dataset.modal));
+});
+document.querySelectorAll('[data-close]').forEach(b => {
+  b.addEventListener('click', () => closeAllModals());
+});
+document.querySelectorAll('.modal-backdrop').forEach(bd => {
+  bd.addEventListener('click', e => { if (e.target === bd) closeAllModals(); });
+});
+
+// Layout / transpose / octave buttons
+$('layoutMinus').addEventListener('click', () => { if (state.octaves > 1) { state.octaves--; update(); } });
+$('layoutPlus').addEventListener('click',  () => { if (state.octaves < 5) { state.octaves++; update(); } });
+$('transMinus').addEventListener('click', () => transposeBy(-1));
+$('transPlus').addEventListener('click',  () => transposeBy(+1));
+$('transDisplay').addEventListener('click', () => {
+  if (state.transpose !== 0) {
+    transposeBy(-state.transpose);
+  }
+});
+$('octShiftMinus').addEventListener('click', () => octaveShift(-1));
+$('octShiftPlus').addEventListener('click',  () => octaveShift(+1));
+$('octShiftDisplay').addEventListener('click', () => { state.startOctave = 4; update(); });
+$('btnClear').addEventListener('click', clearAll);
+
+// Chord input
+const chordInputEl = $('chordInput');
+chordInputEl.addEventListener('keydown', e => {
+  if (e.key === 'Enter') { commitChordInput(); chordInputEl.blur(); }
+  else if (e.key === 'Escape') { chordInputEl.blur(); }
+});
+chordInputEl.addEventListener('input', () => {
+  // Live parse with subtle feedback (don't apply unless valid & user pauses)
+  chordInputEl.classList.remove('error');
+  // Live update: parse and set if valid
+  const c = parseChord(chordInputEl.value);
+  if (c) {
+    setSelectedFromChord(c);
+    update();
+  }
+});
+function commitChordInput() {
+  const c = parseChord(chordInputEl.value);
+  if (!c) {
+    chordInputEl.classList.add('error');
+    setTimeout(() => chordInputEl.classList.remove('error'), 800);
+    return;
+  }
+  setSelectedFromChord(c);
+  update();
+  ensureAudioRunning();
+  playChord([...state.selectedNotes]);
+}
+
+// Play button
+$('btnPlay').addEventListener('click', () => {
+  if (state.selectedNotes.size === 0) {
+    showToast('No keys selected'); return;
+  }
+  ensureAudioRunning();
+  const btn = $('btnPlay');
+  btn.classList.add('playing');
+  setTimeout(() => btn.classList.remove('playing'), 1200);
+  playChord([...state.selectedNotes].sort((a,b)=>a-b));
+});
+
+// Sound toggle
+document.querySelectorAll('[data-sound]').forEach(b => {
+  b.addEventListener('click', () => {
+    state.sound = b.dataset.sound;
+    update();
+  });
+});
+
+// Chord ID toggle
+$('btnChordId').addEventListener('click', () => {
+  state.chordIdMode = !state.chordIdMode;
+  if (state.chordIdMode) {
+    showToast('Chord ID ON — transpose offsets the displayed name only');
+  } else {
+    showToast('Chord ID OFF — transpose shifts the keys');
+    // When turning OFF: if there was a virtual offset, ask the user via toast.
+    // We keep transpose as-is so toggling back is non-destructive.
+  }
+  saveLocal();
+  update();
+});
+
+// Save button
+$('btnSave').addEventListener('click', () => {
+  if (state.selectedNotes.size === 0) {
+    showToast('No keys to save'); return;
+  }
+  const dispMidis = getDisplayMidis();
+  const name = detectChord(dispMidis) || 'Untitled';
+  const entry = {
+    id: 'c_' + Date.now() + '_' + Math.floor(Math.random() * 1000),
+    name,
+    notes: [...dispMidis].sort((a,b)=>a-b),
+    created: new Date().toISOString(),
+  };
+  state.savedChords.push(entry);
+  saveLocal();
+  showToast('Saved: ' + name);
+});
+
+// ============================================================
+// MODAL HELPERS
+// ============================================================
+function openModal(name) {
+  closeAllModals();
+  const m = $('modal-' + name);
+  if (m) m.classList.add('active');
+  if (name === 'guide') updateMiniPiano();
+  if (name === 'library') renderLibrary();
+}
+function closeAllModals() {
+  document.querySelectorAll('.modal-backdrop').forEach(m => m.classList.remove('active'));
+}
+
+// ============================================================
+// LIBRARY — saved chords + export
+// ============================================================
+function renderLibrary() {
+  const wrap = $('libContent');
+  const count = $('libCount');
+  count.textContent = state.savedChords.length + (state.savedChords.length === 1 ? ' chord' : ' chords');
+  if (state.savedChords.length === 0) {
+    wrap.innerHTML = '<div class="lib-empty"><span class="lib-empty-icon">⌑</span><div>No chords saved yet.</div><div style="font-size:.78rem;margin-top:.6em">Tap keys, then hit <strong style="color:var(--neon)">Save</strong> below the piano to add chords here.</div></div>';
+    return;
+  }
+  wrap.innerHTML = '';
+  const grid = document.createElement('div');
+  grid.className = 'lib-grid';
+  // newest first
+  const items = [...state.savedChords].reverse();
+  items.forEach(entry => {
+    const card = document.createElement('div');
+    card.className = 'lib-card';
+    const noteList = entry.notes.map(m => {
+      const useFlat = [1,3,6,8,10].includes(pc(m));
+      return (useFlat?PRETTY_FLAT:PRETTY_SHARP)[pc(m)] + midiToOctave(m);
+    }).join(' · ');
+    const date = new Date(entry.created);
+    const dateStr = date.toLocaleDateString() + ' · ' + date.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+    card.innerHTML = `
+      <div class="lib-card-name"><input type="text" value="${escapeHtml(entry.name)}" data-id="${entry.id}" data-edit="name"></div>
+      ${chordSVG(entry.notes, 240, 64)}
+      <div class="lib-card-notes">${noteList}</div>
+      <div class="lib-card-meta">${dateStr}</div>
+      <div class="lib-card-actions">
+        <button class="icon-btn" data-act="load" data-id="${entry.id}">↺ Load</button>
+        <button class="icon-btn" data-act="play" data-id="${entry.id}">▸ Play</button>
+        <button class="icon-btn" data-act="del"  data-id="${entry.id}" style="border-color:hsl(0,40%,30%);color:hsl(0,50%,75%)">✕ Del</button>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+  wrap.appendChild(grid);
+
+  // Wire actions (delegated)
+  wrap.querySelectorAll('input[data-edit="name"]').forEach(inp => {
+    inp.addEventListener('change', e => {
+      const id = e.target.dataset.id;
+      const it = state.savedChords.find(x => x.id === id);
+      if (it) { it.name = e.target.value.trim() || 'Untitled'; saveLocal(); }
+    });
+    inp.addEventListener('click', e => e.stopPropagation());
+  });
+  wrap.querySelectorAll('[data-act]').forEach(b => {
+    b.addEventListener('click', e => {
+      e.stopPropagation();
+      const id = b.dataset.id;
+      const it = state.savedChords.find(x => x.id === id);
+      if (!it) return;
+      if (b.dataset.act === 'load') {
+        // Place onto main piano while preserving the user's current layout
+        const folded = it.notes.map(n => foldToVisible(n, state.startOctave, state.octaves));
+        state.selectedNotes = new Set(folded);
+        state.transpose = 0;
+        closeAllModals();
+        update();
+        showToast('Loaded: ' + it.name);
+      } else if (b.dataset.act === 'play') {
+        ensureAudioRunning();
+        playChord(it.notes);
+      } else if (b.dataset.act === 'del') {
+        state.savedChords = state.savedChords.filter(x => x.id !== id);
+        saveLocal();
+        renderLibrary();
+        showToast('Deleted');
+      }
+    });
+  });
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+// Render an SVG piano showing the given MIDI notes highlighted
+function chordSVG(midis, width=240, height=64, theme=null) {
+  if (!midis || midis.length === 0) return '';
+  const sortedMidis = [...midis].sort((a,b)=>a-b);
+  const lo = sortedMidis[0];
+  const hi = sortedMidis[sortedMidis.length - 1];
+  const startOct = Math.floor(lo / 12) - 1;
+  const endOct = Math.floor(hi / 12) - 1;
+  const numOcts = Math.max(1, endOct - startOct + 1);
+  // pad so endpoints aren't at edges
+  const totalWhite = numOcts * 7;
+  const wkW = width / totalWhite;
+  const set = new Set(midis);
+  const t = theme || state.theme;
+  const neon = `hsl(${t.uH},${t.uS}%,${t.uL}%)`;
+  const wKey = `hsl(${t.wH},${t.wS}%,${t.wL}%)`;
+  const bKey = `hsl(${t.bH},${t.bS}%,${t.bL}%)`;
+  let s = `<svg class="lib-piano" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" preserveAspectRatio="none">`;
+  s += `<rect x="0" y="0" width="${width}" height="${height}" fill="#050807"/>`;
+  // White keys
+  let xc = 0;
+  for (let o = 0; o < numOcts; o++) {
+    const oct = startOct + o;
+    const baseMidi = (oct + 1) * 12;
+    [0,2,4,5,7,9,11].forEach(p => {
+      const m = baseMidi + p;
+      const fill = set.has(m) ? neon : wKey;
+      s += `<rect x="${xc.toFixed(2)}" y="0" width="${wkW.toFixed(2)}" height="${height}" fill="${fill}" stroke="${neon}" stroke-width="0.6"/>`;
+      xc += wkW;
+    });
+  }
+  // Black keys
+  const bkW = wkW * 0.62;
+  const bkH = height * 0.6;
+  for (let o = 0; o < numOcts; o++) {
+    const oct = startOct + o;
+    const baseMidi = (oct + 1) * 12;
+    const octStartX = o * 7 * wkW;
+    [{p:1,after:0},{p:3,after:1},{p:6,after:3},{p:8,after:4},{p:10,after:5}].forEach(({p, after}) => {
+      const m = baseMidi + p;
+      const x = octStartX + (after + 1) * wkW - bkW / 2;
+      const fill = set.has(m) ? neon : bKey;
+      s += `<rect x="${x.toFixed(2)}" y="0" width="${bkW.toFixed(2)}" height="${bkH.toFixed(2)}" fill="${fill}" stroke="${neon}" stroke-width="0.6"/>`;
+    });
+  }
+  s += '</svg>';
+  return s;
+}
+
+// Export library as a standalone HTML file
+$('libExport').addEventListener('click', () => {
+  if (state.savedChords.length === 0) { showToast('No chords to export'); return; }
+  const t = state.theme;
+  const neon = `hsl(${t.uH},${t.uS}%,${t.uL}%)`;
+  const date = new Date().toLocaleString();
+  const cards = state.savedChords.map(c => {
+    const noteList = c.notes.map(m => {
+      const useFlat = [1,3,6,8,10].includes(pc(m));
+      return (useFlat?PRETTY_FLAT:PRETTY_SHARP)[pc(m)] + midiToOctave(m);
+    }).join(' · ');
+    const a = analyzeNotes(c.notes);
+    return `<div class="card">
+      <div class="cn">${escapeHtml(c.name)}</div>
+      <div class="cd">${escapeHtml(a.chordLong || '')}</div>
+      ${chordSVG(c.notes, 320, 90, t)}
+      <div class="cnotes">${noteList}</div>
+    </div>`;
+  }).join('');
+  const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>UnleashYaKeys · Chord Library</title>
+<style>
+@page{margin:1.2cm}
+body{background:#000;color:${neon};font-family:'Space Mono',ui-monospace,monospace;padding:2em;margin:0;line-height:1.5}
+h1{font-family:'Orbitron',sans-serif;letter-spacing:.18em;font-size:1.6rem;text-shadow:0 0 12px ${neon};margin:0 0 .3em}
+.sub{color:#777;letter-spacing:.15em;font-size:.7rem;text-transform:uppercase;margin-bottom:.4em}
+.creds{color:#666;font-style:italic;font-size:.78rem;margin-bottom:1.6em;letter-spacing:.08em;border-bottom:1px solid #333;padding-bottom:1em}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1em}
+.card{border:1px solid ${neon}55;padding:1em;border-radius:3px;background:rgba(255,255,255,0.02);page-break-inside:avoid}
+.cn{font-family:'Orbitron',sans-serif;font-size:1.25rem;color:${neon};letter-spacing:.04em;font-weight:700;text-shadow:0 0 8px ${neon}99;margin-bottom:.2em}
+.cd{color:#999;font-size:.78rem;margin-bottom:.6em;letter-spacing:.04em;font-style:italic}
+.cnotes{color:#888;font-size:.78rem;margin-top:.6em;letter-spacing:.05em}
+.lib-piano{display:block;width:100%;height:auto}
+@media print{body{background:#fff;color:#000}h1{color:#000;text-shadow:none}.card{border-color:#333;background:#fff}.cn{color:#000;text-shadow:none}}
+</style></head><body>
+
+<h1>◆ UnleashYaKeys · Chord Library</h1>
+<div class="sub">${state.savedChords.length} chord${state.savedChords.length===1?'':'s'} · exported ${escapeHtml(date)}</div>
+<div class="creds">Designed by Mario Garcia, for artists looking for another way.</div>
+<div class="grid">${cards}</div>
+</body></html>`;
+  const blob = new Blob([html], { type: 'text/html' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'UnleashYaKeys-Library-' + Date.now() + '.html';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  showToast('Exported HTML');
+});
+
+// Export library as a single PNG sheet (uses canvas)
+$(‘libExportPng’).addEventListener(‘click’, async () => {
+if (state.savedChords.length === 0) { showToast(‘No chords to export’); return; }
+const cols = Math.min(2, state.savedChords.length);
+const rows = Math.ceil(state.savedChords.length / cols);
+const cardW = 460, cardH = 200, pad = 30, header = 100;
+const W = cardW * cols + pad * (cols + 1);
+const H = header + rows * cardH + pad * (rows + 1);
+const canvas = document.createElement(‘canvas’);
+canvas.width = W; canvas.height = H;
+const ctx = canvas.getContext(‘2d’);
+const t = state.theme;
+const neon = `hsl(${t.uH},${t.uS}%,${t.uL}%)`;
+const wKey = `hsl(${t.wH},${t.wS}%,${t.wL}%)`;
+const bKey = `hsl(${t.bH},${t.bS}%,${t.bL}%)`;
+
+ctx.fillStyle = ‘#000’; ctx.fillRect(0, 0, W, H);
+ctx.fillStyle = neon;
+ctx.font = ‘bold 26px sans-serif’;
+ctx.fillText(‘◆ UnleashYaKeys · Chord Library’, pad, 40);
+ctx.fillStyle = ‘#888’;
+ctx.font = ‘12px sans-serif’;
+ctx.fillText(state.savedChords.length + ’ chord’ + (state.savedChords.length===1?’’:‘s’) + ’ · ’ + new Date().toLocaleString(), pad, 60);
+ctx.fillStyle = ‘#666’;
+ctx.font = ‘italic 11px sans-serif’;
+ctx.fillText(‘Designed by Mario Garcia, for artists looking for another way.’, pad, 78);
+
+state.savedChords.forEach((c, idx) => {
+const col = idx % cols;
+const row = Math.floor(idx / cols);
+const x = pad + col * (cardW + pad);
+const y = header + pad + row * (cardH + pad);
+// card border
+ctx.strokeStyle = neon + ‘88’;
+ctx.lineWidth = 1;
+ctx.strokeRect(x, y, cardW, cardH);
+// name
+ctx.fillStyle = neon;
+ctx.font = ‘bold 22px sans-serif’;
+ctx.fillText(c.name, x + 14, y + 28);
+// notes
+const noteList = c.notes.map(m => {
+const useFlat = [1,3,6,8,10].includes(pc(m));
+return (useFlat?PRETTY_FLAT:PRETTY_SHARP)[pc(m)] + midiToOctave(m);
+}).join(’ · ’);
+ctx.fillStyle = ‘#888’;
+ctx.font = ‘12px sans-serif’;
+ctx.fillText(noteList, x + 14, y + cardH - 14);
+// piano
+drawPianoOnCanvas(ctx, c.notes, x + 14, y + 40, cardW - 28, cardH - 70, neon, wKey, bKey);
+});
+
+canvas.toBlob(blob => {
+const url = URL.createObjectURL(blob);
+const a = document.createElement(‘a’);
+a.href = url;
+a.download = ‘UnleashYaKeys-Library-’ + Date.now() + ‘.png’;
+document.body.appendChild(a); a.click(); document.body.removeChild(a);
+setTimeout(() => URL.revokeObjectURL(url), 1000);
+showToast(‘Exported PNG’);
+}, ‘image/png’);
+});
+
+function drawPianoOnCanvas(ctx, midis, x, y, w, h, neon, wKey, bKey) {
+if (!midis.length) return;
+const sortedMidis = […midis].sort((a,b)=>a-b);
+const lo = sortedMidis[0], hi = sortedMidis[sortedMidis.length - 1];
+const startOct = Math.floor(lo / 12) - 1;
+const endOct = Math.floor(hi / 12) - 1;
+const numOcts = Math.max(1, endOct - startOct + 1);
+const totalWhite = numOcts * 7;
+const wkW = w / totalWhite;
+const set = new Set(midis);
+let xc = x;
+for (let o = 0; o < numOcts; o++) {
+const oct = startOct + o;
+const baseMidi = (oct + 1) * 12;
+[0,2,4,5,7,9,11].forEach(p => {
+const m = baseMidi + p;
+ctx.fillStyle = set.has(m) ? neon : wKey;
+ctx.fillRect(xc, y, wkW, h);
+ctx.strokeStyle = neon; ctx.lineWidth = 0.6;
+ctx.strokeRect(xc, y, wkW, h);
+xc += wkW;
+});
+}
+const bkW = wkW * 0.62, bkH = h * 0.6;
+for (let o = 0; o < numOcts; o++) {
+const oct = startOct + o;
+const baseMidi = (oct + 1) * 12;
+const octStartX = x + o * 7 * wkW;
+[{p:1,after:0},{p:3,after:1},{p:6,after:3},{p:8,after:4},{p:10,after:5}].forEach(({p, after}) => {
+const m = baseMidi + p;
+const bx = octStartX + (after + 1) * wkW - bkW / 2;
+ctx.fillStyle = set.has(m) ? neon : bKey;
+ctx.fillRect(bx, y, bkW, bkH);
+ctx.strokeStyle = neon; ctx.lineWidth = 0.6;
+ctx.strokeRect(bx, y, bkW, bkH);
+});
+}
+}
+
+$(‘libClear’).addEventListener(‘click’, () => {
+if (state.savedChords.length === 0) return;
+if (confirm(‘Delete all ’ + state.savedChords.length + ’ saved chord’ + (state.savedChords.length===1?’’:‘s’) + ‘? This cannot be undone.’)) {
+state.savedChords = [];
+saveLocal();
+renderLibrary();
+showToast(‘Library cleared’);
+}
+});
+
+// ============================================================
+// LAUNCH
+// ============================================================
+$(‘launch’).addEventListener(‘click’, () => {
+$(‘home’).classList.add(‘hidden’);
+$(‘app’).classList.add(‘active’);
+ensureAudioRunning();
+});
+
+// ============================================================
+// THEME — sliders & presets
+// ============================================================
+const THEME_INPUTS = [
+[‘ui-h’,‘uH’],[‘ui-s’,‘uS’],[‘ui-l’,‘uL’],
+[‘w-h’,‘wH’], [‘w-s’,‘wS’], [‘w-l’,‘wL’],
+[‘b-h’,‘bH’], [‘b-s’,‘bS’], [‘b-l’,‘bL’],
+];
+THEME_INPUTS.forEach(([id, key]) => {
+$(id).addEventListener(‘input’, e => {
+state.theme[key] = parseInt(e.target.value);
+applyTheme();
+});
+});
+
+const THEME_PRESETS = [
+{ name:‘Teal’,     swatch:’#2cf0d3’, t:{ uH:168, uS:78, uL:56, wH:0, wS:0, wL:96, bH:0, bS:0, bL:9 } },
+{ name:‘Amber’,    swatch:’#ffb347’, t:{ uH:33,  uS:90, uL:60, wH:30,wS:10,wL:94, bH:25,bS:15,bL:10 } },
+{ name:‘Magenta’,  swatch:’#ff4dd2’, t:{ uH:316, uS:88, uL:64, wH:300,wS:5,wL:96, bH:300,bS:8,bL:10 } },
+{ name:‘Crimson’,  swatch:’#ff3b54’, t:{ uH:351, uS:85, uL:58, wH:0, wS:0, wL:94, bH:0, bS:0, bL:8 } },
+{ name:‘Violet’,   swatch:’#9d6bff’, t:{ uH:262, uS:82, uL:64, wH:260,wS:5,wL:96, bH:260,bS:10,bL:10 } },
+{ name:‘Lime’,     swatch:’#a8ff60’, t:{ uH:96,  uS:85, uL:60, wH:80,wS:8,wL:95, bH:90,bS:10,bL:10 } },
+{ name:‘Ice’,      swatch:’#5fb8ff’, t:{ uH:206, uS:88, uL:62, wH:200,wS:8,wL:96, bH:200,bS:12,bL:12 } },
+{ name:‘Vapor’,    swatch:’#ff9bd4’, t:{ uH:330, uS:78, uL:70, wH:280,wS:10,wL:94, bH:300,bS:12,bL:14 } },
+{ name:‘Mono’,     swatch:’#dddddd’, t:{ uH:0,   uS:0,  uL:78, wH:0, wS:0, wL:96, bH:0, bS:0, bL:8 } },
+{ name:‘Lava’,     swatch:’#ff7233’, t:{ uH:18,  uS:92, uL:58, wH:20,wS:15,wL:94, bH:0, bS:30,bL:14 } },
+{ name:‘Night·Inverted’, swatch:’#000000’, t:{ uH:168, uS:78, uL:56, wH:0, wS:0, wL:8, bH:0, bS:80, bL:38 } }, // black & red keys vibe
+{ name:‘Forest’,   swatch:’#3df091’, t:{ uH:148, uS:78, uL:54, wH:120,wS:8,wL:94, bH:140,bS:14,bL:10 } },
+];
+function buildPresets() {
+const wrap = $(‘presets’); wrap.innerHTML = ‘’;
+THEME_PRESETS.forEach(p => {
+const b = document.createElement(‘button’);
+b.className = ‘preset-btn’;
+b.innerHTML = `<span class="swatch" style="background:${p.swatch}"></span>${p.name}`;
+b.addEventListener(‘click’, () => applyPreset(p.t));
+wrap.appendChild(b);
+});
+}
+function applyPreset(t) {
+Object.assign(state.theme, t);
+// Sync sliders
+$(‘ui-h’).value = t.uH; $(‘ui-s’).value = t.uS; $(‘ui-l’).value = t.uL;
+$(‘w-h’).value = t.wH;  $(‘w-s’).value = t.wS;  $(‘w-l’).value = t.wL;
+$(‘b-h’).value = t.bH;  $(‘b-s’).value = t.bS;  $(‘b-l’).value = t.bL;
+applyTheme();
+}
+$(‘resetTheme’).addEventListener(‘click’, () => applyPreset(DEFAULT_THEME));
+
+// ============================================================
+// CHORD BANK — populate & wire
+// ============================================================
+function populateBank() {
+// Quick-jump nav
+const nav = $(‘bankNav’); nav.innerHTML = ‘’;
+BANK_ROOT_ORDER.forEach((r, i) => {
+const b = document.createElement(‘button’);
+b.className = ‘note-nav-btn’;
+b.textContent = r.name.split(’ ‘)[0]; // short label
+b.title = r.name;
+b.dataset.idx = i;
+b.addEventListener(‘click’, () => {
+const target = $(‘bank-root-’ + i);
+if (target) target.scrollIntoView({behavior:‘smooth’, block:‘start’});
+document.querySelectorAll(’#bankNav .note-nav-btn’).forEach(x => x.classList.remove(‘active’));
+b.classList.add(‘active’);
+});
+nav.appendChild(b);
+});
+// Chord lists
+const list = $(‘bankList’); list.innerHTML = ‘’;
+BANK_ROOT_ORDER.forEach((root, i) => {
+const sec = document.createElement(‘div’);
+sec.className = ‘cat-section’;
+sec.id = ‘bank-root-’ + i;
+sec.innerHTML = `<div class="cat-title">Root: ${root.name}</div>`;
+BANK_CATEGORIES.forEach(cat => {
+const cT = document.createElement(‘div’);
+cT.style.cssText = ‘font-family:Orbitron;font-size:.65rem;letter-spacing:.15em;color:var(–text-dim);margin:.6em 0 .2em;text-transform:uppercase’;
+cT.textContent = cat.cat;
+sec.appendChild(cT);
+const grid = document.createElement(‘div’);
+grid.className = ‘chord-grid’;
+cat.items.forEach(it => {
+const sym = (PRETTY_SHARP[root.pc]) + it.sfx;
+// For pretty display, prefer the natural / commonly used spelling
+const symPretty = sym;
+const btn = document.createElement(‘div’);
+btn.className = ‘chord-item’;
+btn.innerHTML = `${symPretty}<span class="desc">${it.name}</span>`;
+btn.dataset.sym = sym;
+btn.addEventListener(‘click’, () => {
+const c = parseChord(sym);
+if (c) {
+setSelectedFromChord(c);
+update();
+ensureAudioRunning();
+playChord([…state.selectedNotes]);
+showToast(‘Loaded: ’ + symPretty);
+// visual feedback
+document.querySelectorAll(’.chord-item.active’).forEach(x => x.classList.remove(‘active’));
+btn.classList.add(‘active’);
+// also highlight the relevant root nav button
+document.querySelectorAll(’#bankNav .note-nav-btn’).forEach((nb, navIdx) => {
+nb.classList.toggle(‘active’, navIdx === i);
+});
+}
+});
+grid.appendChild(btn);
+});
+sec.appendChild(grid);
+});
+list.appendChild(sec);
+});
+}
+
+// ============================================================
+// COMPLEX GUIDE — populate & wire
+// ============================================================
+function populateGuide() {
+// Quick-jump for guide root
+const nav = $(‘guideNav’); nav.innerHTML = ‘’;
+for (let p = 0; p < 12; p++) {
+const b = document.createElement(‘button’);
+b.className = ‘note-nav-btn’;
+b.textContent = PRETTY_SHARP[p];
+b.dataset.pc = p;
+b.addEventListener(‘click’, () => {
+state.guideRootPc = p;
+updateGuideRootLabel();
+renderGuideList(); // reflect new chord names
+// refresh mini piano if a chord was active
+if (state.guideActiveChord) selectGuideChord(state.guideActiveChord, true);
+});
+nav.appendChild(b);
+}
+renderGuideList();
+}
+
+function renderGuideList() {
+const list = $(‘guideList’); list.innerHTML = ‘’;
+// Group by category
+const byCat = {};
+COMPLEX_CHORDS.forEach(c => {
+(byCat[c.cat] = byCat[c.cat] || []).push(c);
+});
+Object.keys(byCat).forEach(cat => {
+const sec = document.createElement(‘div’);
+sec.className = ‘cat-section’;
+sec.innerHTML = `<div class="cat-title">${cat}</div>`;
+const grid = document.createElement(‘div’);
+grid.className = ‘chord-grid’;
+byCat[cat].forEach(c => {
+const rootName = PRETTY_SHARP[state.guideRootPc];
+const display = rootName + (c.sfx ? c.sfx.replace(/^maj/,‘maj’) : c.name.replace(/^m?aj?7?(b?\d|#?\d|sus\d?|alt|sus|add\d|(.*?))*/,’$&’));
+// For display, prepend root for suffix-based items, or use full name as-is
+let label;
+if (c.sfx !== undefined) {
+label = rootName + (c.sfx === ‘’ ? ‘’ : c.sfx);
+} else {
+// notes-defined; display name as given (may include ‘C’ which we replace)
+label = c.name;
+}
+const btn = document.createElement(‘div’);
+btn.className = ‘chord-item’;
+btn.innerHTML = `${label}<span class="desc">${c.desc}</span>`;
+if (state.guideActiveChord && state.guideActiveChord === c) btn.classList.add(‘active’);
+btn.addEventListener(‘click’, () => selectGuideChord(c));
+grid.appendChild(btn);
+});
+sec.appendChild(grid);
+list.appendChild(sec);
+});
+}
+
+function chordToMidis(c, rootPc) {
+// Returns array of MIDI notes for the chord at rootPc, anchored around C4=60
+const baseRoot = 60 + rootPc;
+let intervals;
+if (c.sfx !== undefined) {
+intervals = Q[c.sfx];
+if (!intervals) return [];
+} else if (c.notes) {
+intervals = c.notes;
+} else return [];
+return intervals.map(iv => baseRoot + iv);
+}
+
+function selectGuideChord(c, fromTranspose=false) {
+state.guideActiveChord = c;
+const midis = chordToMidis(c, state.guideRootPc);
+if (!midis.length) return;
+state.guideSelected = new Set(midis);
+
+// First-time auto-fit; subsequent selections respect the user’s chosen layout
+if (!state.guideLayoutLocked) {
+const lowest = Math.min(…midis);
+const highest = Math.max(…midis);
+state.guideStartOct = Math.max(2, Math.min(6, Math.floor(lowest / 12) - 1));
+const newBase = (state.guideStartOct + 1) * 12;
+const span = highest - newBase + 1;
+state.guideOctaves = Math.min(5, Math.max(3, Math.ceil(span / 12)));
+state.guideLayoutLocked = true;
+} else {
+// Layout stays put: fold any out-of-range notes back into the visible window
+const folded = midis.map(n => foldToVisible(n, state.guideStartOct, state.guideOctaves));
+state.guideSelected = new Set(folded);
+}
+
+updateMiniPiano();
+// Update display name
+const rootName = PRETTY_SHARP[state.guideRootPc];
+let label = (c.sfx !== undefined) ? rootName + c.sfx : c.name;
+$(‘guideDisplay’).textContent = label + (c.desc ? ’  —  ’ + c.desc : ‘’);
+// Highlight active item
+if (!fromTranspose) {
+document.querySelectorAll(’#guideList .chord-item’).forEach(x => x.classList.remove(‘active’));
+renderGuideList();
+}
+ensureAudioRunning();
+playChord([…state.guideSelected]);
+}
+
+function updateMiniPiano() {
+renderPiano($(‘miniPiano’), state.guideOctaves, state.guideStartOct, state.guideSelected);
+}
+
+function updateGuideRootLabel() {
+$(‘guideRoot’).textContent = PRETTY_SHARP[state.guideRootPc] + ’ / ’ + PRETTY_FLAT[state.guideRootPc];
+// Also update active highlight
+document.querySelectorAll(’#guideNav .note-nav-btn’).forEach(b => {
+b.classList.toggle(‘active’, parseInt(b.dataset.pc) === state.guideRootPc);
+});
+}
+
+// Mini piano click — toggle keys directly
+$(‘miniPiano’).addEventListener(‘click’, e => {
+const k = e.target.closest(’.white-key, .black-key’);
+if (!k) return;
+const midi = parseInt(k.dataset.midi);
+if (isNaN(midi)) return;
+if (state.guideSelected.has(midi)) state.guideSelected.delete(midi);
+else state.guideSelected.add(midi);
+updateMiniPiano();
+ensureAudioRunning();
+playSingleNote(midi);
+});
+
+$(‘guideTransMinus’).addEventListener(‘click’, () => {
+state.guideRootPc = (state.guideRootPc + 11) % 12;
+updateGuideRootLabel();
+renderGuideList();
+if (state.guideActiveChord) selectGuideChord(state.guideActiveChord, true);
+});
+$(‘guideTransPlus’).addEventListener(‘click’, () => {
+state.guideRootPc = (state.guideRootPc + 1) % 12;
+updateGuideRootLabel();
+renderGuideList();
+if (state.guideActiveChord) selectGuideChord(state.guideActiveChord, true);
+});
+$(‘guidePlay’).addEventListener(‘click’, () => {
+if (state.guideSelected.size === 0) { showToast(‘No chord selected’); return; }
+ensureAudioRunning();
+playChord([…state.guideSelected].sort((a,b)=>a-b));
+});
+$(‘sendToMain’).addEventListener(‘click’, () => {
+if (state.guideSelected.size === 0) { showToast(‘No chord to send’); return; }
+// Send to main piano — fold notes into main piano range
+const folded = […state.guideSelected].map(n => foldToVisible(n, state.startOctave, state.octaves));
+state.selectedNotes = new Set(folded);
+state.transpose = 0;
+closeAllModals();
+update();
+showToast(‘Sent to main piano’);
+});
+
+// ============================================================
+// COLLAPSIBLE PANELS (Type Guide and Quick-Nav collapses)
+// ============================================================
+document.addEventListener(‘click’, e => {
+const h = e.target.closest(’.collapse-header’);
+if (h) {
+h.parentElement.classList.toggle(‘open’);
+}
+});
+
+// ============================================================
+// KEYBOARD HANDLING — Bluetooth/USB keyboard support
+// ============================================================
+const KEY_MAP_LOWER = {
+‘KeyZ’: 0, ‘KeyS’: 1, ‘KeyX’: 2, ‘KeyD’: 3, ‘KeyC’: 4, ‘KeyV’: 5,
+‘KeyG’: 6, ‘KeyB’: 7, ‘KeyH’: 8, ‘KeyN’: 9, ‘KeyJ’: 10, ‘KeyM’: 11
+};
+const KEY_MAP_UPPER = {
+‘KeyQ’: 0, ‘Digit2’: 1, ‘KeyW’: 2, ‘Digit3’: 3, ‘KeyE’: 4, ‘KeyR’: 5,
+‘Digit5’: 6, ‘KeyT’: 7, ‘Digit6’: 8, ‘KeyY’: 9, ‘Digit7’: 10, ‘KeyU’: 11
+};
+
+document.addEventListener(‘keydown’, e => {
+const focusInput = document.activeElement && document.activeElement.tagName === ‘INPUT’;
+const anyModalOpen = document.querySelector(’.modal-backdrop.active’);
+
+// Always-handled keys (regardless of input focus)
+if (e.key === ‘Escape’) {
+if (anyModalOpen) { closeAllModals(); e.preventDefault(); return; }
+if (focusInput) { document.activeElement.blur(); e.preventDefault(); return; }
+if (state.selectedNotes.size > 0) { clearAll(); e.preventDefault(); return; }
+return;
+}
+
+if (focusInput) return; // when typing chord, don’t intercept
+
+// Shift modifiers — open modals (so single letters can still be piano keys)
+if (e.shiftKey && !e.ctrlKey && !e.metaKey && !e.altKey) {
+if (e.code === ‘KeyB’) { openModal(‘bank’); e.preventDefault(); return; }
+if (e.code === ‘KeyG’) { openModal(‘guide’); e.preventDefault(); return; }
+if (e.code === ‘KeyT’) { openModal(‘theme’); e.preventDefault(); return; }
+if (e.code === ‘KeyK’) { openModal(‘kbd’); e.preventDefault(); return; }
+if (e.code === ‘KeyL’) { openModal(‘library’); e.preventDefault(); return; }
+if (e.code === ‘KeyI’) {
+$(‘btnChordId’).click(); e.preventDefault(); return;
+}
+if (e.code === ‘KeyS’) {
+$(‘btnSave’).click(); e.preventDefault(); return;
+}
+if (e.key === ‘?’)     { openModal(‘help’); e.preventDefault(); return; }
+}
+if (e.key === ‘?’) { openModal(‘help’); e.preventDefault(); return; }
+
+// Piano keys — toggle illumination + play
+if (!e.repeat && KEY_MAP_LOWER.hasOwnProperty(e.code)) {
+const pcVal = KEY_MAP_LOWER[e.code];
+const midi = (state.startOctave + 1) * 12 + pcVal;
+toggleNote(midi);
+ensureAudioRunning();
+playSingleNote(midi);
+e.preventDefault(); return;
+}
+if (!e.repeat && KEY_MAP_UPPER.hasOwnProperty(e.code)) {
+const pcVal = KEY_MAP_UPPER[e.code];
+const targetOct = state.startOctave + 1;
+const midi = (targetOct + 1) * 12 + pcVal;
+toggleNote(midi);
+ensureAudioRunning();
+playSingleNote(midi);
+e.preventDefault(); return;
+}
+
+// Controls
+switch (e.key) {
+case ’ ’:
+if (!e.repeat) {
+if (state.selectedNotes.size > 0) { ensureAudioRunning(); playChord([…state.selectedNotes]); }
+e.preventDefault();
+}
+break;
+case ‘Backspace’: case ‘Delete’:
+clearAll(); e.preventDefault(); break;
+case ‘ArrowLeft’: transposeBy(-1); e.preventDefault(); break;
+case ‘ArrowRight’: transposeBy(+1); e.preventDefault(); break;
+case ‘ArrowUp’: octaveShift(+1); e.preventDefault(); break;
+case ‘ArrowDown’: octaveShift(-1); e.preventDefault(); break;
+case ‘[’:
+if (state.octaves > 1) { state.octaves–; update(); } e.preventDefault(); break;
+case ‘]’:
+if (state.octaves < 5) { state.octaves++; update(); } e.preventDefault(); break;
+case ‘l’: case ‘L’:
+state.showLabels = !state.showLabels; update();
+showToast(state.showLabels ? ‘Labels ON’ : ‘Labels OFF’);
+e.preventDefault(); break;
+case ‘p’: case ‘P’:
+if (state.selectedNotes.size > 0) { ensureAudioRunning(); playChord([…state.selectedNotes]); }
+e.preventDefault(); break;
+case ‘Tab’:
+state.sound = (state.sound === ‘rhodes’) ? ‘lead’ : ‘rhodes’;
+update();
+showToast(’Sound: ’ + (state.sound === ‘rhodes’ ? ‘Rhodes’ : ‘Lead Synth’));
+e.preventDefault(); break;
+case ‘/’:
+chordInputEl.focus(); chordInputEl.select(); e.preventDefault(); break;
+}
+});
+
+// ============================================================
+// TOAST
+// ============================================================
+let toastTimer = null;
+function showToast(msg) {
+const t = $(‘toast’);
+t.textContent = msg;
+t.classList.add(‘show’);
+clearTimeout(toastTimer);
+toastTimer = setTimeout(() => t.classList.remove(‘show’), 1600);
+}
+
+// ============================================================
+// LOCAL STORAGE
+// ============================================================
+function saveLocal() {
+try {
+const data = {
+theme: state.theme, sound: state.sound, octaves: state.octaves,
+startOctave: state.startOctave, showLabels: state.showLabels,
+chordIdMode: state.chordIdMode,
+savedChords: state.savedChords,
+};
+localStorage.setItem(‘uyk_settings’, JSON.stringify(data));
+} catch (e) {}
+}
+function loadLocal() {
+try {
+const raw = localStorage.getItem(‘uyk_settings’);
+if (!raw) return;
+const d = JSON.parse(raw);
+if (d.theme) Object.assign(state.theme, d.theme);
+if (d.sound) state.sound = d.sound;
+if (typeof d.octaves === ‘number’) state.octaves = Math.max(1, Math.min(5, d.octaves));
+if (typeof d.startOctave === ‘number’) state.startOctave = Math.max(0, Math.min(7, d.startOctave));
+if (typeof d.showLabels === ‘boolean’) state.showLabels = d.showLabels;
+if (typeof d.chordIdMode === ‘boolean’) state.chordIdMode = d.chordIdMode;
+if (Array.isArray(d.savedChords)) state.savedChords = d.savedChords;
+} catch (e) {}
+}
+
+// Sync sliders to current theme
+function syncSliders() {
+const t = state.theme;
+$(‘ui-h’).value = t.uH; $(‘ui-s’).value = t.uS; $(‘ui-l’).value = t.uL;
+$(‘w-h’).value = t.wH;  $(‘w-s’).value = t.wS;  $(‘w-l’).value = t.wL;
+$(‘b-h’).value = t.bH;  $(‘b-s’).value = t.bS;  $(‘b-l’).value = t.bL;
+}
+
+// ============================================================
+// INIT
+// ============================================================
+loadLocal();
+syncSliders();
+applyTheme();
+buildPresets();
+populateBank();
+populateGuide();
+updateGuideRootLabel();
+update();
+
+// Resume audio on first user interaction (browser autoplay policy)
+[‘click’,‘touchstart’,‘keydown’].forEach(ev =>
+document.addEventListener(ev, () => ensureAudioRunning(), { once:true })
+);
+
+// Orientation change: just trigger a reflow update
+window.addEventListener(‘orientationchange’, () => setTimeout(update, 250));
+window.addEventListener(‘resize’, () => { /* CSS handles layout */ });
+</script>
+
+</body>
+</html>
